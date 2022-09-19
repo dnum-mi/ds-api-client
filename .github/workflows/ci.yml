@@ -1,0 +1,27 @@
+name: DS Api client
+on: pull_request
+
+jobs:
+  tests:
+    name: Run unit tests 
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checks-out repository
+        uses: actions/checkout@v3
+      - name: Use Node.js 16.x.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: run test unit
+        env: 
+          API_URL: ${{secrets.API_URL}}
+          API_TOKEN: ${{secrets.API_TOKEN}}
+        run: | 
+             npm ci
+             npm run lint
+             npm run test
+      - name: run build
+        run: npm run build
+   
