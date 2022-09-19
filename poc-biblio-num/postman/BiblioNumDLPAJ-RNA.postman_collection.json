@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "2633c793-cc35-4574-8843-1e98e967dd51",
+		"name": "BiblioNumDLPAJ-RNA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RNA",
+			"item": [
+				{
+					"name": "search-by-text",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://entreprise.data.gouv.fr/api/rna/v1/full_text/TOTO",
+							"protocol": "https",
+							"host": [
+								"entreprise",
+								"data",
+								"gouv",
+								"fr"
+							],
+							"path": [
+								"api",
+								"rna",
+								"v1",
+								"full_text",
+								"TOTO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "waldec_juin_22",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://media.interieur.gouv.fr/rna/rna_waldec_20220601.zip",
+							"protocol": "https",
+							"host": [
+								"media",
+								"interieur",
+								"gouv",
+								"fr"
+							],
+							"path": [
+								"rna",
+								"rna_waldec_20220601.zip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rna_juin_22",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://media.interieur.gouv.fr/rna/rna_import_20220601.zip",
+							"protocol": "https",
+							"host": [
+								"media",
+								"interieur",
+								"gouv",
+								"fr"
+							],
+							"path": [
+								"rna",
+								"rna_import_20220601.zip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api-list-associations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.data.gouv.fr/api/1/datasets/repertoire-national-des-associations?page_size=1",
+							"protocol": "https",
+							"host": [
+								"www",
+								"data",
+								"gouv",
+								"fr"
+							],
+							"path": [
+								"api",
+								"1",
+								"datasets",
+								"repertoire-national-des-associations"
+							],
+							"query": [
+								{
+									"key": "page_size",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
