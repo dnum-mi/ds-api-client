@@ -5,7 +5,7 @@ Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts 
 ## Fonctionnalités
 
 * DS **API V2** Client GraphQL
-* Promise-based API (fonctionne avec `async` / `wait`)
+* Promise-based API (fonctionne avec `async` / `await`)
 * Prise en charge de TypeScript
 * Isomorphic (fonctionne avec Node / navigateurs)
 
@@ -27,14 +27,14 @@ const url = 'https://www.demarches-simplifiees.fr/api/v2/graphql'
 const client = new DsApiClient(url, token)
 
 // ... Rechercher une procedure par id de procedure 
-const procedure = client.procedure(idProcedure).then((data) => console.log(data))
+const procedure = await client.procedure(idProcedure)
 
 // ... Rechercher les dossiers d'une procedure par id de procedure 
-const procedureDossiers = client.procedure(idProcedure).dossiers.then((data) => console.log(data))
+const procedureDossiers = await client.procedure(idProcedure).dossiers.then((data) => console.log(data))
 
 // ... Rechercher un dossier par id de dossier
-const dossier = client.dossier(idDossier).then((data) => console.log(data))
+const dossier = await client.dossier(idDossier).then((data) => console.log(data))
 
 // ... Rechercher les dossiers par une liste d'id de dossier
-const dossiers = client.dossier(idsDossier).then((data) => console.log(data))
+const dossiers = await client.dossier(idsDossier).then((data) => console.log(data))
 ```
