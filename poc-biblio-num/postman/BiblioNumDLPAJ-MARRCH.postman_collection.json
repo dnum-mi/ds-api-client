@@ -1,0 +1,1056 @@
+{
+	"info": {
+		"_postman_id": "401d26ba-de83-4aaa-afe1-b91c56894a1b",
+		"name": "BiblioNumDLPAJ-MARRCH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MAARCH",
+			"item": [
+				{
+					"name": "Authentificate",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "default"
+								},
+								{
+									"key": "group",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://ged.sgami-so.minint.fr/association-culte/rest/authenticate",
+							"protocol": "http",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentificate-token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "default"
+								},
+								{
+									"key": "group",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://ged.sgami-so.minint.fr/association-culte/rest/authenticate/token",
+							"protocol": "http",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"authenticate",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AuthentificateInformation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "cs-web",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "APImaarrch33#",
+									"type": "default"
+								},
+								{
+									"key": "group",
+									"value": "GRPSERVICEGET",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://ged.sgami-so.minint.fr/association-culte/rest/authenticationInformations",
+							"protocol": "http",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"authenticationInformations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/home",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://ged.sgami-so.minint.fr/association-culte/rest/home",
+							"protocol": "http",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/home avec authentification basic",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://ged.sgami-so.minint.fr/association-culte/rest/home",
+							"protocol": "http",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/baskets",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://ged.sgami-so.minint.fr/association-culte/rest/baskets",
+							"protocol": "http",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"baskets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/res/list",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"select\" : \"*\",\n    \"clause\" : \"1=1\",\n    \"withFile\" : true,\n    \"orderBy\" : [\"res_id\"],\n    \"limit\" : 10\n}"
+						},
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/res/list",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"res",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/140",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/resources/140",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"resources",
+								"140"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/140/contents",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/resources/140/content",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"resources",
+								"140",
+								"content"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{MAARCH_LOGIN}}:{{MAARCH_PWD_ENCODE}}@ged.sgami-so.minint.fr/association-culte/rest/resources/1",
+							"auth": {
+								"user": "{{MAARCH_LOGIN}}",
+								"password": "{{MAARCH_PWD_ENCODE}}"
+							},
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"resources",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/folders",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/folders",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/users",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/users",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/contactsParameters",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/contactsParameters",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"contactsParameters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/entities",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/entities",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/groups",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/groups",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/prorities",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/priorities",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"priorities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/205/attachments",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/resources/209/attachments",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"resources",
+								"209",
+								"attachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/1293",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/resources/1293",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"resources",
+								"1293"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resourcesList/exports",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"format\" : \"csv\",\n    \"delimiter\" : \";\",\n    \"resources\" : [1, 209],\n    \"data\" : [\n        {\n            \"isFunction\" : false,\n            \"value\" : \"subject\"\n        }\n    ]\n}\n\n"
+						},
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/resourcesList/exports",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"resourcesList",
+								"exports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/res/list Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{MAARCH_PWD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{MAARCH_LOGIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"select\" : \"res_id\",\n    \"clause\" : \"destination IN (@my_entities) AND (status IN ('ATT','NEW')) AND (custom_fields->>'18' IN ('ETRI'))\",\n    \"orderBy\" : [\"res_id\"]\n}"
+						},
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/rest/res/list",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"res",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resources/search",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "chrono",
+									"value": "DPLAJ",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{MAARCH_LOGIN}}:{{MAARCH_PWD_ENCODE}}@ged.sgami-so.minint.fr/association-culte/rest/search",
+							"auth": {
+								"user": "{{MAARCH_LOGIN}}",
+								"password": "{{MAARCH_PWD_ENCODE}}"
+							},
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"rest",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservice/resourcesList/test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "format",
+									"value": "\"csv\"",
+									"type": "default"
+								},
+								{
+									"key": "delimiter",
+									"value": ";",
+									"type": "default"
+								},
+								{
+									"key": "data",
+									"value": "oui",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "resources",
+									"value": "[1, 205]",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "ged.sgami-so.minint.fr/association-culte/2022/06/0001/0025_1956603090.html",
+							"host": [
+								"ged",
+								"sgami-so",
+								"minint",
+								"fr"
+							],
+							"path": [
+								"association-culte",
+								"2022",
+								"06",
+								"0001",
+								"0025_1956603090.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
