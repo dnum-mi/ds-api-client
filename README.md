@@ -1,43 +1,40 @@
-# Script de test pour API démarche-simplifiées
+# ds-api-client
 
-## Objectif
+Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts ou les applications simples
 
-Tester l'utilisation de l'API de démarches simplifiées et récupération des informations de RNA
+## Fonctionnalités
 
+* DS **API V2** Client GraphQL
+* Promise-based API (fonctionne avec `async` / `wait`)
+* Prise en charge de TypeScript
+* Isomorphic (fonctionne avec Node / navigateurs)
 
-## liens de références
+## Installation
 
-### Pour démarches simpliées
+```shell notranslate position-relative overflow-auto
+npm add ds-api-client
+```
 
-- https://doc.demarches-simplifiees.fr/pour-aller-plus-loin/graphql
-- https://graphql.org/
-- https://demarches-simplifiees-graphql.netlify.app/query.doc.html
-#### API: Recherche par démarche
-- https://www.demarches-simplifiees.fr/api/v2/graphql
+## Utilisation
 
-### Pour RNA
+```js notranslate position-relative overflow-auto
+import { DsApiClient } from 'ds-api-client'
 
-- https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations/
-- https://entreprise.data.gouv.fr/api_doc/rna
-- swagger de l'api data.gov.fr: https://doc.data.gouv.fr/api/reference/
+const token = 'xxxxx'
+const url = 'https://www.demarches-simplifiees.fr/api/v2/graphql'
 
-#### API:
-- recheche par nom ou par SIRET :  https://entreprise.data.gouv.fr/api/rna/
-- Recherche dans les jeux de données: https://www.data.gouv.fr/api/1/datasets/repertoire-national-des-associations
+// ... Créer une instance DS API client  
+const client = new DsApiClient(url, token)
 
-### Pour MAARCH
+// ... Rechercher une procedure par id de procedure 
+const procedure = client.procedure(idProcedure).then((data) => console.log(data))
 
-MAARCH Courrier est un solution de gestion de courrier electronique.  
-MARRCH Courrier est sous la license GNU GPL.
+// ... Rechercher les dossiers d'une procedure par id de procedure 
+const procedureDossiers = client.procedure(idProcedure).dossiers.then((data) => console.log(data))
 
-#### Document
-- Site du produit MAARCH : https://maarch.com/maarch-courrier/
-- Documentation du produit MAARCH Courrier : https://docs.maarch.org/gitbook/html/MaarchCourrier/21.03/
-- Documentation de l'api https://docs.maarch.org/MaarchCourrier/guat/guat_architecture/API_REST/home.html
-- Les codes sources sont lisible sur un serveur gitlab appartenant à Maarch du groupe xelians  https://labs.maarch.org/maarch/MaarchCourrier
-- serveur de demo du produit proposé par MAARCH: https://demo.maarchcourrier.com
+// ... Rechercher un dossier par id de dossier
+const dossier = client.dossier(idDossier).then((data) => console.log(data))
 
-#### Serveur de test en interne MININT
-- Pour tester Maarch courrier, nous avons à un disposition un serveur (http://ged.sgami-so.minint.fr/association-culte) accessible que sur le réseau interne
-- L'URL de base de l'api est http://ged.sgami-so.minint.fr/association-culte/rest
-- La documentation de version du ministére est https://docs.maarch.org/gitbook/html/MaarchCourrier/20.10/
+// ... Rechercher les dossiers par une liste d'id de dossier
+const dossiers = client.dossier(idsDossier).then((data) => console.log(data))
+```
