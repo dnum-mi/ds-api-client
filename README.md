@@ -26,11 +26,11 @@ const url = 'https://www.demarches-simplifiees.fr/api/v2/graphql'
 // ... Créer une instance DS API client  
 const client = new DsApiClient(url, token)
 
-// ... Rechercher une procedure par id de procedure 
-const procedure = await client.procedure(idProcedure)
+// ... Rechercher une demarche par id de demarche 
+const demarche = await client.demarche(idDemarche)
 
-// ... Rechercher les dossiers d'une procedure par id de procedure 
-const procedureDossiers = await client.procedure(idProcedure).dossiers.then((data) => console.log(data))
+// ... Rechercher les dossiers d'une demarche par id de demarche 
+const demarcheDossiers = await client.demarche(idDemarche).dossiers.then((data) => console.log(data))
 
 // ... Rechercher un dossier par id de dossier
 const dossier = await client.dossier(idDossier).then((data) => console.log(data))
