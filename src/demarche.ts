@@ -1,20 +1,16 @@
-import { GraphQLClient, gql } from "graphql-request";
-// import query from "./graphql/demarche.gql"
+import { GraphQLClient } from "graphql-request";
+import * as query from "./graphql/demarche.gql";
 
-export const getDemarche = async (client: GraphQLClient, idDemarche: number) => {
-  const query = gql`
-    query getDemarche($demarcheNumber: Int!) {
-      demarche(number: $demarcheNumber) {
-        number
-        title
-      }
-    }
-  `;
+export const getDemarche = async (
+  client: GraphQLClient,
+  idDemarche: number,
+) => {
   try {
-    return await client.request(
-        query,
-        { demarcheNumber: idDemarche },
-        { "Content-Type": "application/json" },
+    console.log(query);
+    return await client.request<{ demarche: Partial<Demarche> }>(
+      query,
+      { demarcheNumber: idDemarche },
+      { "Content-Type": "application/json" },
     );
   } catch (error) {
     console.error(JSON.stringify(error, undefined, 2));
