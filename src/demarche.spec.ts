@@ -11,6 +11,7 @@ describe("Demarche (unit)", () => {
       demarche: {
         number: 1,
         title: "test procedure 20220920",
+        description: "test procedure 20220920",
       },
     });
   });
@@ -21,6 +22,7 @@ describe("Demarche (unit)", () => {
       "Bearer 7SrqqHcTKijZVs4kmVNBh3KB",
     );
     const response = await dsApiClient.demarche(1);
-    expect(response?.demarche.description).toBe(1);
+    expect(response?.demarche?.number).toBe(1);
   });
 });
+// test
