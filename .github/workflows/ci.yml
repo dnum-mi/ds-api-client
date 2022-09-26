@@ -15,9 +15,12 @@ jobs:
         with:
           node-version: "16"
       - name: run test unit
+        env: 
+          API_URL: ${{secrets.API_URL}}
+          API_TOKEN: ${{secrets.API_TOKEN}}
         run: | 
-            #  npm ci
+             npm ci
              npm run test
       - name: run build
-        run: npm build
+        run: npm run build
    
