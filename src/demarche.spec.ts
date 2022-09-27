@@ -1,12 +1,7 @@
-import { DsApiClient } from "./index";
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("dotenv").config();
-const { API_URL, API_TOKEN } = process.env;
+import { dsApiClient } from "./__helpers";
 
 describe("Demarche (unit)", () => {
   it("Has to retrieve demarche number 1", async () => {
-    const dsApiClient = new DsApiClient(API_URL, API_TOKEN);
     const response = await dsApiClient.demarche(1);
     expect(response).toEqual({
       demarche: {
@@ -18,7 +13,6 @@ describe("Demarche (unit)", () => {
   });
 
   it("Has to retrieve demarche number 1", async () => {
-    const dsApiClient = new DsApiClient(API_URL, API_TOKEN);
     const response = await dsApiClient.demarche(1);
     expect(response?.demarche?.number).toBe(1);
   });
