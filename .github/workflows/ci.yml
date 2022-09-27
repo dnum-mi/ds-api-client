@@ -21,8 +21,13 @@ jobs:
         run: | 
             npm ci
             npm run lint
-            API_URL=${{secrets.API_URL}}; API_TOKEN=${{secrets.API_TOKEN}}; npm run test
-             
+            API_URL=${{secrets.API_URL}}; API_TOKEN=${{secrets.API_TOKEN}}; npm run test             
       - name: run build
         run: npm run build
-   
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: dev-release-test-1
+          FOLDER: .
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
