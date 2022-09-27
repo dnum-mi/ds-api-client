@@ -10,7 +10,7 @@ export class DsApiClient {
   constructor(url: string, token: string) {
     this.client = new GraphQLClient(url, {
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
       mode: "cors",
