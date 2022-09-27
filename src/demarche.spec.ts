@@ -4,6 +4,7 @@ const { API_URL, API_TOKEN } = process.env;
 
 describe("Demarche (unit)", () => {
   it("Has to retrieve demarche number 1", async () => {
+    console.log({ API_URL, API_TOKEN, API_TEST: process.env.API_TEST });
     const dsApiClient = new DsApiClient(API_URL, API_TOKEN);
     const response = await dsApiClient.demarche(1);
     expect(response).toEqual({
