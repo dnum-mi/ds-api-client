@@ -30,6 +30,7 @@ jobs:
           mv dist target/.
           mv package.json target/.
           mv README.md target/.
+          mv src/graphql target/dist/.
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
