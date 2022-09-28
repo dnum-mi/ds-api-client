@@ -1,5 +1,0 @@
-query getDossier($dossierNumber: Int!) {
-    dossier(number: $dossierNumber) {
-        id
-    }
-}

@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import * as query from "./graphql/getDemarche.gql";
+import { GET_DEMARCHE_QUERY as query } from "./graphql/getDemarche";
 
 export const getDemarche = async (
   client: GraphQLClient,
