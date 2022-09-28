@@ -1,10 +1,11 @@
 import { GraphQLClient } from "graphql-request";
-import { GET_DOSSIER_QUERY as query } from "./graphql/getDossier";
+import { Dossier } from "./@types/types";
+
+import query from "./graphql/getDossier";
 
 export const getDossier = async (client: GraphQLClient, idDossier: number) => {
   try {
-    console.log(query);
-    return await client.request(
+    return await client.request<{ dossier: Partial<Dossier> }>(
       query,
       { dossierNumber: idDossier },
       { "Content-Type": "application/json" },

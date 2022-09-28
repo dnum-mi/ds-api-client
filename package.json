@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "author": "",
+  "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
+    "postinstall": "npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
@@ -20,7 +22,6 @@
   },
   "dependencies": {
     "graphql": "16.6.0",
-    "graphql-import-node": "0.0.5",
     "graphql-request": "5.0.0"
   },
   "devDependencies": {
@@ -53,8 +54,7 @@
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": "ts-jest",
-      "^.+\\.(graphql|gql)$": "graphql-import-node/jest"
+      "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
