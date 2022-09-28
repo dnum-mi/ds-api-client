@@ -1,15 +1,9 @@
-import { GraphQLClient, gql } from "graphql-request";
+import { GraphQLClient } from "graphql-request";
+import * as query from "./graphql/getDossier.gql";
 
 export const getDossier = async (client: GraphQLClient, idDossier: number) => {
-  const query = gql`
-    query getDossier($dossierNumber: Int!) {
-      dossier(number: $dossierNumber) {
-        id
-      }
-    }
-  `;
-
   try {
+    console.log(query);
     return await client.request(
       query,
       { dossierNumber: idDossier },

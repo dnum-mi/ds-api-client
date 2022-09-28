@@ -9,6 +9,14 @@ Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts 
 * Prise en charge de TypeScript
 * Isomorphic (fonctionne avec Node / navigateurs)
 
+## Run Test
+
+```shell notranslate position-relative overflow-auto
+cp test/env.example .env 
+# Changer les valeurs dans le .env
+npm test
+```
+
 ## Installation
 
 ```shell notranslate position-relative overflow-auto
