@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-export const GET_DOSSIER_QUERY = gql`
+export default gql`
     query getDossier($dossierNumber: Int!) {
         dossier(number: $dossierNumber) {
             ...DossierFragment
@@ -9,8 +9,7 @@ export const GET_DOSSIER_QUERY = gql`
             }
         }
     }
-
-
+    
     fragment DossierFragment on Dossier {
         id
         number
