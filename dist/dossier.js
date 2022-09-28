@@ -37,15 +37,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDossier = void 0;
-var query = require("./graphql/getDossier.gql");
+var getDossier_1 = require("./graphql/getDossier");
 var getDossier = function (client, idDossier) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                console.log(query);
-                return [4, client.request(query, { dossierNumber: idDossier }, { "Content-Type": "application/json" })];
+                console.log(getDossier_1.GET_DOSSIER_QUERY);
+                return [4, client.request(getDossier_1.GET_DOSSIER_QUERY, { dossierNumber: idDossier }, { "Content-Type": "application/json" })];
             case 1: return [2, _a.sent()];
             case 2:
                 error_1 = _a.sent();

@@ -37,15 +37,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDemarche = void 0;
-var query = require("./graphql/getDemarche.gql");
+var getDemarche_1 = require("./graphql/getDemarche");
 var getDemarche = function (client, idDemarche) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                console.log(query);
-                return [4, client.request(query, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" })];
+                console.log(getDemarche_1.GET_DEMARCHE_QUERY);
+                return [4, client.request(getDemarche_1.GET_DEMARCHE_QUERY, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" })];
             case 1: return [2, _a.sent()];
             case 2:
                 error_1 = _a.sent();

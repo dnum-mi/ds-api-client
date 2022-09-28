@@ -45,11 +45,7 @@ describe("Dossier (unit)", function () {
                 case 0: return [4, __helpers_1.dsApiClient.dossier(2)];
                 case 1:
                     response = _a.sent();
-                    expect(response).toEqual({
-                        dossier: {
-                            id: "RG9zc2llci0y",
-                        },
-                    });
+                    expect(response.dossier.id).toBe("RG9zc2llci0y");
                     return [2];
             }
         });
