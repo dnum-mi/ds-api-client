@@ -1,4 +1,4 @@
-// import "graphql-import-node";
+import "graphql-import-node";
 
 import { GraphQLClient } from "graphql-request";
 import { getDemarche } from "./demarche";

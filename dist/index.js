@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DsApiClient = void 0;
+require("graphql-import-node");
 var graphql_request_1 = require("graphql-request");
 var demarche_1 = require("./demarche");
 var dossier_1 = require("./dossier");
