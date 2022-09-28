@@ -45,7 +45,7 @@ var DsApiClient = (function () {
     function DsApiClient(url, token) {
         this.client = new graphql_request_1.GraphQLClient(url, {
             headers: {
-                Authorization: token,
+                Authorization: "Bearer ".concat(token),
             },
             credentials: "include",
             mode: "cors",

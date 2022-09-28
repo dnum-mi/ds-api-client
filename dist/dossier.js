@@ -1,8 +1,4 @@
 "use strict";
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -41,26 +37,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDossier = void 0;
-var graphql_request_1 = require("graphql-request");
+var query = require("./graphql/getDossier.gql");
 var getDossier = function (client, idDossier) { return __awaiter(void 0, void 0, void 0, function () {
-    var query, error_1;
+    var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                query = (0, graphql_request_1.gql)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    query getDossier($dossierNumber: Int!) {\n      dossier(number: $dossierNumber) {\n        id\n      }\n    }\n  "], ["\n    query getDossier($dossierNumber: Int!) {\n      dossier(number: $dossierNumber) {\n        id\n      }\n    }\n  "])));
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([0, 2, , 3]);
+                console.log(query);
                 return [4, client.request(query, { dossierNumber: idDossier }, { "Content-Type": "application/json" })];
-            case 2: return [2, _a.sent()];
-            case 3:
+            case 1: return [2, _a.sent()];
+            case 2:
                 error_1 = _a.sent();
                 console.error(JSON.stringify(error_1, undefined, 2));
-                return [3, 4];
-            case 4: return [2];
+                return [3, 3];
+            case 3: return [2];
         }
     });
 }); };
 exports.getDossier = getDossier;
-var templateObject_1;
 //# sourceMappingURL=dossier.js.map

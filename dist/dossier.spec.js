@@ -36,16 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("./index");
-var _a = process.env, API_URL = _a.API_URL, API_TOKEN = _a.API_TOKEN;
+var __helpers_1 = require("./__helpers");
 describe("Dossier (unit)", function () {
     it("Has to retrieve dossier number ", function () { return __awaiter(void 0, void 0, void 0, function () {
-        var dsApiClient, response;
+        var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    dsApiClient = new index_1.DsApiClient(API_URL, API_TOKEN);
-                    return [4, dsApiClient.dossier(2)];
+                case 0: return [4, __helpers_1.dsApiClient.dossier(2)];
                 case 1:
                     response = _a.sent();
                     expect(response).toEqual({
