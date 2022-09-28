@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import * as query from "./graphql/getDossier.gql";
+import { GET_DOSSIER_QUERY as query } from "./graphql/getDossier";
 
 export const getDossier = async (client: GraphQLClient, idDossier: number) => {
   try {
