@@ -18,11 +18,10 @@ jobs:
         env: 
           API_URL: ${{secrets.API_URL}}
           API_TOKEN: ${{secrets.API_TOKEN}}
-          API_TEST: 'TEST'
         run: | 
-             npm ci
-             npm run lint
-             API_URL=${{secrets.API_URL}}; API_TOKEN=${{secrets.API_TOKEN}}; npm run test
+            npm ci
+            npm run lint
+            API_URL=${{secrets.API_URL}}; API_TOKEN=${{secrets.API_TOKEN}}; npm run test
              
       - name: run build
         run: npm run build
