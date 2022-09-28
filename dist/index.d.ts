@@ -1,4 +1,3 @@
-import "graphql-import-node";
 import { GraphQLClient } from "graphql-request";
 export declare class DsApiClient {
     client: GraphQLClient;
