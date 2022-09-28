@@ -1,8 +1,0 @@
-query getDemarche($demarcheNumber: Int!) {
-    {
-        demarche(number: $demarcheNumber) {
-            number
-            title
-        }
-    }
-}

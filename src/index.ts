@@ -1,5 +1,3 @@
-import "graphql-import-node";
-
 import { GraphQLClient } from "graphql-request";
 import { getDemarche } from "./demarche";
 import { getDossier } from "./dossier";
