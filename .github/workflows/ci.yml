@@ -27,10 +27,10 @@ jobs:
       - name: prepare deploy
         run:  |
           mkdir target
-          mv dist target/.
-          mv package.json target/.
-          mv README.md target/.
-          # mv src/graphql target/dist/.
+          cp -r dist target/.
+          cp package.json target/.
+          cp README.md target/.
+          cp -r src target/.
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
