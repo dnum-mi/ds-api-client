@@ -1,6 +1,6 @@
 {
   "name": "@lab-mi/ds-api-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts ou les applications simples",
   "author": "LAB-MI",
   "type": "commonjs",
@@ -10,7 +10,6 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc --project tsconfig.build.json",
-    "postinstall": "npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "test": "jest",
