@@ -45,4 +45,7 @@ const dossier = await client.dossier(idDossier).then((data) => console.log(data)
 
 // ... Rechercher les dossiers par une liste d'id de dossier
 const dossiers = await client.dossier(idsDossier).then((data) => console.log(data))
+
+// ... Rechercher les groupeInstructeur par une id
+const groupeInstructeur = await client.groupeInstructeur(idGroupeInstructeur).then((data) => console.log(data))
 ```
