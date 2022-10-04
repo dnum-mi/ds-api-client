@@ -1,8 +1,7 @@
-import "graphql-import-node";
-
 import { GraphQLClient } from "graphql-request";
 import { getDemarche } from "./demarche";
 import { getDossier } from "./dossier";
+import { getGroupInstructeur } from "./groupeInstructeur";
 
 export class DsApiClient {
   client: GraphQLClient;
@@ -22,5 +21,9 @@ export class DsApiClient {
 
   async dossier(idDossier: number) {
     return await getDossier(this.client, idDossier);
+  }
+
+  async groupeInstructeur(idGroupeInstructeur: number) {
+    return await getGroupInstructeur(this.client, idGroupeInstructeur);
   }
 }

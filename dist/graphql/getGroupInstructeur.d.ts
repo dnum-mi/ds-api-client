@@ -1,1 +1,2 @@
-export declare const GET_GROUP_INSTRUCTEUR_QUERY: string;
+declare const _default: string;
+export default _default;

@@ -1,2 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-export declare const getDossier: (client: GraphQLClient, idDossier: number) => Promise<any>;
+import { Dossier } from "./@types/types";
+export declare const getDossier: (client: GraphQLClient, idDossier: number) => Promise<{
+    dossier: Partial<Dossier>;
+}>;

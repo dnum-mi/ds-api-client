@@ -1,13 +1,15 @@
-type Maybe<T> = T | null;
-type Exact<T extends { [key: string]: unknown }> = {
+export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
-type MakeOptional<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]?: Maybe<T[SubKey]> };
-type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 /** All built-in and custom scalars, mapped to their actual values */
-type Scalars = {
+export type Scalars = {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -20,7 +22,7 @@ type Scalars = {
   URL: any;
 };
 
-type Address = {
+export type Address = {
   __typename?: "Address";
   cityCode: Scalars["String"];
   cityName: Scalars["String"];
@@ -37,7 +39,7 @@ type Address = {
   type: AddressType;
 };
 
-type AddressChamp = Champ & {
+export type AddressChamp = Champ & {
   __typename?: "AddressChamp";
   address?: Maybe<Address>;
   id: Scalars["ID"];
@@ -45,14 +47,14 @@ type AddressChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-enum AddressType {
+export enum AddressType {
   Housenumber = "housenumber",
   Street = "street",
   Municipality = "municipality",
   Locality = "locality",
 }
 
-type Association = {
+export type Association = {
   __typename?: "Association";
   dateCreation?: Maybe<Scalars["ISO8601Date"]>;
   dateDeclaration?: Maybe<Scalars["ISO8601Date"]>;
@@ -62,7 +64,7 @@ type Association = {
   titre: Scalars["String"];
 };
 
-type Avis = {
+export type Avis = {
   __typename?: "Avis";
   attachment?: Maybe<File>;
   claimant?: Maybe<Profile>;
@@ -76,7 +78,7 @@ type Avis = {
   reponse?: Maybe<Scalars["String"]>;
 };
 
-type CarteChamp = Champ & {
+export type CarteChamp = Champ & {
   __typename?: "CarteChamp";
   geoAreas: Array<GeoArea>;
   id: Scalars["ID"];
@@ -84,13 +86,13 @@ type CarteChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type Champ = {
+export type Champ = {
   id: Scalars["ID"];
   label: Scalars["String"];
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type ChampDescriptor = {
+export type ChampDescriptor = {
   __typename?: "ChampDescriptor";
   champDescriptors?: Maybe<Array<ChampDescriptor>>;
   description?: Maybe<Scalars["String"]>;
@@ -101,7 +103,7 @@ type ChampDescriptor = {
   type: TypeDeChamp;
 };
 
-type CheckboxChamp = Champ & {
+export type CheckboxChamp = Champ & {
   __typename?: "CheckboxChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -109,12 +111,12 @@ type CheckboxChamp = Champ & {
   value: Scalars["Boolean"];
 };
 
-enum Civilite {
+export enum Civilite {
   M = "M",
   Mme = "Mme",
 }
 
-type CiviliteChamp = Champ & {
+export type CiviliteChamp = Champ & {
   __typename?: "CiviliteChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -122,13 +124,13 @@ type CiviliteChamp = Champ & {
   value?: Maybe<Civilite>;
 };
 
-type Commune = {
+export type Commune = {
   __typename?: "Commune";
   code: Scalars["String"];
   name: Scalars["String"];
 };
 
-type CommuneChamp = Champ & {
+export type CommuneChamp = Champ & {
   __typename?: "CommuneChamp";
   commune?: Maybe<Commune>;
   departement?: Maybe<Departement>;
@@ -137,7 +139,7 @@ type CommuneChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type CreateDirectUploadInput = {
+export type CreateDirectUploadInput = {
   dossierId: Scalars["ID"];
   filename: Scalars["String"];
   byteSize: Scalars["Int"];
@@ -146,13 +148,13 @@ type CreateDirectUploadInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type CreateDirectUploadPayload = {
+export type CreateDirectUploadPayload = {
   __typename?: "CreateDirectUploadPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   directUpload: DirectUpload;
 };
 
-type DateChamp = Champ & {
+export type DateChamp = Champ & {
   __typename?: "DateChamp";
   date?: Maybe<Scalars["ISO8601Date"]>;
   id: Scalars["ID"];
@@ -162,7 +164,7 @@ type DateChamp = Champ & {
   value?: Maybe<Scalars["ISO8601DateTime"]>;
 };
 
-type DatetimeChamp = Champ & {
+export type DatetimeChamp = Champ & {
   __typename?: "DatetimeChamp";
   datetime?: Maybe<Scalars["ISO8601DateTime"]>;
   id: Scalars["ID"];
@@ -170,7 +172,7 @@ type DatetimeChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type DecimalNumberChamp = Champ & {
+export type DecimalNumberChamp = Champ & {
   __typename?: "DecimalNumberChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -178,7 +180,7 @@ type DecimalNumberChamp = Champ & {
   value?: Maybe<Scalars["Float"]>;
 };
 
-type DeletedDossier = {
+export type DeletedDossier = {
   __typename?: "DeletedDossier";
   dateSupression: Scalars["ISO8601DateTime"];
   id: Scalars["ID"];
@@ -187,24 +189,24 @@ type DeletedDossier = {
   state: DossierState;
 };
 
-type DeletedDossierConnection = {
+export type DeletedDossierConnection = {
   __typename?: "DeletedDossierConnection";
   edges?: Maybe<Array<Maybe<DeletedDossierEdge>>>;
   nodes?: Maybe<Array<Maybe<DeletedDossier>>>;
   pageInfo: PageInfo;
 };
 
-type DeletedDossierEdge = {
+export type DeletedDossierEdge = {
   __typename?: "DeletedDossierEdge";
   cursor: Scalars["String"];
   node?: Maybe<DeletedDossier>;
 };
 
-type Demandeur = {
+export type Demandeur = {
   id: Scalars["ID"];
 };
 
-type Demarche = {
+export type Demarche = {
   __typename?: "Demarche";
   activeRevision: Revision;
   /** @deprecated Utilisez le champ `activeRevision.annotationDescriptors` à la place. */
@@ -231,7 +233,7 @@ type Demarche = {
   title: Scalars["String"];
 };
 
-type DemarcheDeletedDossiersArgs = {
+export type DemarcheDeletedDossiersArgs = {
   after?: Maybe<Scalars["String"]>;
   before?: Maybe<Scalars["String"]>;
   first?: Maybe<Scalars["Int"]>;
@@ -240,7 +242,7 @@ type DemarcheDeletedDossiersArgs = {
   deletedSince?: Maybe<Scalars["ISO8601DateTime"]>;
 };
 
-type DemarcheDossiersArgs = {
+export type DemarcheDossiersArgs = {
   after?: Maybe<Scalars["String"]>;
   before?: Maybe<Scalars["String"]>;
   first?: Maybe<Scalars["Int"]>;
@@ -255,7 +257,7 @@ type DemarcheDossiersArgs = {
   minRevision?: Maybe<Scalars["ID"]>;
 };
 
-type DemarcheDescriptor = {
+export type DemarcheDescriptor = {
   __typename?: "DemarcheDescriptor";
   cadreJuridique?: Maybe<Scalars["String"]>;
   dateCreation: Scalars["ISO8601DateTime"];
@@ -274,20 +276,20 @@ type DemarcheDescriptor = {
   title: Scalars["String"];
 };
 
-enum DemarcheState {
+export enum DemarcheState {
   Brouillon = "brouillon",
   Publiee = "publiee",
   Close = "close",
   Depubliee = "depubliee",
 }
 
-type Departement = {
+export type Departement = {
   __typename?: "Departement";
   code: Scalars["String"];
   name: Scalars["String"];
 };
 
-type DirectUpload = {
+export type DirectUpload = {
   __typename?: "DirectUpload";
   blobId: Scalars["ID"];
   headers: Scalars["String"];
@@ -295,7 +297,7 @@ type DirectUpload = {
   url: Scalars["String"];
 };
 
-type Dossier = {
+export type Dossier = {
   __typename?: "Dossier";
   annotations: Array<Champ>;
   archived: Scalars["Boolean"];
@@ -328,23 +330,23 @@ type Dossier = {
   usager: Profile;
 };
 
-type DossierAnnotationsArgs = {
+export type DossierAnnotationsArgs = {
   id?: Maybe<Scalars["ID"]>;
 };
 
-type DossierAvisArgs = {
+export type DossierAvisArgs = {
   id?: Maybe<Scalars["ID"]>;
 };
 
-type DossierChampsArgs = {
+export type DossierChampsArgs = {
   id?: Maybe<Scalars["ID"]>;
 };
 
-type DossierMessagesArgs = {
+export type DossierMessagesArgs = {
   id?: Maybe<Scalars["ID"]>;
 };
 
-type DossierAccepterInput = {
+export type DossierAccepterInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   motivation?: Maybe<Scalars["String"]>;
@@ -353,40 +355,40 @@ type DossierAccepterInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierAccepterPayload = {
+export type DossierAccepterPayload = {
   __typename?: "DossierAccepterPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierArchiverInput = {
+export type DossierArchiverInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierArchiverPayload = {
+export type DossierArchiverPayload = {
   __typename?: "DossierArchiverPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierChangerGroupeInstructeurInput = {
+export type DossierChangerGroupeInstructeurInput = {
   dossierId: Scalars["ID"];
   groupeInstructeurId: Scalars["ID"];
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierChangerGroupeInstructeurPayload = {
+export type DossierChangerGroupeInstructeurPayload = {
   __typename?: "DossierChangerGroupeInstructeurPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierClasserSansSuiteInput = {
+export type DossierClasserSansSuiteInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   motivation: Scalars["String"];
@@ -395,32 +397,32 @@ type DossierClasserSansSuiteInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierClasserSansSuitePayload = {
+export type DossierClasserSansSuitePayload = {
   __typename?: "DossierClasserSansSuitePayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierConnection = {
+export type DossierConnection = {
   __typename?: "DossierConnection";
   edges?: Maybe<Array<Maybe<DossierEdge>>>;
   nodes?: Maybe<Array<Maybe<Dossier>>>;
   pageInfo: PageInfo;
 };
 
-enum DossierDeclarativeState {
+export enum DossierDeclarativeState {
   EnInstruction = "en_instruction",
   Accepte = "accepte",
 }
 
-type DossierEdge = {
+export type DossierEdge = {
   __typename?: "DossierEdge";
   cursor: Scalars["String"];
   node?: Maybe<Dossier>;
 };
 
-type DossierEnvoyerMessageInput = {
+export type DossierEnvoyerMessageInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   body: Scalars["String"];
@@ -428,14 +430,14 @@ type DossierEnvoyerMessageInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierEnvoyerMessagePayload = {
+export type DossierEnvoyerMessagePayload = {
   __typename?: "DossierEnvoyerMessagePayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
   message?: Maybe<Message>;
 };
 
-type DossierLinkChamp = Champ & {
+export type DossierLinkChamp = Champ & {
   __typename?: "DossierLinkChamp";
   dossier?: Maybe<Dossier>;
   id: Scalars["ID"];
@@ -443,21 +445,21 @@ type DossierLinkChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationAjouterLigneInput = {
+export type DossierModifierAnnotationAjouterLigneInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   annotationId: Scalars["ID"];
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationAjouterLignePayload = {
+export type DossierModifierAnnotationAjouterLignePayload = {
   __typename?: "DossierModifierAnnotationAjouterLignePayload";
   annotation?: Maybe<RepetitionChamp>;
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierModifierAnnotationCheckboxInput = {
+export type DossierModifierAnnotationCheckboxInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   annotationId: Scalars["ID"];
@@ -465,14 +467,14 @@ type DossierModifierAnnotationCheckboxInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationCheckboxPayload = {
+export type DossierModifierAnnotationCheckboxPayload = {
   __typename?: "DossierModifierAnnotationCheckboxPayload";
   annotation?: Maybe<Champ>;
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierModifierAnnotationDateInput = {
+export type DossierModifierAnnotationDateInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   annotationId: Scalars["ID"];
@@ -480,14 +482,14 @@ type DossierModifierAnnotationDateInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationDatePayload = {
+export type DossierModifierAnnotationDatePayload = {
   __typename?: "DossierModifierAnnotationDatePayload";
   annotation?: Maybe<Champ>;
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierModifierAnnotationDatetimeInput = {
+export type DossierModifierAnnotationDatetimeInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   annotationId: Scalars["ID"];
@@ -495,14 +497,14 @@ type DossierModifierAnnotationDatetimeInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationDatetimePayload = {
+export type DossierModifierAnnotationDatetimePayload = {
   __typename?: "DossierModifierAnnotationDatetimePayload";
   annotation?: Maybe<Champ>;
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierModifierAnnotationIntegerNumberInput = {
+export type DossierModifierAnnotationIntegerNumberInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   annotationId: Scalars["ID"];
@@ -510,14 +512,14 @@ type DossierModifierAnnotationIntegerNumberInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationIntegerNumberPayload = {
+export type DossierModifierAnnotationIntegerNumberPayload = {
   __typename?: "DossierModifierAnnotationIntegerNumberPayload";
   annotation?: Maybe<Champ>;
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierModifierAnnotationTextInput = {
+export type DossierModifierAnnotationTextInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   annotationId: Scalars["ID"];
@@ -525,28 +527,28 @@ type DossierModifierAnnotationTextInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierModifierAnnotationTextPayload = {
+export type DossierModifierAnnotationTextPayload = {
   __typename?: "DossierModifierAnnotationTextPayload";
   annotation?: Maybe<Champ>;
   clientMutationId?: Maybe<Scalars["String"]>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierPasserEnInstructionInput = {
+export type DossierPasserEnInstructionInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   disableNotification?: Maybe<Scalars["Boolean"]>;
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierPasserEnInstructionPayload = {
+export type DossierPasserEnInstructionPayload = {
   __typename?: "DossierPasserEnInstructionPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierRefuserInput = {
+export type DossierRefuserInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   motivation: Scalars["String"];
@@ -555,42 +557,42 @@ type DossierRefuserInput = {
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierRefuserPayload = {
+export type DossierRefuserPayload = {
   __typename?: "DossierRefuserPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierRepasserEnConstructionInput = {
+export type DossierRepasserEnConstructionInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   disableNotification?: Maybe<Scalars["Boolean"]>;
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierRepasserEnConstructionPayload = {
+export type DossierRepasserEnConstructionPayload = {
   __typename?: "DossierRepasserEnConstructionPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-type DossierRepasserEnInstructionInput = {
+export type DossierRepasserEnInstructionInput = {
   dossierId: Scalars["ID"];
   instructeurId: Scalars["ID"];
   disableNotification?: Maybe<Scalars["Boolean"]>;
   clientMutationId?: Maybe<Scalars["String"]>;
 };
 
-type DossierRepasserEnInstructionPayload = {
+export type DossierRepasserEnInstructionPayload = {
   __typename?: "DossierRepasserEnInstructionPayload";
   clientMutationId?: Maybe<Scalars["String"]>;
   dossier?: Maybe<Dossier>;
   errors?: Maybe<Array<ValidationError>>;
 };
 
-enum DossierState {
+export enum DossierState {
   EnConstruction = "en_construction",
   EnInstruction = "en_instruction",
   Accepte = "accepte",
@@ -598,13 +600,13 @@ enum DossierState {
   SansSuite = "sans_suite",
 }
 
-type Effectif = {
+export type Effectif = {
   __typename?: "Effectif";
   nb: Scalars["Float"];
   periode: Scalars["String"];
 };
 
-type Entreprise = {
+export type Entreprise = {
   __typename?: "Entreprise";
   attestationFiscaleAttachment?: Maybe<File>;
   attestationSocialeAttachment?: Maybe<File>;
@@ -626,12 +628,12 @@ type Entreprise = {
   siretSiegeSocial: Scalars["String"];
 };
 
-enum EntrepriseEtatAdministratif {
+export enum EntrepriseEtatAdministratif {
   Actif = "Actif",
   Ferme = "Ferme",
 }
 
-type File = {
+export type File = {
   __typename?: "File";
   /** @deprecated Utilisez le champ `byteSizeBigInt` à la place. */
   byteSize: Scalars["Int"];
@@ -642,25 +644,25 @@ type File = {
   url: Scalars["URL"];
 };
 
-type GeoArea = {
+export type GeoArea = {
   description?: Maybe<Scalars["String"]>;
   geometry: GeoJson;
   id: Scalars["ID"];
   source: GeoAreaSource;
 };
 
-enum GeoAreaSource {
+export enum GeoAreaSource {
   Cadastre = "cadastre",
   SelectionUtilisateur = "selection_utilisateur",
 }
 
-type GeoJson = {
+export type GeoJson = {
   __typename?: "GeoJSON";
   coordinates: Scalars["Coordinates"];
   type: Scalars["String"];
 };
 
-type GroupeInstructeur = {
+export type GroupeInstructeur = {
   __typename?: "GroupeInstructeur";
   id: Scalars["ID"];
   instructeurs: Array<Profile>;
@@ -668,7 +670,7 @@ type GroupeInstructeur = {
   number: Scalars["Int"];
 };
 
-type GroupeInstructeurWithDossiers = {
+export type GroupeInstructeurWithDossiers = {
   __typename?: "GroupeInstructeurWithDossiers";
   dossiers: DossierConnection;
   id: Scalars["ID"];
@@ -677,7 +679,7 @@ type GroupeInstructeurWithDossiers = {
   number: Scalars["Int"];
 };
 
-type GroupeInstructeurWithDossiersDossiersArgs = {
+export type GroupeInstructeurWithDossiersDossiersArgs = {
   after?: Maybe<Scalars["String"]>;
   before?: Maybe<Scalars["String"]>;
   first?: Maybe<Scalars["Int"]>;
@@ -688,7 +690,7 @@ type GroupeInstructeurWithDossiersDossiersArgs = {
   state?: Maybe<DossierState>;
 };
 
-type IntegerNumberChamp = Champ & {
+export type IntegerNumberChamp = Champ & {
   __typename?: "IntegerNumberChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -696,7 +698,7 @@ type IntegerNumberChamp = Champ & {
   value?: Maybe<Scalars["BigInt"]>;
 };
 
-type LinkedDropDownListChamp = Champ & {
+export type LinkedDropDownListChamp = Champ & {
   __typename?: "LinkedDropDownListChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -705,7 +707,7 @@ type LinkedDropDownListChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type Message = {
+export type Message = {
   __typename?: "Message";
   attachment?: Maybe<File>;
   body: Scalars["String"];
@@ -714,7 +716,7 @@ type Message = {
   id: Scalars["ID"];
 };
 
-type MultipleDropDownListChamp = Champ & {
+export type MultipleDropDownListChamp = Champ & {
   __typename?: "MultipleDropDownListChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -722,7 +724,7 @@ type MultipleDropDownListChamp = Champ & {
   values: Array<Scalars["String"]>;
 };
 
-type Mutation = {
+export type Mutation = {
   __typename?: "Mutation";
   createDirectUpload?: Maybe<CreateDirectUploadPayload>;
   dossierAccepter?: Maybe<DossierAccepterPayload>;
@@ -742,76 +744,76 @@ type Mutation = {
   dossierRepasserEnInstruction?: Maybe<DossierRepasserEnInstructionPayload>;
 };
 
-type MutationCreateDirectUploadArgs = {
+export type MutationCreateDirectUploadArgs = {
   input: CreateDirectUploadInput;
 };
 
-type MutationDossierAccepterArgs = {
+export type MutationDossierAccepterArgs = {
   input: DossierAccepterInput;
 };
 
-type MutationDossierArchiverArgs = {
+export type MutationDossierArchiverArgs = {
   input: DossierArchiverInput;
 };
 
-type MutationDossierChangerGroupeInstructeurArgs = {
+export type MutationDossierChangerGroupeInstructeurArgs = {
   input: DossierChangerGroupeInstructeurInput;
 };
 
-type MutationDossierClasserSansSuiteArgs = {
+export type MutationDossierClasserSansSuiteArgs = {
   input: DossierClasserSansSuiteInput;
 };
 
-type MutationDossierEnvoyerMessageArgs = {
+export type MutationDossierEnvoyerMessageArgs = {
   input: DossierEnvoyerMessageInput;
 };
 
-type MutationDossierModifierAnnotationAjouterLigneArgs = {
+export type MutationDossierModifierAnnotationAjouterLigneArgs = {
   input: DossierModifierAnnotationAjouterLigneInput;
 };
 
-type MutationDossierModifierAnnotationCheckboxArgs = {
+export type MutationDossierModifierAnnotationCheckboxArgs = {
   input: DossierModifierAnnotationCheckboxInput;
 };
 
-type MutationDossierModifierAnnotationDateArgs = {
+export type MutationDossierModifierAnnotationDateArgs = {
   input: DossierModifierAnnotationDateInput;
 };
 
-type MutationDossierModifierAnnotationDatetimeArgs = {
+export type MutationDossierModifierAnnotationDatetimeArgs = {
   input: DossierModifierAnnotationDatetimeInput;
 };
 
-type MutationDossierModifierAnnotationIntegerNumberArgs = {
+export type MutationDossierModifierAnnotationIntegerNumberArgs = {
   input: DossierModifierAnnotationIntegerNumberInput;
 };
 
-type MutationDossierModifierAnnotationTextArgs = {
+export type MutationDossierModifierAnnotationTextArgs = {
   input: DossierModifierAnnotationTextInput;
 };
 
-type MutationDossierPasserEnInstructionArgs = {
+export type MutationDossierPasserEnInstructionArgs = {
   input: DossierPasserEnInstructionInput;
 };
 
-type MutationDossierRefuserArgs = {
+export type MutationDossierRefuserArgs = {
   input: DossierRefuserInput;
 };
 
-type MutationDossierRepasserEnConstructionArgs = {
+export type MutationDossierRepasserEnConstructionArgs = {
   input: DossierRepasserEnConstructionInput;
 };
 
-type MutationDossierRepasserEnInstructionArgs = {
+export type MutationDossierRepasserEnInstructionArgs = {
   input: DossierRepasserEnInstructionInput;
 };
 
-enum Order {
+export enum Order {
   Asc = "ASC",
   Desc = "DESC",
 }
 
-type PageInfo = {
+export type PageInfo = {
   __typename?: "PageInfo";
   endCursor?: Maybe<Scalars["String"]>;
   hasNextPage: Scalars["Boolean"];
@@ -819,7 +821,7 @@ type PageInfo = {
   startCursor?: Maybe<Scalars["String"]>;
 };
 
-type ParcelleCadastrale = GeoArea & {
+export type ParcelleCadastrale = GeoArea & {
   __typename?: "ParcelleCadastrale";
   /** @deprecated Utilisez le champ `prefixe` à la place. */
   codeArr: Scalars["String"];
@@ -846,7 +848,7 @@ type ParcelleCadastrale = GeoArea & {
   surfaceParcelle: Scalars["Float"];
 };
 
-type PersonneMorale = Demandeur & {
+export type PersonneMorale = Demandeur & {
   __typename?: "PersonneMorale";
   address: Address;
   /** @deprecated Utilisez le champ `address.label` à la place. */
@@ -874,7 +876,7 @@ type PersonneMorale = Demandeur & {
   typeVoie?: Maybe<Scalars["String"]>;
 };
 
-type PersonnePhysique = Demandeur & {
+export type PersonnePhysique = Demandeur & {
   __typename?: "PersonnePhysique";
   civilite?: Maybe<Civilite>;
   dateDeNaissance?: Maybe<Scalars["ISO8601Date"]>;
@@ -883,7 +885,7 @@ type PersonnePhysique = Demandeur & {
   prenom: Scalars["String"];
 };
 
-type PieceJustificativeChamp = Champ & {
+export type PieceJustificativeChamp = Champ & {
   __typename?: "PieceJustificativeChamp";
   file?: Maybe<File>;
   id: Scalars["ID"];
@@ -891,32 +893,32 @@ type PieceJustificativeChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type Profile = {
+export type Profile = {
   __typename?: "Profile";
   email: Scalars["String"];
   id: Scalars["ID"];
 };
 
-type Query = {
+export type Query = {
   __typename?: "Query";
   demarche: Demarche;
   dossier: Dossier;
   groupeInstructeur: GroupeInstructeurWithDossiers;
 };
 
-type QueryDemarcheArgs = {
+export type QueryDemarcheArgs = {
   number: Scalars["Int"];
 };
 
-type QueryDossierArgs = {
+export type QueryDossierArgs = {
   number: Scalars["Int"];
 };
 
-type QueryGroupeInstructeurArgs = {
+export type QueryGroupeInstructeurArgs = {
   number: Scalars["Int"];
 };
 
-type RepetitionChamp = Champ & {
+export type RepetitionChamp = Champ & {
   __typename?: "RepetitionChamp";
   champs: Array<Champ>;
   id: Scalars["ID"];
@@ -924,7 +926,7 @@ type RepetitionChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type Revision = {
+export type Revision = {
   __typename?: "Revision";
   annotationDescriptors: Array<ChampDescriptor>;
   champDescriptors: Array<ChampDescriptor>;
@@ -933,7 +935,7 @@ type Revision = {
   id: Scalars["ID"];
 };
 
-type SelectionUtilisateur = GeoArea & {
+export type SelectionUtilisateur = GeoArea & {
   __typename?: "SelectionUtilisateur";
   description?: Maybe<Scalars["String"]>;
   geometry: GeoJson;
@@ -941,7 +943,7 @@ type SelectionUtilisateur = GeoArea & {
   source: GeoAreaSource;
 };
 
-type Service = {
+export type Service = {
   __typename?: "Service";
   id: Scalars["ID"];
   nom: Scalars["String"];
@@ -950,7 +952,7 @@ type Service = {
   typeOrganisme: TypeOrganisme;
 };
 
-type SiretChamp = Champ & {
+export type SiretChamp = Champ & {
   __typename?: "SiretChamp";
   etablissement?: Maybe<PersonneMorale>;
   id: Scalars["ID"];
@@ -958,7 +960,7 @@ type SiretChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-type TextChamp = Champ & {
+export type TextChamp = Champ & {
   __typename?: "TextChamp";
   id: Scalars["ID"];
   label: Scalars["String"];
@@ -966,7 +968,7 @@ type TextChamp = Champ & {
   value?: Maybe<Scalars["String"]>;
 };
 
-type TitreIdentiteChamp = Champ & {
+export type TitreIdentiteChamp = Champ & {
   __typename?: "TitreIdentiteChamp";
   grantType: TitreIdentiteGrantType;
   id: Scalars["ID"];
@@ -974,12 +976,12 @@ type TitreIdentiteChamp = Champ & {
   stringValue?: Maybe<Scalars["String"]>;
 };
 
-enum TitreIdentiteGrantType {
+export enum TitreIdentiteGrantType {
   FranceConnect = "france_connect",
   PieceJustificative = "piece_justificative",
 }
 
-type Traitement = {
+export type Traitement = {
   __typename?: "Traitement";
   dateTraitement: Scalars["ISO8601DateTime"];
   emailAgentTraitant?: Maybe<Scalars["String"]>;
@@ -988,7 +990,7 @@ type Traitement = {
   state: DossierState;
 };
 
-enum TypeDeChamp {
+export enum TypeDeChamp {
   Text = "text",
   Textarea = "textarea",
   Date = "date",
@@ -1026,7 +1028,7 @@ enum TypeDeChamp {
   Mesri = "mesri",
 }
 
-enum TypeOrganisme {
+export enum TypeOrganisme {
   AdministrationCentrale = "administration_centrale",
   Association = "association",
   CollectiviteTerritoriale = "collectivite_territoriale",
@@ -1036,7 +1038,7 @@ enum TypeOrganisme {
   Autre = "autre",
 }
 
-type ValidationError = {
+export type ValidationError = {
   __typename?: "ValidationError";
   message: Scalars["String"];
 };
