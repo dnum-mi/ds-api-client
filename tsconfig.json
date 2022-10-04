@@ -2,7 +2,7 @@
   "include": ["src/**/*", "test/**/*"],
   "compilerOptions": {
     "baseUrl": "./src",
-    "module": "es6",
+    "module": "CommonJS",
     "moduleResolution": "node",
 
     "typeRoots": ["node_modules/@types", "src/@types"],
@@ -17,7 +17,7 @@
 
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "esnext",
+    "target": "es2021",
 
     "skipLibCheck": true,
   }
