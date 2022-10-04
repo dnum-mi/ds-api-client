@@ -1,11 +1,6 @@
 import { gql } from "graphql-request";
 
-import FileFragment from "./FileFragment";
-import AddressFragment from "./AddressFragment";
-
 export default gql`
-  ${AddressFragment}
-  ${FileFragment}
   fragment PersonneMoraleFragment on PersonneMorale {
     siret
     siegeSocial

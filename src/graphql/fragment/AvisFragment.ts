@@ -1,9 +1,6 @@
 import { gql } from "graphql-request";
 
-import FileFragment from "./FileFragment";
-
 export default gql`
-  ${FileFragment}
   fragment AvisFragment on Avis {
     id
     question

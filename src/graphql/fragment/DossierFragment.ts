@@ -1,21 +1,17 @@
 import { gql } from "graphql-request";
 
+import AddressFragment from "./AddressFragment";
+import ChampDescriptorFragment from "./ChampDescriptorFragment";
+import GeoAreaFragment from "./GeoAreaFragment";
 import FileFragment from "./FileFragment";
 import RevisionFragment from "./RevisionFragment";
-import ChampFragment from "./RevisionFragment";
-import RootChampFragment from "./RevisionFragment";
-import AvisFragment from "./RevisionFragment";
-import MessageFragment from "./RevisionFragment";
-import PersonneMoraleFragment from "./RevisionFragment";
+import ChampFragment from "./ChampFragment";
+import RootChampFragment from "./RootChampFragment";
+import AvisFragment from "./AvisFragment";
+import MessageFragment from "./MessageFragment";
+import PersonneMoraleFragment from "./PersonneMoraleFragment";
 
 export default gql`
-  ${FileFragment}
-  ${RevisionFragment}
-  ${ChampFragment}
-  ${RootChampFragment}
-  ${AvisFragment}
-  ${MessageFragment}
-  ${PersonneMoraleFragment}
   fragment DossierFragment on Dossier {
     id
     number
@@ -80,4 +76,14 @@ export default gql`
       ...PersonneMoraleFragment
     }
   }
+  ${AddressFragment}
+  ${ChampDescriptorFragment}
+  ${GeoAreaFragment}
+  ${FileFragment}
+  ${RevisionFragment}
+  ${ChampFragment}
+  ${RootChampFragment}
+  ${AvisFragment}
+  ${MessageFragment}
+  ${PersonneMoraleFragment}
 `;

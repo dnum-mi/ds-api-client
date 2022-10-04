@@ -1,5 +1,7 @@
 import { gql } from "graphql-request";
 
+import DossierFragment from "./fragment/DossierFragment";
+
 export default gql`
   query getDemarche(
     $demarcheNumber: Int!
@@ -11,6 +13,9 @@ export default gql`
       id
       number
       title
+      publishedRevision {
+        ...RevisionFragment
+      }
       groupeInstructeurs {
         id
         number
@@ -27,45 +32,5 @@ export default gql`
       }
     }
   }
-
-  fragment DossierFragment on Dossier {
-    id
-    number
-    archived
-    state
-    dateDerniereModification
-    dateDepot
-    datePassageEnConstruction
-    datePassageEnInstruction
-    dateTraitement
-    motivation
-    pdf {
-      url
-    }
-    instructeurs {
-      email
-    }
-    usager {
-      email
-    }
-    groupeInstructeur {
-      id
-      number
-      label
-    }
-    traitements {
-      state
-      emailAgentTraitant
-      dateTraitement
-      motivation
-    }
-    demandeur {
-      ... on PersonnePhysique {
-        civilite
-        nom
-        prenom
-        dateDeNaissance
-      }
-    }
-  }
+  ${DossierFragment}
 `;

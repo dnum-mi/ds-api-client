@@ -1,11 +1,6 @@
 import { gql } from "graphql-request";
 
-import FileFragment from "./FileFragment";
-import AddressFragment from "./AddressFragment";
-
 export default gql`
-  ${FileFragment}
-  ${AddressFragment}
   fragment ChampFragment on Champ {
     id
     label
