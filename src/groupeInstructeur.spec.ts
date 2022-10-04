@@ -6,4 +6,3 @@ describe("groupeInstructeur (unit)", () => {
     expect(response?.groupeInstructeur?.number).toBe(1);
   });
 });
-// test
