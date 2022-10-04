@@ -1,5 +1,7 @@
 import { gql } from "graphql-request";
 
+import DossierFragment from "./fragment/DossierFragment";
+
 export default gql`
   query getGroupeInstructeur(
     $groupeInstructeurNumber: Int!
@@ -22,4 +24,5 @@ export default gql`
       }
     }
   }
+  ${DossierFragment}
 `;
