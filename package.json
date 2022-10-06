@@ -1,12 +1,16 @@
 {
   "name": "@lab-mi/ds-api-client",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts ou les applications simples",
   "author": "LAB-MI",
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.10.0"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc --project tsconfig.build.json",
