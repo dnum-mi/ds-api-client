@@ -26,7 +26,7 @@ jobs:
       - name: run build
         run: npm run build
       - name: prepare deploy
-        if: ${{ github.base_ref == 'develop' || github.base_ref == 'main' }}
+        if: ${{ github.base_ref == 'dev' || github.base_ref == 'main' }}
         run:  |
           mkdir target
           cp -r dist target/.
@@ -34,7 +34,7 @@ jobs:
           cp README.md target/.
           cp -r src target/.
       - name: Deploy
-        if: ${{ github.base_ref == 'develop' || github.base_ref == 'main' }}
+        if: ${{ github.base_ref == 'dev' || github.base_ref == 'main' }}
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
