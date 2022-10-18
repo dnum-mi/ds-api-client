@@ -1,21 +1,34 @@
 import { gql } from "graphql-request";
 
-import DossierFragment from "./fragment/DossierFragment";
+import RevisionFragment from "./fragment/RevisionFragment";
+import ChampDescriptorFragment from "./fragment/ChampDescriptorFragment";
 
 export default gql`
-  query getDemarche(
-    $demarcheNumber: Int!
-    $state: DossierState
-    $order: Order
-    $after: String
-  ) {
+  query getDemarche($demarcheNumber: Int!) {
     demarche(number: $demarcheNumber) {
       id
       number
       title
+      description
+      state
+
+      dateCreation
+      dateDepublication
+      dateDerniereModification
+      dateFermeture
+      datePublication
+      declarative
+
+      draftRevision {
+        ...RevisionFragment
+      }
       publishedRevision {
         ...RevisionFragment
       }
+      revisions {
+        ...RevisionFragment
+      }
+
       groupeInstructeurs {
         id
         number
@@ -25,12 +38,16 @@ export default gql`
           email
         }
       }
-      dossiers(state: $state, order: $order, after: $after) {
-        nodes {
-          ...DossierFragment
-        }
+
+      service {
+        id
+        nom
+        organisme
+        siret
+        typeOrganisme
       }
     }
   }
-  ${DossierFragment}
+  ${RevisionFragment}
+  ${ChampDescriptorFragment}
 `;
