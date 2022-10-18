@@ -38,13 +38,13 @@ const client = new DsApiClient(url, token)
 const demarche = await client.demarche(idDemarche)
 
 // ... Rechercher les dossiers d'une demarche par id de demarche 
-const demarcheDossiers = await client.demarche(idDemarche).dossiers.then((data) => console.log(data))
+const demarcheDossiers = await client.demarcheDossiers(idDemarche).then((data) => console.log(data))
+
+// ... Rechercher les dossiers supprimés d'une demarche par id de demarche 
+const demarcheDeletedDossiers = await client.demarcheDeletedDossiers(idDemarche).then((data) => console.log(data))
 
 // ... Rechercher un dossier par id de dossier
 const dossier = await client.dossier(idDossier).then((data) => console.log(data))
-
-// ... Rechercher les dossiers par une liste d'id de dossier
-const dossiers = await client.dossier(idsDossier).then((data) => console.log(data))
 
 // ... Rechercher les groupeInstructeur par une id
 const groupeInstructeur = await client.groupeInstructeur(idGroupeInstructeur).then((data) => console.log(data))
