@@ -10,7 +10,6 @@ on:
 jobs:
   tests:
     name: Run unit tests 
-    if: ${{ github.base_ref == 'dev' || github.base_ref == 'main' }}
     runs-on: ubuntu-latest
 
     steps:
