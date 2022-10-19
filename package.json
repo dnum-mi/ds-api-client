@@ -1,6 +1,6 @@
 {
   "name": "@lab-mi/ds-api-client",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts ou les applications simples",
   "author": "LAB-MI",
   "type": "commonjs",
