@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/LAB-MI/ds-api-client/compare/1.1.0...v1.1.1) (2022-10-19)
+
+
+### Bug Fixes
+
+* ci publish ([206dcac](https://github.com/LAB-MI/ds-api-client/commit/206dcac8950803ae17540338a391966270aa08ae))
+
 ## [1.1.0](https://github.com/LAB-MI/ds-api-client/compare/1.0.2...v1.1.0) (2022-10-18)
 
 
