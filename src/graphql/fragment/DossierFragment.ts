@@ -67,6 +67,7 @@ export default gql`
       ...MessageFragment
     }
     demandeur {
+      __typename
       ... on PersonnePhysique {
         civilite
         nom

@@ -67,6 +67,7 @@ exports.default = (0, graphql_request_1.gql) `
       ...MessageFragment
     }
     demandeur {
+      __typename
       ... on PersonnePhysique {
         civilite
         nom
