@@ -16,7 +16,7 @@ export const getDemarche = async (
       { "Content-Type": "application/json" },
     );
   } catch (error) {
-    console.error(JSON.stringify(error, undefined, 2));
+    console.error(JSON.stringify(error.stack, undefined, 2));
   }
 };
 
@@ -31,7 +31,7 @@ export const getDemarcheDossiers = async (
       { "Content-Type": "application/json" },
     );
   } catch (error) {
-    console.error(JSON.stringify(error, undefined, 2));
+    console.error(JSON.stringify(error.stack, undefined, 2));
   }
 };
 
@@ -46,6 +46,6 @@ export const getDemarcheDeletedDossiers = async (
       { "Content-Type": "application/json" },
     );
   } catch (error) {
-    console.error(JSON.stringify(error, undefined, 2));
+    console.error(JSON.stringify(error.stack, undefined, 2));
   }
 };
