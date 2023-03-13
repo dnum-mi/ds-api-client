@@ -11,6 +11,6 @@ export const getDossier = async (client: GraphQLClient, idDossier: number) => {
       { "Content-Type": "application/json" },
     );
   } catch (error) {
-    console.error(JSON.stringify(error, undefined, 2));
+    console.error(JSON.stringify(error.stack, undefined, 2));
   }
 };

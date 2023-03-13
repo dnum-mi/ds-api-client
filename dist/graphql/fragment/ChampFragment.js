@@ -4,6 +4,7 @@ const graphql_request_1 = require("graphql-request");
 exports.default = (0, graphql_request_1.gql) `
   fragment ChampFragment on Champ {
     id
+    __typename
     label
     stringValue
     ... on DateChamp {

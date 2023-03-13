@@ -3,6 +3,7 @@ import { gql } from "graphql-request";
 export default gql`
   fragment ChampFragment on Champ {
     id
+    __typename
     label
     stringValue
     ... on DateChamp {

@@ -7,7 +7,7 @@ const getGroupInstructeur = async (client, idGroupeInstructeur) => {
         return await client.request(getGroupInstructeur_1.default, { groupeInstructeurNumber: idGroupeInstructeur }, { "Content-Type": "application/json" });
     }
     catch (error) {
-        console.error(JSON.stringify(error, undefined, 2));
+        console.error(JSON.stringify(error.stack, undefined, 2));
     }
 };
 exports.getGroupInstructeur = getGroupInstructeur;

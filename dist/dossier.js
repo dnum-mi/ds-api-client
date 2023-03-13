@@ -7,7 +7,7 @@ const getDossier = async (client, idDossier) => {
         return await client.request(getDossier_1.default, { dossierNumber: idDossier }, { "Content-Type": "application/json" });
     }
     catch (error) {
-        console.error(JSON.stringify(error, undefined, 2));
+        console.error(JSON.stringify(error.stack, undefined, 2));
     }
 };
 exports.getDossier = getDossier;

@@ -9,7 +9,7 @@ const getDemarche = async (client, idDemarche) => {
         return await client.request(getDemarche_1.default, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" });
     }
     catch (error) {
-        console.error(JSON.stringify(error, undefined, 2));
+        console.error(JSON.stringify(error.stack, undefined, 2));
     }
 };
 exports.getDemarche = getDemarche;
@@ -18,7 +18,7 @@ const getDemarcheDossiers = async (client, idDemarche) => {
         return await client.request(getDemarcheDossiers_1.default, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" });
     }
     catch (error) {
-        console.error(JSON.stringify(error, undefined, 2));
+        console.error(JSON.stringify(error.stack, undefined, 2));
     }
 };
 exports.getDemarcheDossiers = getDemarcheDossiers;
@@ -27,7 +27,7 @@ const getDemarcheDeletedDossiers = async (client, idDemarche) => {
         return await client.request(getDemarcheDeletedDossiers_1.default, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" });
     }
     catch (error) {
-        console.error(JSON.stringify(error, undefined, 2));
+        console.error(JSON.stringify(error.stack, undefined, 2));
     }
 };
 exports.getDemarcheDeletedDossiers = getDemarcheDeletedDossiers;
