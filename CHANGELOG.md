@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.3](https://github.com/LAB-MI/ds-api-client/compare/v1.1.2...v1.1.3) (2023-03-13)
+
+
+### Bug Fixes
+
+* add typename in champs ([9a0da1a](https://github.com/LAB-MI/ds-api-client/commit/9a0da1a944ccc570330bd350cd98b90d3df33714))
+* add variable env NODE_TLS_REJECT_UNAUTHORIZED ([1559e9b](https://github.com/LAB-MI/ds-api-client/commit/1559e9bba6aea8690ae7ceeec2af2dcb1198c845))
+* add variable env NODE_TLS_REJECT_UNAUTHORIZED for workflow create release ([589bfec](https://github.com/LAB-MI/ds-api-client/commit/589bfec9a99c51ab6f920ff8138f7caeddeda5e5))
+* message log ([59edffe](https://github.com/LAB-MI/ds-api-client/commit/59edffe247bf835f59b6dfe52d9056092f0c7418))
+
 ## [1.1.2](https://github.com/LAB-MI/ds-api-client/compare/v1.1.1...v1.1.2) (2022-11-09)
 
 
