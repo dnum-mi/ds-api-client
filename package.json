@@ -1,8 +1,8 @@
 {
-  "name": "@lab-mi/ds-api-client",
+  "name": "@dnum-mi/ds-api-client",
   "version": "1.1.2",
   "description": "Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts ou les applications simples",
-  "author": "LAB-MI",
+  "author": "DNUM-MI",
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -70,10 +70,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LAB-MI/ds-api-client.git"
+    "url": "git+https://github.com/DNUM-MI/ds-api-client.git"
   },
   "bugs": {
-    "url": "https://github.com/LAB-MI/ds-api-client/issues"
+    "url": "https://github.com/DNUM-MI/ds-api-client/issues"
   },
-  "homepage": "https://github.com/LAB-MI/ds-api-client#readme"
+  "homepage": "https://github.com/DNUM-MI/ds-api-client#readme"
 }
