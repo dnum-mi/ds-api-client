@@ -18,7 +18,7 @@ npm test
 ```
 
 ## Installation
-
+NPM: https://www.npmjs.com/package/@dnum-mi/ds-api-client
 ```shell notranslate position-relative overflow-auto
 npm add ds-api-client
 ```
