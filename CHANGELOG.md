@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/dnum-mi/ds-api-client/compare/v1.1.3...v1.1.4) (2023-03-23)
+
+
+### Bug Fixes
+
+* update dependencies ([1b78393](https://github.com/dnum-mi/ds-api-client/commit/1b783939d17be40bf4d408499c37806274b51316))
+
 ## [1.1.3](https://github.com/LAB-MI/ds-api-client/compare/v1.1.2...v1.1.3) (2023-03-13)
 
 
