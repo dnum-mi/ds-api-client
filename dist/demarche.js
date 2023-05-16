@@ -5,15 +5,10 @@ const getDemarche_1 = require("./graphql/getDemarche");
 const getDemarcheDossiers_1 = require("./graphql/getDemarcheDossiers");
 const getDemarcheDeletedDossiers_1 = require("./graphql/getDemarcheDeletedDossiers");
 const common_1 = require("./common");
-const getDemarche = async (client, idDemarche, onlyAccepted = false) => {
-    const variables = {
+const getDemarche = async (client, idDemarche) => {
+    return (0, common_1.graphQlRequest)(client, getDemarche_1.default, {
         demarcheNumber: idDemarche,
-        state: undefined,
-    };
-    if (onlyAccepted) {
-        variables.state = "accepte";
-    }
-    return (0, common_1.graphQlRequest)(client, getDemarche_1.default, variables);
+    });
 };
 exports.getDemarche = getDemarche;
 const getDemarcheDossiers = async (client, idDemarche) => {
