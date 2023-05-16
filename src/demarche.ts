@@ -4,48 +4,33 @@ import { Demarche } from "./@types/types";
 import queryDemarche from "./graphql/getDemarche";
 import queryDemarcheDossiers from "./graphql/getDemarcheDossiers";
 import queryDemarcheDeletedDossiers from "./graphql/getDemarcheDeletedDossiers";
+import { graphQlRequest } from "./common";
+
+type getDemarcheType = { demarche: Partial<Demarche> };
 
 export const getDemarche = async (
   client: GraphQLClient,
   idDemarche: number,
-) => {
-  try {
-    return await client.request<{ demarche: Partial<Demarche> }>(
-      queryDemarche,
-      { demarcheNumber: idDemarche },
-      { "Content-Type": "application/json" },
-    );
-  } catch (error) {
-    console.error(JSON.stringify(error.stack, undefined, 2));
-  }
+): Promise<getDemarcheType> => {
+  return graphQlRequest<getDemarcheType>(client, queryDemarche, {
+    demarcheNumber: idDemarche,
+  });
 };
 
 export const getDemarcheDossiers = async (
   client: GraphQLClient,
   idDemarche: number,
-) => {
-  try {
-    return await client.request<{ demarche: Partial<Demarche> }>(
-      queryDemarcheDossiers,
-      { demarcheNumber: idDemarche },
-      { "Content-Type": "application/json" },
-    );
-  } catch (error) {
-    console.error(JSON.stringify(error.stack, undefined, 2));
-  }
+): Promise<getDemarcheType> => {
+  return graphQlRequest<getDemarcheType>(client, queryDemarcheDossiers, {
+    demarcheNumber: idDemarche,
+  });
 };
 
 export const getDemarcheDeletedDossiers = async (
   client: GraphQLClient,
   idDemarche: number,
-) => {
-  try {
-    return await client.request<{ demarche: Partial<Demarche> }>(
-      queryDemarcheDeletedDossiers,
-      { demarcheNumber: idDemarche },
-      { "Content-Type": "application/json" },
-    );
-  } catch (error) {
-    console.error(JSON.stringify(error.stack, undefined, 2));
-  }
+): Promise<getDemarcheType> => {
+  return graphQlRequest<getDemarcheType>(client, queryDemarcheDeletedDossiers, {
+    demarcheNumber: idDemarche,
+  });
 };
