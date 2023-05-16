@@ -11,17 +11,10 @@ type getDemarcheType = { demarche: Partial<Demarche> };
 export const getDemarche = async (
   client: GraphQLClient,
   idDemarche: number,
-  // only demarche with status equal to 'accepte'
-  onlyAccepted = false,
 ): Promise<getDemarcheType> => {
-  const variables = {
+  return graphQlRequest<getDemarcheType>(client, queryDemarche, {
     demarcheNumber: idDemarche,
-    state: undefined,
-  };
-  if (onlyAccepted) {
-    variables.state = "accepte";
-  }
-  return graphQlRequest<getDemarcheType>(client, queryDemarche, variables);
+  });
 };
 
 export const getDemarcheDossiers = async (
