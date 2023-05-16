@@ -2,13 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDossier = void 0;
 const getDossier_1 = require("./graphql/getDossier");
+const common_1 = require("./common");
 const getDossier = async (client, idDossier) => {
-    try {
-        return await client.request(getDossier_1.default, { dossierNumber: idDossier }, { "Content-Type": "application/json" });
-    }
-    catch (error) {
-        console.error(JSON.stringify(error.stack, undefined, 2));
-    }
+    return (0, common_1.graphQlRequest)(client, getDossier_1.default, {
+        dossierNumber: idDossier,
+    });
 };
 exports.getDossier = getDossier;
 //# sourceMappingURL=dossier.js.map

@@ -4,31 +4,28 @@ exports.getDemarcheDeletedDossiers = exports.getDemarcheDossiers = exports.getDe
 const getDemarche_1 = require("./graphql/getDemarche");
 const getDemarcheDossiers_1 = require("./graphql/getDemarcheDossiers");
 const getDemarcheDeletedDossiers_1 = require("./graphql/getDemarcheDeletedDossiers");
-const getDemarche = async (client, idDemarche) => {
-    try {
-        return await client.request(getDemarche_1.default, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" });
+const common_1 = require("./common");
+const getDemarche = async (client, idDemarche, onlyAccepted = false) => {
+    const variables = {
+        demarcheNumber: idDemarche,
+        state: undefined,
+    };
+    if (onlyAccepted) {
+        variables.state = "accepte";
     }
-    catch (error) {
-        console.error(JSON.stringify(error.stack, undefined, 2));
-    }
+    return (0, common_1.graphQlRequest)(client, getDemarche_1.default, variables);
 };
 exports.getDemarche = getDemarche;
 const getDemarcheDossiers = async (client, idDemarche) => {
-    try {
-        return await client.request(getDemarcheDossiers_1.default, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" });
-    }
-    catch (error) {
-        console.error(JSON.stringify(error.stack, undefined, 2));
-    }
+    return (0, common_1.graphQlRequest)(client, getDemarcheDossiers_1.default, {
+        demarcheNumber: idDemarche,
+    });
 };
 exports.getDemarcheDossiers = getDemarcheDossiers;
 const getDemarcheDeletedDossiers = async (client, idDemarche) => {
-    try {
-        return await client.request(getDemarcheDeletedDossiers_1.default, { demarcheNumber: idDemarche }, { "Content-Type": "application/json" });
-    }
-    catch (error) {
-        console.error(JSON.stringify(error.stack, undefined, 2));
-    }
+    return (0, common_1.graphQlRequest)(client, getDemarcheDeletedDossiers_1.default, {
+        demarcheNumber: idDemarche,
+    });
 };
 exports.getDemarcheDeletedDossiers = getDemarcheDeletedDossiers;
 //# sourceMappingURL=demarche.js.map

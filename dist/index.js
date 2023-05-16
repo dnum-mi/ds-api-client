@@ -1,37 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DsApiClient = void 0;
-const graphql_request_1 = require("graphql-request");
-const demarche_1 = require("./demarche");
-const demarche_2 = require("./demarche");
-const demarche_3 = require("./demarche");
-const dossier_1 = require("./dossier");
-const groupeInstructeur_1 = require("./groupeInstructeur");
-class DsApiClient {
-    constructor(url, token) {
-        this.client = new graphql_request_1.GraphQLClient(url, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-            credentials: "include",
-            mode: "cors",
-        });
-    }
-    async demarche(idDemarche) {
-        return await (0, demarche_1.getDemarche)(this.client, idDemarche);
-    }
-    async demarcheDossiers(idDemarche) {
-        return await (0, demarche_2.getDemarcheDossiers)(this.client, idDemarche);
-    }
-    async demarcheDeletedDossiers(idDemarche) {
-        return await (0, demarche_3.getDemarcheDeletedDossiers)(this.client, idDemarche);
-    }
-    async dossier(idDossier) {
-        return await (0, dossier_1.getDossier)(this.client, idDossier);
-    }
-    async groupeInstructeur(idGroupeInstructeur) {
-        return await (0, groupeInstructeur_1.getGroupInstructeur)(this.client, idGroupeInstructeur);
-    }
-}
-exports.DsApiClient = DsApiClient;
+exports.DsApiError = exports.DsApiClient = void 0;
+const ds_api_client_1 = require("./ds-api-client");
+Object.defineProperty(exports, "DsApiClient", { enumerable: true, get: function () { return ds_api_client_1.DsApiClient; } });
+const ds_api_error_1 = require("./ds-api-error");
+Object.defineProperty(exports, "DsApiError", { enumerable: true, get: function () { return ds_api_error_1.DsApiError; } });
+__exportStar(require("./@types/types"), exports);
 //# sourceMappingURL=index.js.map
