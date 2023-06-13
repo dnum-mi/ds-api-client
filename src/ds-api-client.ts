@@ -4,8 +4,9 @@ import {
   getDemarcheDeletedDossiers,
   getDemarcheDossiers,
 } from "./demarche";
-import { getDossier } from "./dossier";
+import { getDossier, writeInPrivateAnnotation } from "./dossier";
 import { getGroupInstructeur } from "./groupeInstructeur";
+import { DossierModifierAnnotationTextInput } from "./@types/types";
 
 export class DsApiClient {
   client: GraphQLClient;
@@ -34,6 +35,10 @@ export class DsApiClient {
 
   async dossier(idDossier: number) {
     return await getDossier(this.client, idDossier);
+  }
+
+  async writeInPrivateAnnotation(input: DossierModifierAnnotationTextInput) {
+    return await writeInPrivateAnnotation(this.client, input);
   }
 
   async groupeInstructeur(idGroupeInstructeur: number) {

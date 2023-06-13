@@ -33,7 +33,8 @@ export default gql`
       url
     }
     instructeurs {
-      email
+      email,
+      id  
     }
     usager {
       email
