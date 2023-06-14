@@ -34,6 +34,7 @@ export default gql`
     }
     instructeurs {
       email
+      id
     }
     usager {
       email

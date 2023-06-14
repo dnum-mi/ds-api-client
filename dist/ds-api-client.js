@@ -27,6 +27,9 @@ class DsApiClient {
     async dossier(idDossier) {
         return await (0, dossier_1.getDossier)(this.client, idDossier);
     }
+    async writeInPrivateAnnotation(input) {
+        return await (0, dossier_1.writeInPrivateAnnotation)(this.client, input);
+    }
     async groupeInstructeur(idGroupeInstructeur) {
         return await (0, groupeInstructeur_1.getGroupInstructeur)(this.client, idGroupeInstructeur);
     }
