@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/dnum-mi/ds-api-client/compare/v1.4.0...v1.4.1) (2023-06-14)
+
+
+### Bug Fixes
+
+* remove  enum and transform to type ([92e7a55](https://github.com/dnum-mi/ds-api-client/commit/92e7a55679c82656dfbf7ef69ab374c975d189de))
+
 ## [1.4.0](https://github.com/dnum-mi/ds-api-client/compare/v1.1.4...v1.4.0) (2023-06-14)
 
 ### Features
