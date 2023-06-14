@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/dnum-mi/ds-api-client/compare/v1.1.4...v1.2.0) (2023-06-14)
+
+
+### Features
+
+* adding one new mutation ([#50](https://github.com/dnum-mi/ds-api-client/issues/50)) ([4be7be2](https://github.com/dnum-mi/ds-api-client/commit/4be7be27543338131243d07efccee3c862353b9e))
+
 ## [1.1.4](https://github.com/dnum-mi/ds-api-client/compare/v1.1.3...v1.1.4) (2023-03-23)
 
 
