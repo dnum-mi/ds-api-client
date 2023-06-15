@@ -18,7 +18,9 @@ npm test
 ```
 
 ## Installation
-NPM: https://www.npmjs.com/package/@dnum-mi/ds-api-client
+
+NPM: <https://www.npmjs.com/package/@dnum-mi/ds-api-client>
+
 ```shell notranslate position-relative overflow-auto
 npm add ds-api-client
 ```
@@ -48,4 +50,20 @@ const dossier = await client.dossier(idDossier).then((data) => console.log(data)
 
 // ... Rechercher les groupeInstructeur par une id
 const groupeInstructeur = await client.groupeInstructeur(idGroupeInstructeur).then((data) => console.log(data))
+```
+
+## Generation des types à partir du schema grapghql
+
+Le schema de Demarches-Simplifiées peut-être récupérer de lien [ici](https://github.com/demarches-simplifiees/demarches-simplifiees.fr/blob/main/app/graphql/schema.graphql).
+
+Pour générer, utliser le site generation <https://the-guild.dev/graphql/codegen>.
+La configuration à mettre est au nivau de codegen.yml est
+
+``` yaml
+generates:
+  types.ts:
+    plugins:
+      - typescript
+    config:
+      enumsAsConst: true
 ```
