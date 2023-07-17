@@ -43,7 +43,6 @@ export default gql`
         id
         nom
         organisme
-        siret
         typeOrganisme
       }
     }
