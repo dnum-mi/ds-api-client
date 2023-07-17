@@ -564,7 +564,7 @@ export type Demarche = {
   pendingDeletedDossiers: DeletedDossierConnection;
   publishedRevision?: Maybe<Revision>;
   revisions: Array<Revision>;
-  service: Maybe<Service>;
+  service?: Maybe<Service>;
   /** État de la démarche. */
   state: DemarcheState;
   /** Titre de la démarche. */
