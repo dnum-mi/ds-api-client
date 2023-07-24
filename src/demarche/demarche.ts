@@ -1,10 +1,10 @@
 import { GraphQLClient } from "graphql-request";
-import { Demarche } from "./@types/types";
+import { Demarche } from "../@types/types";
 
-import queryDemarche from "./graphql/getDemarche";
-import queryDemarcheDossiers from "./graphql/getDemarcheDossiers";
-import queryDemarcheDeletedDossiers from "./graphql/getDemarcheDeletedDossiers";
-import { graphQlRequest } from "./common";
+import queryDemarche from "../graphql/getDemarche";
+import queryDemarcheDossiers from "../graphql/getDemarcheDossiers";
+import queryDemarcheDeletedDossiers from "../graphql/getDemarcheDeletedDossiers";
+import { graphQlRequest } from "../common";
 
 type getDemarcheType = { demarche: Partial<Demarche> };
 

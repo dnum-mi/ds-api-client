@@ -1,4 +1,4 @@
-import { dsApiClient } from "./__helpers";
+import { dsApiClient } from "../__helpers";
 
 describe("Demarche (unit)", () => {
   it("Has to retrieve demarche number 1", async () => {

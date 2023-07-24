@@ -1,4 +1,4 @@
-import { dsApiClient } from "./__helpers";
+import { dsApiClient } from "../__helpers";
 
 describe("Dossier (unit)", () => {
   it("Has to retrieve dossier number ", async () => {
