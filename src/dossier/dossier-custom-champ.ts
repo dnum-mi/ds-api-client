@@ -1,15 +1,10 @@
 import { GraphQLClient } from "graphql-request";
 import { graphQlRequest } from "../common";
 import getDossierQuery from "../graphql/getDossier";
-import { Champ, ChampDescriptor, Dossier } from "../@types/types";
 import { getDossierType } from "./dossier";
+import { CustomChamp, DossierWithCustomChamp } from "./custom-champ.type";
 
-type CustomChamp = Champ & {
-  champDescriptor: ChampDescriptor;
-};
-type DossierWithCustomChamp = Dossier & {
-  champs: Array<CustomChamp>;
-};
+
 type getDossierWithCustomChampType = { dossier: DossierWithCustomChamp };
 
 export const getDossierWithCustomChamp = async (
