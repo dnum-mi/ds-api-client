@@ -61,7 +61,7 @@ La configuration à mettre est au nivau de codegen.yml est
 
 ``` yaml
 generates:
-  generated-types.ts:
+  types.ts:
     plugins:
       - typescript
     config:

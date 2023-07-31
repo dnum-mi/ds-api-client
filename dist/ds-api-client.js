@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DsApiClient = void 0;
 const graphql_request_1 = require("graphql-request");
-const demarche_1 = require("./demarche/demarche");
-const dossier_1 = require("./dossier/dossier");
-const groupeInstructeur_1 = require("./groupeInstructeur/groupeInstructeur");
-const dossier_custom_champ_1 = require("./dossier/dossier-custom-champ");
+const demarche_1 = require("./demarche");
+const dossier_1 = require("./dossier");
+const groupeInstructeur_1 = require("./groupeInstructeur");
 class DsApiClient {
     constructor(url, token) {
         this.client = new graphql_request_1.GraphQLClient(url, {
@@ -19,23 +18,14 @@ class DsApiClient {
     async demarche(idDemarche) {
         return await (0, demarche_1.getDemarche)(this.client, idDemarche);
     }
-    async getClient() {
-        return this.client;
-    }
     async demarcheDossiers(idDemarche) {
         return await (0, demarche_1.getDemarcheDossiers)(this.client, idDemarche);
-    }
-    async demarcheDossierWithCustomChamp(idDemarche, updatedSince) {
-        return await (0, demarche_1.getDemarcheDossierWithCustomChamp)(this.client, idDemarche, updatedSince);
     }
     async demarcheDeletedDossiers(idDemarche) {
         return await (0, demarche_1.getDemarcheDeletedDossiers)(this.client, idDemarche);
     }
     async dossier(idDossier) {
         return await (0, dossier_1.getDossier)(this.client, idDossier);
-    }
-    async dossierWithCustomChamp(idDossier) {
-        return await (0, dossier_custom_champ_1.getDossierWithCustomChamp)(this.client, idDossier);
     }
     async writeInPrivateAnnotation(input) {
         return await (0, dossier_1.writeInPrivateAnnotation)(this.client, input);

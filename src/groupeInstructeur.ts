@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request";
-import { GroupeInstructeur } from "../@types/types";
-import query from "../graphql/getGroupInstructeur";
-import { graphQlRequest } from "../common";
+import { GroupeInstructeur } from "./@types/types";
+import query from "./graphql/getGroupInstructeur";
+import { graphQlRequest } from "./common";
 
 type getGroupInstructeurType = {
   groupeInstructeur: Partial<GroupeInstructeur>;

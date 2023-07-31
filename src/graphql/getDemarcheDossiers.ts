@@ -8,18 +8,12 @@ export default gql`
     $state: DossierState
     $order: Order
     $after: String
-    $updatedSince: ISO8601DateTime
   ) {
     demarche(number: $demarcheNumber) {
       id
       number
       title
-      dossiers(
-        state: $state
-        order: $order
-        after: $after
-        updatedSince: $updatedSince
-      ) {
+      dossiers(state: $state, order: $order, after: $after) {
         nodes {
           ...DossierFragment
         }

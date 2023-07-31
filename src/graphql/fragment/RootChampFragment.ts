@@ -3,11 +3,6 @@ import { gql } from "graphql-request";
 export default gql`
   fragment RootChampFragment on Champ {
     ... on RepetitionChamp {
-      rows {
-        champs {
-          ...ChampFragment
-        }
-      }
       champs {
         ...ChampFragment
       }

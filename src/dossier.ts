@@ -1,10 +1,11 @@
 import { GraphQLClient } from "graphql-request";
-import { Dossier, DossierModifierAnnotationTextInput } from "../@types/types";
-import getDossierQuery from "../graphql/getDossier";
-import updateAnnotationPrivateQuery from "../graphql/dossierModifierAnnotationText";
-import { graphQlRequest } from "../common";
+import { Dossier, DossierModifierAnnotationTextInput } from "./@types/types";
 
-export type getDossierType = { dossier: Partial<Dossier> };
+import getDossierQuery from "./graphql/getDossier";
+import updateAnnotationPrivateQuery from "./graphql/dossierModifierAnnotationText";
+import { graphQlRequest } from "./common";
+
+type getDossierType = { dossier: Partial<Dossier> };
 
 export const getDossier = async (
   client: GraphQLClient,
