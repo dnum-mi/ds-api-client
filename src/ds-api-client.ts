@@ -2,7 +2,8 @@ import { GraphQLClient } from "graphql-request";
 import {
   getDemarche,
   getDemarcheDeletedDossiers,
-  getDemarcheDossiers, getDemarcheDossierWithCustomChamp,
+  getDemarcheDossiers,
+  getDemarcheDossierWithCustomChamp,
 } from "./demarche/demarche";
 import { getDossier, writeInPrivateAnnotation } from "./dossier/dossier";
 import { getGroupInstructeur } from "./groupeInstructeur/groupeInstructeur";
@@ -34,8 +35,15 @@ export class DsApiClient {
     return await getDemarcheDossiers(this.client, idDemarche);
   }
 
-  async demarcheDossierWithCustomChamp(idDemarche: number) {
-    return await getDemarcheDossierWithCustomChamp(this.client, idDemarche);
+  async demarcheDossierWithCustomChamp(
+    idDemarche: number,
+    updatedSince?: Date,
+  ) {
+    return await getDemarcheDossierWithCustomChamp(
+      this.client,
+      idDemarche,
+      updatedSince,
+    );
   }
 
   async demarcheDeletedDossiers(idDemarche: number) {

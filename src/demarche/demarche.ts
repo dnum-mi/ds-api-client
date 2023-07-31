@@ -43,13 +43,18 @@ export const getDemarcheDossiers = async (
 export const getDemarcheDossierWithCustomChamp = async (
   client: GraphQLClient,
   idDemarche: number,
+  updatedSince?: Date,
 ): Promise<getDemarcheWithCustomChampType> => {
+  const variables = {
+    demarcheNumber: idDemarche,
+  };
+  if (updatedSince) {
+    variables["updatedSince"] = "2023-07-31T07:31:09.000Z";
+  }
   const result = await graphQlRequest<getDemarcheWithCustomChampType>(
     client,
     queryDemarcheDossiers,
-    {
-      demarcheNumber: idDemarche,
-    },
+    variables,
   );
   result.demarche.dossiers.nodes.forEach((dossier) => {
     mergeChampAndChampDescriptor(dossier);
