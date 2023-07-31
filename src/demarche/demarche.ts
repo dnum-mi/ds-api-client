@@ -1,12 +1,26 @@
 import { GraphQLClient } from "graphql-request";
-import { Demarche } from "../@types/types";
+import {
+  Demarche,
+  DossierConnection,
+  DossierWithCustomChamp,
+  Maybe,
+} from "../@types/types";
 
 import queryDemarche from "../graphql/getDemarche";
 import queryDemarcheDossiers from "../graphql/getDemarcheDossiers";
 import queryDemarcheDeletedDossiers from "../graphql/getDemarcheDeletedDossiers";
 import { graphQlRequest } from "../common";
+import { mergeChampAndChampDescriptor } from "../dossier/dossier-custom-champ";
 
 type getDemarcheType = { demarche: Partial<Demarche> };
+
+type getDemarcheWithCustomChampType = {
+  demarche: Partial<Demarche> & {
+    dossiers: DossierConnection & {
+      nodes: Maybe<Array<Maybe<DossierWithCustomChamp>>>;
+    };
+  };
+};
 
 export const getDemarche = async (
   client: GraphQLClient,
@@ -24,6 +38,23 @@ export const getDemarcheDossiers = async (
   return graphQlRequest<getDemarcheType>(client, queryDemarcheDossiers, {
     demarcheNumber: idDemarche,
   });
+};
+
+export const getDemarcheDossierWithCustomChamp = async (
+  client: GraphQLClient,
+  idDemarche: number,
+): Promise<getDemarcheWithCustomChampType> => {
+  const result = await graphQlRequest<getDemarcheWithCustomChampType>(
+    client,
+    queryDemarcheDossiers,
+    {
+      demarcheNumber: idDemarche,
+    },
+  );
+  result.demarche.dossiers.nodes.forEach((dossier) => {
+    mergeChampAndChampDescriptor(dossier);
+  });
+  return result;
 };
 
 export const getDemarcheDeletedDossiers = async (

@@ -13,10 +13,8 @@ describe("Dossier custom champ function", () => {
   it("Should return initial object without modification", () => {
     (graphQlRequest as jest.Mock).mockResolvedValue({
       dossier: {
-        demarche: {
-          revision: {
-            champDescriptors: [{}],
-          },
+        revision: {
+          champDescriptors: [{}],
         },
         hello: "world",
         champs: [
@@ -29,10 +27,8 @@ describe("Dossier custom champ function", () => {
     });
     expect(getDossierWithCustomChamp(null, null)).resolves.toEqual({
       dossier: {
-        demarche: {
-          revision: {
-            champDescriptors: [{}],
-          },
+        revision: {
+          champDescriptors: [{}],
         },
         hello: "world",
         champs: [
@@ -48,15 +44,13 @@ describe("Dossier custom champ function", () => {
   it("Should link descriptor on simple champ", async () => {
     (graphQlRequest as jest.Mock).mockResolvedValue({
       dossier: {
-        demarche: {
-          revision: {
-            champDescriptors: [
-              {
-                id: "toto",
-                something: "else",
-              },
-            ],
-          },
+        revision: {
+          champDescriptors: [
+            {
+              id: "toto",
+              something: "else",
+            },
+          ],
         },
         champs: [
           {
@@ -82,21 +76,19 @@ describe("Dossier custom champ function", () => {
   it("Should link repetable children champs", async () => {
     (graphQlRequest as jest.Mock).mockResolvedValue({
       dossier: {
-        demarche: {
-          revision: {
-            champDescriptors: [
-              {
-                id: "Q2hhbXAtMTA2NQ==",
-                something: "else",
-                champDescriptors: [
-                  {
-                    id: "Q2hhbXAtMTA2Ng==",
-                    label: "Pays d'origine du financement",
-                  },
-                ],
-              },
-            ],
-          },
+        revision: {
+          champDescriptors: [
+            {
+              id: "Q2hhbXAtMTA2NQ==",
+              something: "else",
+              champDescriptors: [
+                {
+                  id: "Q2hhbXAtMTA2Ng==",
+                  label: "Pays d'origine du financement",
+                },
+              ],
+            },
+          ],
         },
         champs: [
           {

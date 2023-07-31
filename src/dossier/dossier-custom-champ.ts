@@ -3,19 +3,20 @@ import { graphQlRequest } from "../common";
 import getDossierQuery from "../graphql/getDossier";
 import { getDossierType } from "./dossier";
 import { CustomChamp, DossierWithCustomChamp } from "./custom-champ.type";
-
+import { Dossier } from "../@types/generated-types";
 
 type getDossierWithCustomChampType = { dossier: DossierWithCustomChamp };
 
-export const getDossierWithCustomChamp = async (
-  client: GraphQLClient,
-  idDossier: number,
-): Promise<getDossierWithCustomChampType> => {
-  const result = await graphQlRequest<getDossierType>(client, getDossierQuery, {
-    dossierNumber: idDossier,
-  });
+export const mergeChampAndChampDescriptor = (
+  dossier: Partial<Dossier>,
+): void => {
+  if (!dossier.revision?.champDescriptors) {
+    throw new Error(
+      "Cannot map champs descriptor without revision in dossier.",
+    );
+  }
   const _hashDescriptor = Object.fromEntries(
-    result.dossier.demarche?.revision?.champDescriptors
+    dossier.revision.champDescriptors
       ?.map((descriptor) => {
         if (descriptor.champDescriptors?.length) {
           return [
@@ -30,7 +31,7 @@ export const getDossierWithCustomChamp = async (
       })
       .flat(),
   );
-  result.dossier.champs.forEach((champ) => {
+  dossier.champs = dossier.champs.map((champ) => {
     (champ as CustomChamp).champDescriptor = _hashDescriptor[champ.id];
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore it does exist
@@ -51,5 +52,15 @@ export const getDossierWithCustomChamp = async (
     }
     return champ;
   });
+};
+
+export const getDossierWithCustomChamp = async (
+  client: GraphQLClient,
+  idDossier: number,
+): Promise<getDossierWithCustomChampType> => {
+  const result = await graphQlRequest<getDossierType>(client, getDossierQuery, {
+    dossierNumber: idDossier,
+  });
+  mergeChampAndChampDescriptor(result.dossier);
   return result as getDossierWithCustomChampType;
 };
