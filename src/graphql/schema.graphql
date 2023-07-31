@@ -1,1551 +1,4089 @@
 type Address {
-  # code INSEE de la commune
-  cityCode: String!
+    """
+    code INSEE de la commune
+    """
+    cityCode: String!
 
-  # nom de la commune
-  cityName: String!
+    """
+    nom de la commune
+    """
+    cityName: String!
 
-  # n° de département
-  departmentCode: String
+    """
+    n° de département
+    """
+    departmentCode: String
 
-  # nom de département
-  departmentName: String
+    """
+    nom de département
+    """
+    departmentName: String
 
-  # coordonnées géographique
-  geometry: GeoJSON
+    """
+    coordonnées géographique
+    """
+    geometry: GeoJSON
 
-  # libellé complet de l’adresse
-  label: String!
+    """
+    libellé complet de l’adresse
+    """
+    label: String!
 
-  # code postal
-  postalCode: String!
+    """
+    code postal
+    """
+    postalCode: String!
 
-  # n° de region
-  regionCode: String
+    """
+    n° de region
+    """
+    regionCode: String
 
-  # nom de région
-  regionName: String
+    """
+    nom de région
+    """
+    regionName: String
 
-  # numéro éventuel et nom de voie ou lieu dit
-  streetAddress: String
+    """
+    numéro éventuel et nom de voie ou lieu dit
+    """
+    streetAddress: String
 
-  # nom de voie ou lieu dit
-  streetName: String
+    """
+    nom de voie ou lieu dit
+    """
+    streetName: String
 
-  # numéro avec indice de répétition éventuel (bis, ter, A, B)
-  streetNumber: String
+    """
+    numéro avec indice de répétition éventuel (bis, ter, A, B)
+    """
+    streetNumber: String
 
-  # type de résultat trouvé
-  type: AddressType!
+    """
+    type de résultat trouvé
+    """
+    type: AddressType!
 }
 
 type AddressChamp implements Champ {
-  address: Address
-  id: ID!
+    address: Address
+    commune: Commune
+    departement: Departement
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type AddressChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 enum AddressType {
-  # numéro « à la plaque »
-  housenumber
+    """
+    numéro « à la plaque »
+    """
+    housenumber
 
-  # position « à la voie », placé approximativement au centre de celle-ci
-  street
+    """
+    lieu-dit
+    """
+    locality
 
-  # numéro « à la commune »
-  municipality
+    """
+    numéro « à la commune »
+    """
+    municipality
 
-  # lieu-dit
-  locality
+    """
+    position « à la voie », placé approximativement au centre de celle-ci
+    """
+    street
+}
+
+type AnnuaireEducationChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Association {
-  dateCreation: ISO8601Date
-  dateDeclaration: ISO8601Date
-  datePublication: ISO8601Date
-  objet: String
-  rna: String!
-  titre: String!
+    dateCreation: ISO8601Date
+    dateDeclaration: ISO8601Date
+    datePublication: ISO8601Date
+    objet: String
+    rna: String!
+    titre: String!
 }
 
 type Avis {
-  attachment: File
-  claimant: Profile
-  dateQuestion: ISO8601DateTime!
-  dateReponse: ISO8601DateTime
-  expert: Profile
-  id: ID!
-  instructeur: Profile!
-    @deprecated(reason: "Utilisez le champ `claimant` à la place.")
-  question: String!
-  reponse: String
+    attachment: File @deprecated(reason: "Utilisez le champ `attachments` à la place.")
+    attachments: [File!]!
+    claimant: Profile
+    dateQuestion: ISO8601DateTime!
+    dateReponse: ISO8601DateTime
+    expert: Profile
+    id: ID!
+    instructeur: Profile! @deprecated(reason: "Utilisez le champ `claimant` à la place.")
+    question: String!
+    questionAnswer: Boolean
+    questionLabel: String
+    reponse: String
 }
 
-# Represents non-fractional signed whole numeric values. Since the value may exceed the size of a 32-bit integer, it's encoded as a string.
+"""
+Represents non-fractional signed whole numeric values. Since the value may
+exceed the size of a 32-bit integer, it's encoded as a string.
+"""
 scalar BigInt
 
+type COJOChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
 type CarteChamp implements Champ {
-  geoAreas: [GeoArea!]!
-  id: ID!
+    geoAreas: [GeoArea!]!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type CarteChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 interface Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
 }
 
-type ChampDescriptor {
-  # Description des champs d’un bloc répétable.
-  champDescriptors: [ChampDescriptor!]
+interface ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
 
-  # Description du champ.
-  description: String
-  id: ID!
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # List des options d’un champ avec selection.
-  options: [String!]
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
 
-  # Est-ce que le champ est obligatoire ?
-  required: Boolean!
-
-  # Type de la valeur du champ.
-  type: TypeDeChamp!
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type CheckboxChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
-  value: Boolean!
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+    value: Boolean!
+}
+
+type CheckboxChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 enum Civilite {
-  # Monsieur
-  M
+    """
+    Monsieur
+    """
+    M
 
-  # Madame
-  Mme
+    """
+    Madame
+    """
+    Mme
 }
 
 type CiviliteChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
-  value: Civilite
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+    value: Civilite
+}
+
+type CiviliteChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type CnafChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Commune {
-  # Le code INSEE
-  code: String!
-  name: String!
+    """
+    Le code INSEE
+    """
+    code: String!
+
+    """
+    Le nom de la commune
+    """
+    name: String!
+
+    """
+    Le code postal
+    """
+    postalCode: String
 }
 
 type CommuneChamp implements Champ {
-  commune: Commune
-  departement: Departement
-  id: ID!
+    commune: Commune
+    departement: Departement
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
 }
 
-# GeoJSON coordinates
+type CommuneChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+enum ConnectionUsager {
+    """
+    Compte supprimé
+    """
+    deleted
+
+    """
+    Connexion via FranceConnect
+    """
+    france_connect
+
+    """
+    Connexion via mot de passe
+    """
+    password
+}
+
+"""
+GeoJSON coordinates
+"""
 scalar Coordinates
 
-# Autogenerated input type of CreateDirectUpload
+"""
+Autogenerated input type of CreateDirectUpload
+"""
 input CreateDirectUploadInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    File size (bytes)
+    """
+    byteSize: Int!
 
-  # Original file name
-  filename: String!
+    """
+    MD5 file checksum as base64
+    """
+    checksum: String!
 
-  # File size (bytes)
-  byteSize: Int!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # MD5 file checksum as base64
-  checksum: String!
+    """
+    File content type
+    """
+    contentType: String!
 
-  # File content type
-  contentType: String!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Original file name
+    """
+    filename: String!
 }
 
-# Autogenerated return type of CreateDirectUpload
+"""
+Autogenerated return type of CreateDirectUpload.
+"""
 type CreateDirectUploadPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  directUpload: DirectUpload!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    directUpload: DirectUpload!
 }
 
 type DateChamp implements Champ {
-  # La valeur du champ formaté en ISO8601 (Date).
-  date: ISO8601Date
-  id: ID!
+    """
+    La valeur du champ formaté en ISO8601 (Date).
+    """
+    date: ISO8601Date
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
 
-  # La valeur du champ formaté en ISO8601 (DateTime).
-  value: ISO8601DateTime
-    @deprecated(
-      reason: "Utilisez le champ `date` ou le fragment `DatetimeChamp` à la place."
-    )
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+
+    """
+    La valeur du champ formaté en ISO8601 (DateTime).
+    """
+    value: ISO8601DateTime @deprecated(reason: "Utilisez le champ `date` ou le fragment `DatetimeChamp` à la place.")
+}
+
+type DateChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type DatetimeChamp implements Champ {
-  # La valeur du champ formaté en ISO8601 (DateTime).
-  datetime: ISO8601DateTime
-  id: ID!
+    """
+    La valeur du champ formaté en ISO8601 (DateTime).
+    """
+    datetime: ISO8601DateTime
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type DatetimeChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type DecimalNumberChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
-  value: Float
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+    value: Float
 }
 
-# Un dossier supprimé
+type DecimalNumberChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+"""
+Un dossier supprimé
+"""
 type DeletedDossier {
-  # Date de suppression.
-  dateSupression: ISO8601DateTime!
-  id: ID!
+    """
+    Date de suppression.
+    """
+    dateSupression: ISO8601DateTime!
+    id: ID!
 
-  # Le numéro du dossier qui a été supprimé.
-  number: Int!
+    """
+    Le numéro du dossier qui a été supprimé.
+    """
+    number: Int!
 
-  # La raison de la suppression du dossier.
-  reason: String!
+    """
+    La raison de la suppression du dossier.
+    """
+    reason: String!
 
-  # L’état du dossier supprimé.
-  state: DossierState!
+    """
+    L’état du dossier supprimé.
+    """
+    state: DossierState!
 }
 
-# The connection type for DeletedDossier.
+"""
+The connection type for DeletedDossier.
+"""
 type DeletedDossierConnection {
-  # A list of edges.
-  edges: [DeletedDossierEdge]
+    """
+    A list of edges.
+    """
+    edges: [DeletedDossierEdge]
 
-  # A list of nodes.
-  nodes: [DeletedDossier]
+    """
+    A list of nodes.
+    """
+    nodes: [DeletedDossier]
 
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
+    """
+    Information to aid in pagination.
+    """
+    pageInfo: PageInfo!
 }
 
-# An edge in a connection.
+"""
+An edge in a connection.
+"""
 type DeletedDossierEdge {
-  # A cursor for use in pagination.
-  cursor: String!
+    """
+    A cursor for use in pagination.
+    """
+    cursor: String!
 
-  # The item at the end of the edge.
-  node: DeletedDossier
+    """
+    The item at the end of the edge.
+    """
+    node: DeletedDossier
 }
 
 interface Demandeur {
-  id: ID!
+    id: ID!
 }
 
-# Une démarche
+"""
+Une démarche
+"""
 type Demarche {
-  activeRevision: Revision!
-  annotationDescriptors: [ChampDescriptor!]!
-    @deprecated(
-      reason: "Utilisez le champ `activeRevision.annotationDescriptors` à la place."
-    )
-  champDescriptors: [ChampDescriptor!]!
-    @deprecated(
-      reason: "Utilisez le champ `activeRevision.champDescriptors` à la place."
-    )
+    activeRevision: Revision!
+    annotationDescriptors: [ChampDescriptor!]! @deprecated(reason: "Utilisez le champ `activeRevision.annotationDescriptors` à la place.")
+    champDescriptors: [ChampDescriptor!]! @deprecated(reason: "Utilisez le champ `activeRevision.champDescriptors` à la place.")
 
-  # Date de la création.
-  dateCreation: ISO8601DateTime!
+    """
+    Date de la création.
+    """
+    dateCreation: ISO8601DateTime!
 
-  # Date de la dépublication.
-  dateDepublication: ISO8601DateTime
+    """
+    Date de la dépublication.
+    """
+    dateDepublication: ISO8601DateTime
 
-  # Date de la dernière modification.
-  dateDerniereModification: ISO8601DateTime!
+    """
+    Date de la dernière modification.
+    """
+    dateDerniereModification: ISO8601DateTime!
 
-  # Date de la fermeture.
-  dateFermeture: ISO8601DateTime
+    """
+    Date de la fermeture.
+    """
+    dateFermeture: ISO8601DateTime
 
-  # Date de la publication.
-  datePublication: ISO8601DateTime
+    """
+    Date de la publication.
+    """
+    datePublication: ISO8601DateTime
 
-  # Pour une démarche déclarative, état cible des dossiers à valider automatiquement
-  declarative: DossierDeclarativeState
+    """
+    Pour une démarche déclarative, état cible des dossiers à valider automatiquement
+    """
+    declarative: DossierDeclarativeState
 
-  # Liste de tous les dossiers supprimés d’une démarche.
-  deletedDossiers(
-    # Returns the elements in the list that come after the specified cursor.
-    after: String
+    """
+    Liste de tous les dossiers supprimés d’une démarche.
+    """
+    deletedDossiers(
+        """
+        Returns the elements in the list that come after the specified cursor.
+        """
+        after: String
 
-    # Returns the elements in the list that come before the specified cursor.
-    before: String
+        """
+        Returns the elements in the list that come before the specified cursor.
+        """
+        before: String
 
-    # Returns the first _n_ elements from the list.
-    first: Int
+        """
+        Dossiers supprimés depuis la date.
+        """
+        deletedSince: ISO8601DateTime
 
-    # Returns the last _n_ elements from the list.
-    last: Int
+        """
+        Returns the first _n_ elements from the list.
+        """
+        first: Int
 
-    # L’ordre des dossiers supprimés.
-    order: Order = ASC
+        """
+        Returns the last _n_ elements from the list.
+        """
+        last: Int
 
-    # Dossiers supprimés depuis la date.
-    deletedSince: ISO8601DateTime
-  ): DeletedDossierConnection!
+        """
+        L’ordre des dossiers supprimés.
+        """
+        order: Order = ASC
+    ): DeletedDossierConnection!
 
-  # Description de la démarche.
-  description: String!
+    """
+    Description de la démarche.
+    """
+    description: String!
 
-  # Liste de tous les dossiers d’une démarche.
-  dossiers(
-    # Returns the elements in the list that come after the specified cursor.
-    after: String
+    """
+    Liste de tous les dossiers d’une démarche.
+    """
+    dossiers(
+        """
+        Returns the elements in the list that come after the specified cursor.
+        """
+        after: String
 
-    # Returns the elements in the list that come before the specified cursor.
-    before: String
+        """
+        Seulement les dossiers archivés.
+        """
+        archived: Boolean
 
-    # Returns the first _n_ elements from the list.
-    first: Int
+        """
+        Returns the elements in the list that come before the specified cursor.
+        """
+        before: String
 
-    # Returns the last _n_ elements from the list.
-    last: Int
+        """
+        Dossiers déposés depuis la date.
+        """
+        createdSince: ISO8601DateTime
 
-    # L’ordre des dossiers.
-    order: Order = ASC
+        """
+        Returns the first _n_ elements from the list.
+        """
+        first: Int
 
-    # Dossiers déposés depuis la date.
-    createdSince: ISO8601DateTime
+        """
+        Returns the last _n_ elements from the list.
+        """
+        last: Int
 
-    # Dossiers mis à jour depuis la date.
-    updatedSince: ISO8601DateTime
+        """
+        Seulement les dossiers pour les révisons avant la révision donnée.
+        """
+        maxRevision: ID
 
-    # Dossiers avec statut.
-    state: DossierState
+        """
+        Seulement les dossiers pour les révisons après la révision donnée.
+        """
+        minRevision: ID
 
-    # Seulement les dossiers archivés.
-    archived: Boolean
+        """
+        L’ordre des dossiers.
+        """
+        order: Order = ASC
 
-    # Seulement les dossiers pour la révision donnée.
-    revision: ID
+        """
+        Seulement les dossiers pour la révision donnée.
+        """
+        revision: ID
 
-    # Seulement les dossiers pour les révisons avant la révision donnée.
-    maxRevision: ID
+        """
+        Dossiers avec statut.
+        """
+        state: DossierState
 
-    # Seulement les dossiers pour les révisons après la révision donnée.
-    minRevision: ID
-  ): DossierConnection!
-  draftRevision: Revision!
-  groupeInstructeurs: [GroupeInstructeur!]!
-  id: ID!
+        """
+        Dossiers mis à jour depuis la date.
+        """
+        updatedSince: ISO8601DateTime
+    ): DossierConnection!
+    draftRevision: Revision!
+    groupeInstructeurs(closed: Boolean): [GroupeInstructeur!]!
+    id: ID!
 
-  # Numero de la démarche.
-  number: Int!
-  publishedRevision: Revision
-  revisions: [Revision!]!
-  service: Service
+    """
+    Numero de la démarche.
+    """
+    number: Int!
 
-  # État de la démarche.
-  state: DemarcheState!
+    """
+    Liste de tous les dossiers en attente de suppression définitive d’une démarche.
+    """
+    pendingDeletedDossiers(
+        """
+        Returns the elements in the list that come after the specified cursor.
+        """
+        after: String
 
-  # Titre de la démarche.
-  title: String!
+        """
+        Returns the elements in the list that come before the specified cursor.
+        """
+        before: String
+
+        """
+        Dossiers en attente de suppression depuis la date.
+        """
+        deletedSince: ISO8601DateTime
+
+        """
+        Returns the first _n_ elements from the list.
+        """
+        first: Int
+
+        """
+        Returns the last _n_ elements from the list.
+        """
+        last: Int
+
+        """
+        L’ordre des dossiers en attente de suppression.
+        """
+        order: Order = ASC
+    ): DeletedDossierConnection!
+    publishedRevision: Revision
+    revisions: [Revision!]!
+    service: Service
+
+    """
+    État de la démarche.
+    """
+    state: DemarcheState!
+
+    """
+    Titre de la démarche.
+    """
+    title: String!
 }
 
-# Une démarche (métadonnées)
-# Ceci est une version abrégée du type `Demarche`, qui n’expose que les métadonnées.
-# Cela évite l’accès récursif aux dossiers.
+"""
+Autogenerated input type of DemarcheCloner
+"""
+input DemarcheClonerInput {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+
+    """
+    La démarche
+    """
+    demarche: FindDemarcheInput!
+
+    """
+    Le titre de la nouvelle démarche.
+    """
+    title: String
+}
+
+"""
+Autogenerated return type of DemarcheCloner.
+"""
+type DemarcheClonerPayload {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    demarche: DemarcheDescriptor
+    errors: [ValidationError!]
+}
+
+"""
+Une démarche (métadonnées)
+Ceci est une version abrégée du type `Demarche`, qui n’expose que les métadonnées.
+Cela évite l’accès récursif aux dossiers.
+"""
 type DemarcheDescriptor {
-  cadreJuridique: String
+    """
+    URL du cadre juridique qui justifie le droit de collecter les données demandées dans la démarche
+    """
+    cadreJuridiqueUrl: String
 
-  # Date de la création.
-  dateCreation: ISO8601DateTime!
+    """
+    Date de la création.
+    """
+    dateCreation: ISO8601DateTime!
 
-  # Date de la dépublication.
-  dateDepublication: ISO8601DateTime
+    """
+    Date de la dépublication.
+    """
+    dateDepublication: ISO8601DateTime
 
-  # Date de la dernière modification.
-  dateDerniereModification: ISO8601DateTime!
+    """
+    Date de la dernière modification.
+    """
+    dateDerniereModification: ISO8601DateTime!
 
-  # Date de la fermeture.
-  dateFermeture: ISO8601DateTime
+    """
+    Date de la fermeture.
+    """
+    dateFermeture: ISO8601DateTime
 
-  # Date de la publication.
-  datePublication: ISO8601DateTime
+    """
+    Date de la publication.
+    """
+    datePublication: ISO8601DateTime
 
-  # Pour une démarche déclarative, état cible des dossiers à valider automatiquement
-  declarative: DossierDeclarativeState
-  deliberation: String
+    """
+    Pour une démarche déclarative, état cible des dossiers à valider automatiquement
+    """
+    declarative: DossierDeclarativeState
 
-  # Description de la démarche.
-  description: String!
-  id: ID!
+    """
+    fichier contenant le cadre juridique
+    """
+    deliberation: File
 
-  # Numero de la démarche.
-  number: Int!
-  revision: Revision!
-  service: Service
+    """
+    URL pour commencer la démarche
+    """
+    demarcheUrl: URL
 
-  # État de la démarche.
-  state: DemarcheState!
+    """
+    Description de la démarche.
+    """
+    description: String!
 
-  # Titre de la démarche.
-  title: String!
+    """
+    URL ou email pour contacter le Délégué à la Protection des Données (DPO)
+    """
+    dpoUrl: String
+
+    """
+    Durée de conservation des dossiers en mois.
+    """
+    dureeConservationDossiers: Int!
+    id: ID!
+    logo: File
+
+    """
+    notice explicative de la démarche
+    """
+    notice: File
+    noticeUrl: URL
+
+    """
+    Numero de la démarche.
+    """
+    number: Int!
+    opendata: Boolean!
+    revision: Revision!
+    service: Service
+
+    """
+    URL où les usagers trouvent le lien vers la démarche
+    """
+    siteWebUrl: String
+
+    """
+    État de la démarche.
+    """
+    state: DemarcheState!
+
+    """
+    mots ou expressions attribués à la démarche pour décrire son contenu et la retrouver
+    """
+    tags: [String!]!
+
+    """
+    Titre de la démarche.
+    """
+    title: String!
+
+    """
+    ministère(s) ou collectivité(s) qui mettent en oeuvre la démarche
+    """
+    zones: [String!]!
 }
 
 enum DemarcheState {
-  # Brouillon
-  brouillon
+    """
+    Brouillon
+    """
+    brouillon
 
-  # Publiée
-  publiee
+    """
+    Close
+    """
+    close
 
-  # Close
-  close
+    """
+    Dépubliée
+    """
+    depubliee
 
-  # Depubliee
-  depubliee
+    """
+    Publiée
+    """
+    publiee
 }
 
 type Departement {
-  code: String!
-  name: String!
+    code: String!
+    name: String!
 }
 
-# Represents direct upload credentials
+type DepartementChamp implements Champ {
+    departement: Departement
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type DepartementChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    List des departements.
+    """
+    options: [Departement!]
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type DgfipChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+"""
+Represents direct upload credentials
+"""
 type DirectUpload {
-  # Created blob record ID
-  blobId: ID!
+    """
+    Created blob record ID
+    """
+    blobId: ID!
 
-  # HTTP request headers (JSON-encoded)
-  headers: String!
+    """
+    HTTP request headers (JSON-encoded)
+    """
+    headers: String!
 
-  # Created blob record signed ID
-  signedBlobId: ID!
+    """
+    Created blob record signed ID
+    """
+    signedBlobId: ID!
 
-  # Upload URL
-  url: String!
+    """
+    Upload URL
+    """
+    url: String!
 }
 
-# Un dossier
+"""
+Un dossier
+"""
 type Dossier {
-  annotations(id: ID): [Champ!]!
-  archived: Boolean!
+    annotations(id: ID): [Champ!]!
+    archived: Boolean!
 
-  # L’URL de l’attestation au format PDF.
-  attestation: File
-  avis(id: ID): [Avis!]!
-  champs(id: ID): [Champ!]!
+    """
+    L’URL de l’attestation au format PDF.
+    """
+    attestation: File
+    avis(id: ID): [Avis!]!
+    champs(id: ID): [Champ!]!
+    connectionUsager: ConnectionUsager!
 
-  # Date de dépôt.
-  dateDepot: ISO8601DateTime!
+    """
+    Date de dépôt.
+    """
+    dateDepot: ISO8601DateTime!
 
-  # Date de la dernière modification.
-  dateDerniereModification: ISO8601DateTime!
+    """
+    Date de la dernière modification.
+    """
+    dateDerniereModification: ISO8601DateTime!
 
-  # Date d’expiration.
-  dateExpiration: ISO8601DateTime
+    """
+    Date d’expiration.
+    """
+    dateExpiration: ISO8601DateTime
 
-  # Date du dernier passage en construction.
-  datePassageEnConstruction: ISO8601DateTime!
+    """
+    Date du dernier passage en construction.
+    """
+    datePassageEnConstruction: ISO8601DateTime!
 
-  # Date du dernier passage en instruction.
-  datePassageEnInstruction: ISO8601DateTime
+    """
+    Date du dernier passage en instruction.
+    """
+    datePassageEnInstruction: ISO8601DateTime
 
-  # Date de la suppression par l’administration.
-  dateSuppressionParAdministration: ISO8601DateTime
+    """
+    Date de la suppression par l’administration.
+    """
+    dateSuppressionParAdministration: ISO8601DateTime
 
-  # Date de la suppression par l’usager.
-  dateSuppressionParUsager: ISO8601DateTime
+    """
+    Date de la suppression par l’usager.
+    """
+    dateSuppressionParUsager: ISO8601DateTime
 
-  # Date du dernier traitement.
-  dateTraitement: ISO8601DateTime
-  demandeur: Demandeur!
-  demarche: DemarcheDescriptor!
+    """
+    Date du dernier traitement.
+    """
+    dateTraitement: ISO8601DateTime
+    demandeur: Demandeur!
+    demarche: DemarcheDescriptor!
 
-  # L’URL du GeoJSON contenant les données cartographiques du dossier.
-  geojson: File
-  groupeInstructeur: GroupeInstructeur!
-  id: ID!
-  instructeurs: [Profile!]!
-  messages(id: ID): [Message!]!
-  motivation: String
-  motivationAttachment: File
+    """
+    L’URL du GeoJSON contenant les données cartographiques du dossier.
+    """
+    geojson: File
+    groupeInstructeur: GroupeInstructeur!
+    id: ID!
+    instructeurs: [Profile!]!
+    messages(id: ID): [Message!]!
+    motivation: String
+    motivationAttachment: File
 
-  # Le numero du dossier.
-  number: Int!
+    """
+    Le numero du dossier.
+    """
+    number: Int!
 
-  # L’URL du dossier au format PDF.
-  pdf: File
-  revision: Revision!
-    @deprecated(reason: "Utilisez le champ `demarche.revision` à la place.")
+    """
+    L’URL du dossier au format PDF.
+    """
+    pdf: File
+    revision: Revision! @deprecated(reason: "Utilisez le champ `demarche.revision` à la place.")
 
-  # L’état du dossier.
-  state: DossierState!
-  traitements: [Traitement!]!
-  usager: Profile!
+    """
+    L’état du dossier.
+    """
+    state: DossierState!
+    traitements: [Traitement!]!
+    usager: Profile!
 }
 
-# Autogenerated input type of DossierAccepter
+"""
+Autogenerated input type of DossierAccepter
+"""
 input DossierAccepterInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
-  motivation: String
-  justificatif: ID
+    """
+    Désactiver l’envoi de l’email de notification après l’opération
+    """
+    disableNotification: Boolean = false
 
-  # Désactiver l’envoi de l’email de notification après l’opération
-  disableNotification: Boolean = false
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
+    justificatif: ID
+    motivation: String
 }
 
-# Autogenerated return type of DossierAccepter
+"""
+Autogenerated return type of DossierAccepter.
+"""
 type DossierAccepterPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierArchiver
+"""
+Autogenerated input type of DossierArchiver
+"""
 input DossierArchiverInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
 }
 
-# Autogenerated return type of DossierArchiver
+"""
+Autogenerated return type of DossierArchiver.
+"""
 type DossierArchiverPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierChangerGroupeInstructeur
+"""
+Autogenerated input type of DossierChangerGroupeInstructeur
+"""
 input DossierChangerGroupeInstructeurInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Group instructeur a affecter
-  groupeInstructeurId: ID!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Group instructeur a affecter
+    """
+    groupeInstructeurId: ID!
 }
 
-# Autogenerated return type of DossierChangerGroupeInstructeur
+"""
+Autogenerated return type of DossierChangerGroupeInstructeur.
+"""
 type DossierChangerGroupeInstructeurPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierClasserSansSuite
+"""
+Autogenerated input type of DossierClasserSansSuite
+"""
 input DossierClasserSansSuiteInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
-  motivation: String!
-  justificatif: ID
+    """
+    Désactiver l’envoi de l’email de notification après l’opération
+    """
+    disableNotification: Boolean = false
 
-  # Désactiver l’envoi de l’email de notification après l’opération
-  disableNotification: Boolean = false
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
+    justificatif: ID
+    motivation: String!
 }
 
-# Autogenerated return type of DossierClasserSansSuite
+"""
+Autogenerated return type of DossierClasserSansSuite.
+"""
 type DossierClasserSansSuitePayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# The connection type for Dossier.
+"""
+The connection type for Dossier.
+"""
 type DossierConnection {
-  # A list of edges.
-  edges: [DossierEdge]
+    """
+    A list of edges.
+    """
+    edges: [DossierEdge]
 
-  # A list of nodes.
-  nodes: [Dossier]
+    """
+    A list of nodes.
+    """
+    nodes: [Dossier]
 
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
+    """
+    Information to aid in pagination.
+    """
+    pageInfo: PageInfo!
 }
 
 enum DossierDeclarativeState {
-  # En instruction
-  en_instruction
+    """
+    Accepté
+    """
+    accepte
 
-  # Accepté
-  accepte
+    """
+    En instruction
+    """
+    en_instruction
 }
 
-# An edge in a connection.
+"""
+An edge in a connection.
+"""
 type DossierEdge {
-  # A cursor for use in pagination.
-  cursor: String!
+    """
+    A cursor for use in pagination.
+    """
+    cursor: String!
 
-  # The item at the end of the edge.
-  node: Dossier
+    """
+    The item at the end of the edge.
+    """
+    node: Dossier
 }
 
-# Autogenerated input type of DossierEnvoyerMessage
+"""
+Autogenerated input type of DossierEnvoyerMessage
+"""
 input DossierEnvoyerMessageInput {
-  dossierId: ID!
-  instructeurId: ID!
-  body: String!
-  attachment: ID
+    attachment: ID
+    body: String!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossierId: ID!
+    instructeurId: ID!
 }
 
-# Autogenerated return type of DossierEnvoyerMessage
+"""
+Autogenerated return type of DossierEnvoyerMessage.
+"""
 type DossierEnvoyerMessagePayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
-  message: Message
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
+    message: Message
 }
 
 type DossierLinkChamp implements Champ {
-  dossier: Dossier
-  id: ID!
+    dossier: Dossier
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
 }
 
-# Autogenerated input type of DossierModifierAnnotationAjouterLigne
+type DossierLinkChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+"""
+Autogenerated input type of DossierModifierAnnotationAjouterLigne
+"""
 input DossierModifierAnnotationAjouterLigneInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    Annotation ID
+    """
+    annotationId: ID!
 
-  # Instructeur qui demande la modification.
-  instructeurId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Annotation ID
-  annotationId: ID!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui demande la modification.
+    """
+    instructeurId: ID!
 }
 
-# Autogenerated return type of DossierModifierAnnotationAjouterLigne
+"""
+Autogenerated return type of DossierModifierAnnotationAjouterLigne.
+"""
 type DossierModifierAnnotationAjouterLignePayload {
-  annotation: RepetitionChamp
+    annotation: RepetitionChamp
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierModifierAnnotationCheckbox
+"""
+Autogenerated input type of DossierModifierAnnotationCheckbox
+"""
 input DossierModifierAnnotationCheckboxInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    Annotation ID
+    """
+    annotationId: ID!
 
-  # Instructeur qui demande la modification.
-  instructeurId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Annotation ID
-  annotationId: ID!
-  value: Boolean!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui demande la modification.
+    """
+    instructeurId: ID!
+    value: Boolean!
 }
 
-# Autogenerated return type of DossierModifierAnnotationCheckbox
+"""
+Autogenerated return type of DossierModifierAnnotationCheckbox.
+"""
 type DossierModifierAnnotationCheckboxPayload {
-  annotation: Champ
+    annotation: Champ
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierModifierAnnotationDate
+"""
+Autogenerated input type of DossierModifierAnnotationDate
+"""
 input DossierModifierAnnotationDateInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    Annotation ID
+    """
+    annotationId: ID!
 
-  # Instructeur qui demande la modification.
-  instructeurId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Annotation ID
-  annotationId: ID!
-  value: ISO8601Date!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui demande la modification.
+    """
+    instructeurId: ID!
+    value: ISO8601Date!
 }
 
-# Autogenerated return type of DossierModifierAnnotationDate
+"""
+Autogenerated return type of DossierModifierAnnotationDate.
+"""
 type DossierModifierAnnotationDatePayload {
-  annotation: Champ
+    annotation: Champ
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierModifierAnnotationDatetime
+"""
+Autogenerated input type of DossierModifierAnnotationDatetime
+"""
 input DossierModifierAnnotationDatetimeInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    Annotation ID
+    """
+    annotationId: ID!
 
-  # Instructeur qui demande la modification.
-  instructeurId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Annotation ID
-  annotationId: ID!
-  value: ISO8601DateTime!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui demande la modification.
+    """
+    instructeurId: ID!
+    value: ISO8601DateTime!
 }
 
-# Autogenerated return type of DossierModifierAnnotationDatetime
+"""
+Autogenerated return type of DossierModifierAnnotationDatetime.
+"""
 type DossierModifierAnnotationDatetimePayload {
-  annotation: Champ
+    annotation: Champ
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierModifierAnnotationIntegerNumber
+"""
+Autogenerated input type of DossierModifierAnnotationIntegerNumber
+"""
 input DossierModifierAnnotationIntegerNumberInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    Annotation ID
+    """
+    annotationId: ID!
 
-  # Instructeur qui demande la modification.
-  instructeurId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Annotation ID
-  annotationId: ID!
-  value: Int!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui demande la modification.
+    """
+    instructeurId: ID!
+    value: Int!
 }
 
-# Autogenerated return type of DossierModifierAnnotationIntegerNumber
+"""
+Autogenerated return type of DossierModifierAnnotationIntegerNumber.
+"""
 type DossierModifierAnnotationIntegerNumberPayload {
-  annotation: Champ
+    annotation: Champ
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierModifierAnnotationText
+"""
+Autogenerated input type of DossierModifierAnnotationText
+"""
 input DossierModifierAnnotationTextInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    Annotation ID
+    """
+    annotationId: ID!
 
-  # Instructeur qui demande la modification.
-  instructeurId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Annotation ID
-  annotationId: ID!
-  value: String!
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui demande la modification.
+    """
+    instructeurId: ID!
+    value: String!
 }
 
-# Autogenerated return type of DossierModifierAnnotationText
+"""
+Autogenerated return type of DossierModifierAnnotationText.
+"""
 type DossierModifierAnnotationTextPayload {
-  annotation: Champ
+    annotation: Champ
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierPasserEnInstruction
+"""
+Autogenerated input type of DossierPasserEnInstruction
+"""
 input DossierPasserEnInstructionInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
+    """
+    Désactiver l’envoi de l’email de notification après l’opération
+    """
+    disableNotification: Boolean = false
 
-  # Désactiver l’envoi de l’email de notification après l’opération
-  disableNotification: Boolean = false
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
 }
 
-# Autogenerated return type of DossierPasserEnInstruction
+"""
+Autogenerated return type of DossierPasserEnInstruction.
+"""
 type DossierPasserEnInstructionPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierRefuser
+"""
+Autogenerated input type of DossierRefuser
+"""
 input DossierRefuserInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
-  motivation: String!
-  justificatif: ID
+    """
+    Désactiver l’envoi de l’email de notification après l’opération
+    """
+    disableNotification: Boolean = false
 
-  # Désactiver l’envoi de l’email de notification après l’opération
-  disableNotification: Boolean = false
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
+    justificatif: ID
+    motivation: String!
 }
 
-# Autogenerated return type of DossierRefuser
+"""
+Autogenerated return type of DossierRefuser.
+"""
 type DossierRefuserPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierRepasserEnConstruction
+"""
+Autogenerated input type of DossierRepasserEnConstruction
+"""
 input DossierRepasserEnConstructionInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
+    """
+    Désactiver l’envoi de l’email de notification après l’opération
+    """
+    disableNotification: Boolean = false
 
-  # Désactiver l’envoi de l’email de notification après l’opération
-  disableNotification: Boolean = false
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
 }
 
-# Autogenerated return type of DossierRepasserEnConstruction
+"""
+Autogenerated return type of DossierRepasserEnConstruction.
+"""
 type DossierRepasserEnConstructionPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
-# Autogenerated input type of DossierRepasserEnInstruction
+"""
+Autogenerated input type of DossierRepasserEnInstruction
+"""
 input DossierRepasserEnInstructionInput {
-  # Dossier ID
-  dossierId: ID!
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
 
-  # Instructeur qui prend la décision sur le dossier.
-  instructeurId: ID!
+    """
+    Désactiver l’envoi de l’email de notification après l’opération
+    """
+    disableNotification: Boolean = false
 
-  # Désactiver l’envoi de l’email de notification après l’opération
-  disableNotification: Boolean = false
+    """
+    Dossier ID
+    """
+    dossierId: ID!
 
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
+    """
+    Instructeur qui prend la décision sur le dossier.
+    """
+    instructeurId: ID!
 }
 
-# Autogenerated return type of DossierRepasserEnInstruction
+"""
+Autogenerated return type of DossierRepasserEnInstruction.
+"""
 type DossierRepasserEnInstructionPayload {
-  # A unique identifier for the client performing the mutation.
-  clientMutationId: String
-  dossier: Dossier
-  errors: [ValidationError!]
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    dossier: Dossier
+    errors: [ValidationError!]
 }
 
 enum DossierState {
-  # En construction
-  en_construction
+    """
+    Accepté
+    """
+    accepte
 
-  # En instruction
-  en_instruction
+    """
+    En construction
+    """
+    en_construction
 
-  # Accepté
-  accepte
+    """
+    En instruction
+    """
+    en_instruction
 
-  # Refusé
-  refuse
+    """
+    Refusé
+    """
+    refuse
 
-  # Classé sans suite
-  sans_suite
+    """
+    Classé sans suite
+    """
+    sans_suite
+}
+
+type DropDownListChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    List des options d’un champ avec selection.
+    """
+    options: [String!]
+
+    """
+    La selection contien l’option "Autre".
+    """
+    otherOption: Boolean
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Effectif {
-  nb: Float!
-  periode: String!
+    nb: Float!
+    periode: String!
+}
+
+type EmailChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Entreprise {
-  attestationFiscaleAttachment: File
-  attestationSocialeAttachment: File
+    attestationFiscaleAttachment: File
+    attestationSocialeAttachment: File
 
-  # capital social de l’entreprise. -1 si inconnu.
-  capitalSocial: BigInt
-  codeEffectifEntreprise: String
-  dateCreation: ISO8601Date!
+    """
+    capital social de l’entreprise. -1 si inconnu.
+    """
+    capitalSocial: BigInt
+    codeEffectifEntreprise: String
+    dateCreation: ISO8601Date
 
-  # effectif moyen d’une année
-  effectifAnnuel: Effectif
+    """
+    effectif moyen d’une année
+    """
+    effectifAnnuel: Effectif
 
-  # effectif pour un mois donné
-  effectifMensuel: Effectif
-  etatAdministratif: EntrepriseEtatAdministratif
-  formeJuridique: String
-  formeJuridiqueCode: String
-  inlineAdresse: String!
-  nom: String
-  nomCommercial: String!
-  numeroTvaIntracommunautaire: String
-  prenom: String
-  raisonSociale: String!
-  siren: String!
-  siretSiegeSocial: String!
+    """
+    effectif pour un mois donné
+    """
+    effectifMensuel: Effectif
+    etatAdministratif: EntrepriseEtatAdministratif
+    formeJuridique: String
+    formeJuridiqueCode: String
+    inlineAdresse: String!
+    nom: String
+    nomCommercial: String!
+    numeroTvaIntracommunautaire: String
+    prenom: String
+    raisonSociale: String!
+    siren: String!
+    siretSiegeSocial: String!
 }
 
 enum EntrepriseEtatAdministratif {
-  # L'entreprise est en activité
-  Actif
+    """
+    L'entreprise est en activité
+    """
+    Actif
 
-  # L'entreprise a cessé son activité
-  Ferme
+    """
+    L'entreprise a cessé son activité
+    """
+    Ferme
+}
+
+type Epci {
+    code: String!
+    name: String!
+}
+
+type EpciChamp implements Champ {
+    departement: Departement
+    epci: Epci
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type EpciChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type ExplicationChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+    collapsibleExplanationEnabled: Boolean
+    collapsibleExplanationText: String
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type File {
-  byteSize: Int!
-    @deprecated(reason: "Utilisez le champ `byteSizeBigInt` à la place.")
-  byteSizeBigInt: BigInt!
-  checksum: String!
-  contentType: String!
-  filename: String!
-  url: URL!
+    byteSize: Int! @deprecated(reason: "Utilisez le champ `byteSizeBigInt` à la place.")
+    byteSizeBigInt: BigInt!
+    checksum: String!
+    contentType: String!
+
+    """
+    Date de création du fichier.
+    """
+    createdAt: ISO8601DateTime!
+    filename: String!
+    url: URL!
+}
+
+input FindDemarcheInput @oneOf {
+    """
+    ID de la démarche.
+    """
+    id: ID
+
+    """
+    Numero de la démarche.
+    """
+    number: Int
 }
 
 interface GeoArea {
-  description: String
-  geometry: GeoJSON!
-  id: ID!
-  source: GeoAreaSource!
+    description: String
+    geometry: GeoJSON!
+    id: ID!
+    source: GeoAreaSource!
 }
 
 enum GeoAreaSource {
-  # Parcelle cadastrale
-  cadastre
+    """
+    Parcelle cadastrale
+    """
+    cadastre
 
-  # Sélection utilisateur
-  selection_utilisateur
+    """
+    Sélection utilisateur
+    """
+    selection_utilisateur
 }
 
 type GeoJSON {
-  coordinates: Coordinates!
-  type: String!
+    coordinates: Coordinates!
+    type: String!
 }
 
-# Un groupe instructeur
+"""
+Un groupe instructeur
+"""
 type GroupeInstructeur {
-  id: ID!
-  instructeurs: [Profile!]!
-  label: String!
+    """
+    L’état du groupe instructeur.
+    """
+    closed: Boolean!
+    id: ID!
+    instructeurs: [Profile!]!
 
-  # Le numero du groupe instructeur.
-  number: Int!
+    """
+    Libellé du groupe instructeur.
+    """
+    label: String!
+
+    """
+    Le numero du groupe instructeur.
+    """
+    number: Int!
 }
 
-# Un groupe instructeur avec ces dossiers
+"""
+Autogenerated input type of GroupeInstructeurAjouterInstructeurs
+"""
+input GroupeInstructeurAjouterInstructeursInput {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+
+    """
+    Groupe instructeur ID.
+    """
+    groupeInstructeurId: ID!
+
+    """
+    Instructeurs à ajouter.
+    """
+    instructeurs: [ProfileInput!]!
+}
+
+"""
+Autogenerated return type of GroupeInstructeurAjouterInstructeurs.
+"""
+type GroupeInstructeurAjouterInstructeursPayload {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
+    groupeInstructeur: GroupeInstructeur
+    warnings: [WarningMessage!]
+}
+
+"""
+Attributs pour l’ajout d'un groupe instructeur.
+"""
+input GroupeInstructeurAttributes {
+    """
+    L’état du groupe instructeur.
+    """
+    closed: Boolean = false
+
+    """
+    Instructeurs à ajouter.
+    """
+    instructeurs: [ProfileInput!] = []
+
+    """
+    Libelle du groupe instructeur.
+    """
+    label: String!
+}
+
+"""
+Autogenerated input type of GroupeInstructeurCreer
+"""
+input GroupeInstructeurCreerInput {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+
+    """
+    Demarche ID ou numéro.
+    """
+    demarche: FindDemarcheInput!
+
+    """
+    Groupes instructeur à ajouter.
+    """
+    groupeInstructeur: GroupeInstructeurAttributes!
+}
+
+"""
+Autogenerated return type of GroupeInstructeurCreer.
+"""
+type GroupeInstructeurCreerPayload {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
+    groupeInstructeur: GroupeInstructeur
+    warnings: [WarningMessage!]
+}
+
+"""
+Autogenerated input type of GroupeInstructeurModifier
+"""
+input GroupeInstructeurModifierInput {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+
+    """
+    L’état du groupe instructeur.
+    """
+    closed: Boolean
+
+    """
+    Groupe instructeur ID.
+    """
+    groupeInstructeurId: ID!
+
+    """
+    Libellé du groupe instructeur.
+    """
+    label: String
+}
+
+"""
+Autogenerated return type of GroupeInstructeurModifier.
+"""
+type GroupeInstructeurModifierPayload {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
+    groupeInstructeur: GroupeInstructeur
+}
+
+"""
+Autogenerated input type of GroupeInstructeurSupprimerInstructeurs
+"""
+input GroupeInstructeurSupprimerInstructeursInput {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+
+    """
+    Groupe instructeur ID.
+    """
+    groupeInstructeurId: ID!
+
+    """
+    Instructeurs à supprimer.
+    """
+    instructeurs: [ProfileInput!]!
+}
+
+"""
+Autogenerated return type of GroupeInstructeurSupprimerInstructeurs.
+"""
+type GroupeInstructeurSupprimerInstructeursPayload {
+    """
+    A unique identifier for the client performing the mutation.
+    """
+    clientMutationId: String
+    errors: [ValidationError!]
+    groupeInstructeur: GroupeInstructeur
+}
+
+"""
+Un groupe instructeur avec ses dossiers
+"""
 type GroupeInstructeurWithDossiers {
-  # Liste de tous les dossiers d’une démarche.
-  dossiers(
-    # Returns the elements in the list that come after the specified cursor.
-    after: String
+    """
+    L’état du groupe instructeur.
+    """
+    closed: Boolean!
 
-    # Returns the elements in the list that come before the specified cursor.
-    before: String
+    """
+    Liste de tous les dossiers supprimés d’un groupe instructeur.
+    """
+    deletedDossiers(
+        """
+        Returns the elements in the list that come after the specified cursor.
+        """
+        after: String
 
-    # Returns the first _n_ elements from the list.
-    first: Int
+        """
+        Returns the elements in the list that come before the specified cursor.
+        """
+        before: String
 
-    # Returns the last _n_ elements from the list.
-    last: Int
+        """
+        Dossiers supprimés depuis la date.
+        """
+        deletedSince: ISO8601DateTime
 
-    # L’ordre des dossiers.
-    order: Order = ASC
+        """
+        Returns the first _n_ elements from the list.
+        """
+        first: Int
 
-    # Dossiers déposés depuis la date.
-    createdSince: ISO8601DateTime
+        """
+        Returns the last _n_ elements from the list.
+        """
+        last: Int
 
-    # Dossiers mis à jour depuis la date.
-    updatedSince: ISO8601DateTime
+        """
+        L’ordre des dossiers supprimés.
+        """
+        order: Order = ASC
+    ): DeletedDossierConnection!
 
-    # Dossiers avec statut.
-    state: DossierState
-  ): DossierConnection!
-  id: ID!
-  instructeurs: [Profile!]!
-  label: String!
+    """
+    Liste de tous les dossiers d’un groupe instructeur.
+    """
+    dossiers(
+        """
+        Returns the elements in the list that come after the specified cursor.
+        """
+        after: String
 
-  # Le numero du groupe instructeur.
-  number: Int!
+        """
+        Seulement les dossiers archivés.
+        """
+        archived: Boolean
+
+        """
+        Returns the elements in the list that come before the specified cursor.
+        """
+        before: String
+
+        """
+        Dossiers déposés depuis la date.
+        """
+        createdSince: ISO8601DateTime
+
+        """
+        Returns the first _n_ elements from the list.
+        """
+        first: Int
+
+        """
+        Returns the last _n_ elements from the list.
+        """
+        last: Int
+
+        """
+        Seulement les dossiers pour les révisons avant la révision donnée.
+        """
+        maxRevision: ID
+
+        """
+        Seulement les dossiers pour les révisons après la révision donnée.
+        """
+        minRevision: ID
+
+        """
+        L’ordre des dossiers.
+        """
+        order: Order = ASC
+
+        """
+        Seulement les dossiers pour la révision donnée.
+        """
+        revision: ID
+
+        """
+        Dossiers avec statut.
+        """
+        state: DossierState
+
+        """
+        Dossiers mis à jour depuis la date.
+        """
+        updatedSince: ISO8601DateTime
+    ): DossierConnection!
+    id: ID!
+    instructeurs: [Profile!]!
+
+    """
+    Libellé du groupe instructeur.
+    """
+    label: String!
+
+    """
+    Le numero du groupe instructeur.
+    """
+    number: Int!
+
+    """
+    Liste de tous les dossiers en attente de suppression définitive d’un groupe instructeur.
+    """
+    pendingDeletedDossiers(
+        """
+        Returns the elements in the list that come after the specified cursor.
+        """
+        after: String
+
+        """
+        Returns the elements in the list that come before the specified cursor.
+        """
+        before: String
+
+        """
+        Dossiers en attente de suppression depuis la date.
+        """
+        deletedSince: ISO8601DateTime
+
+        """
+        Returns the first _n_ elements from the list.
+        """
+        first: Int
+
+        """
+        Returns the last _n_ elements from the list.
+        """
+        last: Int
+
+        """
+        L’ordre des dossiers en attente de suppression.
+        """
+        order: Order = ASC
+    ): DeletedDossierConnection!
 }
 
-# An ISO 8601-encoded date
+type HeaderSectionChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+"""
+An ISO 8601-encoded date
+"""
 scalar ISO8601Date
 
-# An ISO 8601-encoded datetime
+"""
+An ISO 8601-encoded datetime
+"""
 scalar ISO8601DateTime
 
+type IbanChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
 type IntegerNumberChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
-  value: BigInt
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+    value: BigInt
+}
+
+type IntegerNumberChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type LinkedDropDownListChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
-  primaryValue: String
-  secondaryValue: String
+    """
+    Libellé du champ.
+    """
+    label: String!
+    primaryValue: String
+    secondaryValue: String
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type LinkedDropDownListChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    List des options d’un champ avec selection.
+    """
+    options: [String!]
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type MesriChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Message {
-  attachment: File
-  body: String!
-  createdAt: ISO8601DateTime!
-  email: String!
-  id: ID!
+    attachment: File @deprecated(reason: "Utilisez le champ `attachments` à la place.")
+    attachments: [File!]!
+    body: String!
+    createdAt: ISO8601DateTime!
+    email: String!
+    id: ID!
 }
 
 type MultipleDropDownListChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
-  values: [String!]!
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+    values: [String!]!
+}
+
+type MultipleDropDownListChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    List des options d’un champ avec selection.
+    """
+    options: [String!]
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Mutation {
-  # File information required to prepare a direct upload
-  createDirectUpload(
-    # Parameters for CreateDirectUpload
-    input: CreateDirectUploadInput!
-  ): CreateDirectUploadPayload
+    """
+    File information required to prepare a direct upload
+    """
+    createDirectUpload(
+        """
+        Parameters for CreateDirectUpload
+        """
+        input: CreateDirectUploadInput!
+    ): CreateDirectUploadPayload
 
-  # Accepter le dossier.
-  dossierAccepter(
-    # Parameters for DossierAccepter
-    input: DossierAccepterInput!
-  ): DossierAccepterPayload
+    """
+    Cloner une démarche.
+    """
+    demarcheCloner(
+        """
+        Parameters for DemarcheCloner
+        """
+        input: DemarcheClonerInput!
+    ): DemarcheClonerPayload
 
-  # Archiver le dossier.
-  dossierArchiver(
-    # Parameters for DossierArchiver
-    input: DossierArchiverInput!
-  ): DossierArchiverPayload
+    """
+    Accepter le dossier.
+    """
+    dossierAccepter(
+        """
+        Parameters for DossierAccepter
+        """
+        input: DossierAccepterInput!
+    ): DossierAccepterPayload
 
-  # Changer le grope instructeur du dossier.
-  dossierChangerGroupeInstructeur(
-    # Parameters for DossierChangerGroupeInstructeur
-    input: DossierChangerGroupeInstructeurInput!
-  ): DossierChangerGroupeInstructeurPayload
+    """
+    Archiver le dossier.
+    """
+    dossierArchiver(
+        """
+        Parameters for DossierArchiver
+        """
+        input: DossierArchiverInput!
+    ): DossierArchiverPayload
 
-  # Classer le dossier sans suite.
-  dossierClasserSansSuite(
-    # Parameters for DossierClasserSansSuite
-    input: DossierClasserSansSuiteInput!
-  ): DossierClasserSansSuitePayload
+    """
+    Changer le grope instructeur du dossier.
+    """
+    dossierChangerGroupeInstructeur(
+        """
+        Parameters for DossierChangerGroupeInstructeur
+        """
+        input: DossierChangerGroupeInstructeurInput!
+    ): DossierChangerGroupeInstructeurPayload
 
-  # Envoyer un message à l'usager du dossier.
-  dossierEnvoyerMessage(
-    # Parameters for DossierEnvoyerMessage
-    input: DossierEnvoyerMessageInput!
-  ): DossierEnvoyerMessagePayload
-  dossierModifierAnnotationAjouterLigne(
-    # Parameters for DossierModifierAnnotationAjouterLigne
-    input: DossierModifierAnnotationAjouterLigneInput!
-  ): DossierModifierAnnotationAjouterLignePayload
+    """
+    Classer le dossier sans suite.
+    """
+    dossierClasserSansSuite(
+        """
+        Parameters for DossierClasserSansSuite
+        """
+        input: DossierClasserSansSuiteInput!
+    ): DossierClasserSansSuitePayload
 
-  # Modifier l’annotation au format oui/non.
-  dossierModifierAnnotationCheckbox(
-    # Parameters for DossierModifierAnnotationCheckbox
-    input: DossierModifierAnnotationCheckboxInput!
-  ): DossierModifierAnnotationCheckboxPayload
+    """
+    Envoyer un message à l'usager du dossier.
+    """
+    dossierEnvoyerMessage(
+        """
+        Parameters for DossierEnvoyerMessage
+        """
+        input: DossierEnvoyerMessageInput!
+    ): DossierEnvoyerMessagePayload
+    dossierModifierAnnotationAjouterLigne(
+        """
+        Parameters for DossierModifierAnnotationAjouterLigne
+        """
+        input: DossierModifierAnnotationAjouterLigneInput!
+    ): DossierModifierAnnotationAjouterLignePayload
 
-  # Modifier l’annotation au format date.
-  dossierModifierAnnotationDate(
-    # Parameters for DossierModifierAnnotationDate
-    input: DossierModifierAnnotationDateInput!
-  ): DossierModifierAnnotationDatePayload
+    """
+    Modifier l’annotation au format oui/non.
+    """
+    dossierModifierAnnotationCheckbox(
+        """
+        Parameters for DossierModifierAnnotationCheckbox
+        """
+        input: DossierModifierAnnotationCheckboxInput!
+    ): DossierModifierAnnotationCheckboxPayload
 
-  # Modifier l’annotation au format date et heure.
-  dossierModifierAnnotationDatetime(
-    # Parameters for DossierModifierAnnotationDatetime
-    input: DossierModifierAnnotationDatetimeInput!
-  ): DossierModifierAnnotationDatetimePayload
+    """
+    Modifier l’annotation au format date.
+    """
+    dossierModifierAnnotationDate(
+        """
+        Parameters for DossierModifierAnnotationDate
+        """
+        input: DossierModifierAnnotationDateInput!
+    ): DossierModifierAnnotationDatePayload
 
-  # Modifier l’annotation au format nombre entier.
-  dossierModifierAnnotationIntegerNumber(
-    # Parameters for DossierModifierAnnotationIntegerNumber
-    input: DossierModifierAnnotationIntegerNumberInput!
-  ): DossierModifierAnnotationIntegerNumberPayload
+    """
+    Modifier l’annotation au format date et heure.
+    """
+    dossierModifierAnnotationDatetime(
+        """
+        Parameters for DossierModifierAnnotationDatetime
+        """
+        input: DossierModifierAnnotationDatetimeInput!
+    ): DossierModifierAnnotationDatetimePayload
 
-  # Modifier l’annotation au format text.
-  dossierModifierAnnotationText(
-    # Parameters for DossierModifierAnnotationText
-    input: DossierModifierAnnotationTextInput!
-  ): DossierModifierAnnotationTextPayload
+    """
+    Modifier l’annotation au format nombre entier.
+    """
+    dossierModifierAnnotationIntegerNumber(
+        """
+        Parameters for DossierModifierAnnotationIntegerNumber
+        """
+        input: DossierModifierAnnotationIntegerNumberInput!
+    ): DossierModifierAnnotationIntegerNumberPayload
 
-  # Passer le dossier en instruction.
-  dossierPasserEnInstruction(
-    # Parameters for DossierPasserEnInstruction
-    input: DossierPasserEnInstructionInput!
-  ): DossierPasserEnInstructionPayload
+    """
+    Modifier l’annotation au format text.
+    """
+    dossierModifierAnnotationText(
+        """
+        Parameters for DossierModifierAnnotationText
+        """
+        input: DossierModifierAnnotationTextInput!
+    ): DossierModifierAnnotationTextPayload
 
-  # Refuser le dossier.
-  dossierRefuser(
-    # Parameters for DossierRefuser
-    input: DossierRefuserInput!
-  ): DossierRefuserPayload
+    """
+    Passer le dossier en instruction.
+    """
+    dossierPasserEnInstruction(
+        """
+        Parameters for DossierPasserEnInstruction
+        """
+        input: DossierPasserEnInstructionInput!
+    ): DossierPasserEnInstructionPayload
 
-  # Re-passer le dossier en construction.
-  dossierRepasserEnConstruction(
-    # Parameters for DossierRepasserEnConstruction
-    input: DossierRepasserEnConstructionInput!
-  ): DossierRepasserEnConstructionPayload
+    """
+    Refuser le dossier.
+    """
+    dossierRefuser(
+        """
+        Parameters for DossierRefuser
+        """
+        input: DossierRefuserInput!
+    ): DossierRefuserPayload
 
-  # Re-passer le dossier en instruction.
-  dossierRepasserEnInstruction(
-    # Parameters for DossierRepasserEnInstruction
-    input: DossierRepasserEnInstructionInput!
-  ): DossierRepasserEnInstructionPayload
+    """
+    Re-passer le dossier en construction.
+    """
+    dossierRepasserEnConstruction(
+        """
+        Parameters for DossierRepasserEnConstruction
+        """
+        input: DossierRepasserEnConstructionInput!
+    ): DossierRepasserEnConstructionPayload
+
+    """
+    Re-passer le dossier en instruction.
+    """
+    dossierRepasserEnInstruction(
+        """
+        Parameters for DossierRepasserEnInstruction
+        """
+        input: DossierRepasserEnInstructionInput!
+    ): DossierRepasserEnInstructionPayload
+
+    """
+    Ajouter des instructeurs à un groupe instructeur.
+    """
+    groupeInstructeurAjouterInstructeurs(
+        """
+        Parameters for GroupeInstructeurAjouterInstructeurs
+        """
+        input: GroupeInstructeurAjouterInstructeursInput!
+    ): GroupeInstructeurAjouterInstructeursPayload
+
+    """
+    Crée un groupe instructeur.
+    """
+    groupeInstructeurCreer(
+        """
+        Parameters for GroupeInstructeurCreer
+        """
+        input: GroupeInstructeurCreerInput!
+    ): GroupeInstructeurCreerPayload
+
+    """
+    Modifier un groupe instructeur.
+    """
+    groupeInstructeurModifier(
+        """
+        Parameters for GroupeInstructeurModifier
+        """
+        input: GroupeInstructeurModifierInput!
+    ): GroupeInstructeurModifierPayload
+
+    """
+    Supprimer des instructeurs d’un groupe instructeur.
+    """
+    groupeInstructeurSupprimerInstructeurs(
+        """
+        Parameters for GroupeInstructeurSupprimerInstructeurs
+        """
+        input: GroupeInstructeurSupprimerInstructeursInput!
+    ): GroupeInstructeurSupprimerInstructeursPayload
+}
+
+type NumberChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 enum Order {
-  # L’ordre ascendant.
-  ASC
+    """
+    L’ordre ascendant.
+    """
+    ASC
 
-  # L’ordre descendant.
-  DESC
+    """
+    L’ordre descendant.
+    """
+    DESC
 }
 
-# Information about pagination in a connection.
+"""
+Information about pagination in a connection.
+"""
 type PageInfo {
-  # When paginating forwards, the cursor to continue.
-  endCursor: String
+    """
+    When paginating forwards, the cursor to continue.
+    """
+    endCursor: String
 
-  # When paginating forwards, are there more items?
-  hasNextPage: Boolean!
+    """
+    When paginating forwards, are there more items?
+    """
+    hasNextPage: Boolean!
 
-  # When paginating backwards, are there more items?
-  hasPreviousPage: Boolean!
+    """
+    When paginating backwards, are there more items?
+    """
+    hasPreviousPage: Boolean!
 
-  # When paginating backwards, the cursor to continue.
-  startCursor: String
+    """
+    When paginating backwards, the cursor to continue.
+    """
+    startCursor: String
 }
 
 type ParcelleCadastrale implements GeoArea {
-  codeArr: String!
-    @deprecated(reason: "Utilisez le champ `prefixe` à la place.")
-  codeCom: String!
-    @deprecated(reason: "Utilisez le champ `commune` à la place.")
-  codeDep: String!
-    @deprecated(reason: "Utilisez le champ `commune` à la place.")
-  commune: String!
-  description: String
-  feuille: Int! @deprecated(reason: "L’information n’est plus disponible.")
-  geometry: GeoJSON!
-  id: ID!
-  nomCom: String! @deprecated(reason: "Utilisez le champ `commune` à la place.")
-  numero: String!
-  prefixe: String!
-  section: String!
-  source: GeoAreaSource!
-  surface: String!
-  surfaceIntersection: Float!
-    @deprecated(reason: "L’information n’est plus disponible.")
-  surfaceParcelle: Float!
-    @deprecated(reason: "Utilisez le champ `surface` à la place.")
+    codeArr: String! @deprecated(reason: "Utilisez le champ `prefixe` à la place.")
+    codeCom: String! @deprecated(reason: "Utilisez le champ `commune` à la place.")
+    codeDep: String! @deprecated(reason: "Utilisez le champ `commune` à la place.")
+    commune: String!
+    description: String
+    feuille: Int! @deprecated(reason: "L’information n’est plus disponible.")
+    geometry: GeoJSON!
+    id: ID!
+    nomCom: String! @deprecated(reason: "Utilisez le champ `commune` à la place.")
+    numero: String!
+    prefixe: String!
+    section: String!
+    source: GeoAreaSource!
+    surface: String!
+    surfaceIntersection: Float! @deprecated(reason: "L’information n’est plus disponible.")
+    surfaceParcelle: Float! @deprecated(reason: "Utilisez le champ `surface` à la place.")
+}
+
+type Pays {
+    code: String!
+    name: String!
+}
+
+type PaysChamp implements Champ {
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+    pays: Pays
+
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type PaysChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    List des pays.
+    """
+    options: [Pays!]
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type PersonneMorale implements Demandeur {
-  address: Address!
-  adresse: String!
-    @deprecated(reason: "Utilisez le champ `address.label` à la place.")
-  association: Association
-  codeInseeLocalite: String!
-    @deprecated(reason: "Utilisez le champ `address.city_code` à la place.")
-  codePostal: String!
-    @deprecated(reason: "Utilisez le champ `address.postal_code` à la place.")
-  complementAdresse: String
-    @deprecated(reason: "Utilisez le champ `address` à la place.")
-  entreprise: Entreprise
-  id: ID!
-  libelleNaf: String!
-  localite: String!
-    @deprecated(reason: "Utilisez le champ `address.city_name` à la place.")
-  naf: String!
-  nomVoie: String
-    @deprecated(reason: "Utilisez le champ `address.street_name` à la place.")
-  numeroVoie: String
-    @deprecated(reason: "Utilisez le champ `address.street_number` à la place.")
-  siegeSocial: Boolean!
-  siret: String!
-  typeVoie: String
-    @deprecated(
-      reason: "Utilisez le champ `address.street_address` à la place."
-    )
+    address: Address!
+    adresse: String! @deprecated(reason: "Utilisez le champ `address.label` à la place.")
+    association: Association
+    codeInseeLocalite: String! @deprecated(reason: "Utilisez le champ `address.city_code` à la place.")
+    codePostal: String! @deprecated(reason: "Utilisez le champ `address.postal_code` à la place.")
+    complementAdresse: String @deprecated(reason: "Utilisez le champ `address` à la place.")
+    entreprise: Entreprise
+    id: ID!
+    libelleNaf: String!
+    localite: String! @deprecated(reason: "Utilisez le champ `address.city_name` à la place.")
+    naf: String
+    nomVoie: String @deprecated(reason: "Utilisez le champ `address.street_name` à la place.")
+    numeroVoie: String @deprecated(reason: "Utilisez le champ `address.street_number` à la place.")
+    siegeSocial: Boolean!
+    siret: String!
+    typeVoie: String @deprecated(reason: "Utilisez le champ `address.street_address` à la place.")
+}
+
+type PersonneMoraleIncomplete implements Demandeur {
+    id: ID!
+    siret: String!
 }
 
 type PersonnePhysique implements Demandeur {
-  civilite: Civilite
-  dateDeNaissance: ISO8601Date
-  id: ID!
-  nom: String!
-  prenom: String!
+    civilite: Civilite
+    dateDeNaissance: ISO8601Date
+    id: ID!
+    nom: String!
+    prenom: String!
+}
+
+type PhoneChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type PieceJustificativeChamp implements Champ {
-  file: File
-  id: ID!
+    file: File @deprecated(reason: "Utilisez le champ `files` à la place.")
+    files: [File!]!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type PieceJustificativeChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+
+    """
+    Modèle de la pièce justificative.
+    """
+    fileTemplate: File
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type PoleEmploiChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Profile {
-  email: String!
-  id: ID!
+    email: String!
+    id: ID!
+}
+
+input ProfileInput @oneOf {
+    """
+    Email
+    """
+    email: String
+
+    """
+    ID
+    """
+    id: ID
 }
 
 type Query {
-  # Informations concernant une démarche.
-  demarche(
-    # Numéro de la démarche.
-    number: Int!
-  ): Demarche!
+    """
+    Informations concernant une démarche.
+    """
+    demarche(
+        """
+        Numéro de la démarche.
+        """
+        number: Int!
+    ): Demarche!
+    demarcheDescriptor(
+        """
+        La démarche.
+        """
+        demarche: FindDemarcheInput!
+    ): DemarcheDescriptor
 
-  # Informations sur un dossier d’une démarche.
-  dossier(
-    # Numéro du dossier.
-    number: Int!
-  ): Dossier!
+    """
+    Informations sur un dossier d’une démarche.
+    """
+    dossier(
+        """
+        Numéro du dossier.
+        """
+        number: Int!
+    ): Dossier!
 
-  # Informations sur un groupe instructeur.
-  groupeInstructeur(
-    # Numéro du groupe instructeur.
-    number: Int!
-  ): GroupeInstructeurWithDossiers!
+    """
+    Informations sur un groupe instructeur.
+    """
+    groupeInstructeur(
+        """
+        Numéro du groupe instructeur.
+        """
+        number: Int!
+    ): GroupeInstructeurWithDossiers!
+}
+
+type RNAChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type Region {
+    code: String!
+    name: String!
+}
+
+type RegionChamp implements Champ {
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+    region: Region
+
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type RegionChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    List des regions.
+    """
+    options: [Region!]
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type RepetitionChamp implements Champ {
-  champs: [Champ!]!
-  id: ID!
+    champs: [Champ!]! @deprecated(reason: "Utilisez le champ `rows` à la place.")
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
+    rows: [Row!]!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type RepetitionChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!]
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type Revision {
-  annotationDescriptors: [ChampDescriptor!]!
-  champDescriptors: [ChampDescriptor!]!
+    annotationDescriptors: [ChampDescriptor!]!
+    champDescriptors: [ChampDescriptor!]!
 
-  # Date de la création.
-  dateCreation: ISO8601DateTime!
+    """
+    Date de la création.
+    """
+    dateCreation: ISO8601DateTime!
 
-  # Date de la publication.
-  datePublication: ISO8601DateTime
-  id: ID!
+    """
+    Date de la publication.
+    """
+    datePublication: ISO8601DateTime
+    id: ID!
+}
+
+type Row {
+    champs: [Champ!]!
+    id: ID!
 }
 
 type SelectionUtilisateur implements GeoArea {
-  description: String
-  geometry: GeoJSON!
-  id: ID!
-  source: GeoAreaSource!
+    description: String
+    geometry: GeoJSON!
+    id: ID!
+    source: GeoAreaSource!
 }
 
 type Service {
-  id: ID!
-  nom: String!
-  organisme: String!
-  siret: String
-  typeOrganisme: TypeOrganisme!
+    id: ID!
+
+    """
+    nom du service qui met en oeuvre la démarche
+    """
+    nom: String!
+
+    """
+    nom de l'organisme qui met en oeuvre la démarche
+    """
+    organisme: String!
+
+    """
+    n° siret du service qui met en oeuvre la démarche
+    """
+    siret: String
+
+    """
+    type d'organisme qui met en oeuvre la démarche
+    """
+    typeOrganisme: TypeOrganisme!
 }
 
 type SiretChamp implements Champ {
-  etablissement: PersonneMorale
-  id: ID!
+    etablissement: PersonneMorale
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type SiretChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type TextChamp implements Champ {
-  id: ID!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
-  value: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+    value: String
+}
+
+type TextChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type TextareaChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type TitreIdentiteChamp implements Champ {
-  grantType: TitreIdentiteGrantType!
-  id: ID!
+    filled: Boolean!
+    grantType: TitreIdentiteGrantType!
+    id: ID!
 
-  # Libellé du champ.
-  label: String!
+    """
+    Libellé du champ.
+    """
+    label: String!
 
-  # La valeur du champ sous forme texte.
-  stringValue: String
+    """
+    La valeur du champ sous forme texte.
+    """
+    stringValue: String
+
+    """
+    Date de dernière modification du champ.
+    """
+    updatedAt: ISO8601DateTime!
+}
+
+type TitreIdentiteChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 enum TitreIdentiteGrantType {
-  # Françe Connect
-  france_connect
+    """
+    Françe Connect
+    """
+    france_connect
 
-  # Pièce justificative
-  piece_justificative
+    """
+    Pièce justificative
+    """
+    piece_justificative
 }
 
 type Traitement {
-  dateTraitement: ISO8601DateTime!
-  emailAgentTraitant: String
-  id: ID!
-  motivation: String
-  state: DossierState!
+    dateTraitement: ISO8601DateTime!
+    emailAgentTraitant: String
+    id: ID!
+    motivation: String
+    state: DossierState!
 }
 
 enum TypeDeChamp {
-  # Texte
-  text
+    """
+    Adresse
+    """
+    address
 
-  # Zone de texte
-  textarea
+    """
+    Annuaire de l’éducation
+    """
+    annuaire_education
 
-  # Date
-  date
+    """
+    Carte
+    """
+    carte
 
-  # Date et Heure
-  datetime
+    """
+    Case à cocher seule
+    """
+    checkbox
 
-  # Nombre
-  number
+    """
+    Civilité
+    """
+    civilite
 
-  # Nombre décimal
-  decimal_number
+    """
+    Données de la Caisse nationale des allocations familiales
+    """
+    cnaf
 
-  # Nombre entier
-  integer_number
+    """
+    Accréditation Paris 2024
+    """
+    cojo
 
-  # Case à cocher
-  checkbox
+    """
+    Communes
+    """
+    communes
 
-  # Civilité
-  civilite
+    """
+    Date
+    """
+    date
 
-  # Email
-  email
+    """
+    Date et Heure
+    """
+    datetime
 
-  # Téléphone
-  phone
+    """
+    Nombre décimal
+    """
+    decimal_number
 
-  # Adresse
-  address
+    """
+    Départements
+    """
+    departements
 
-  # Oui/Non
-  yes_no
+    """
+    Données de la Direction générale des Finances publiques
+    """
+    dgfip
 
-  # Choix unique
-  drop_down_list
+    """
+    Lien vers un autre dossier
+    """
+    dossier_link
 
-  # Choix multiples
-  multiple_drop_down_list
+    """
+    Choix simple
+    """
+    drop_down_list
 
-  # Deux menus déroulants liés
-  linked_drop_down_list
+    """
+    Adresse électronique
+    """
+    email
 
-  # Pays
-  pays
+    """
+    EPCI
+    """
+    epci
 
-  # Régions
-  regions
+    """
+    Explication
+    """
+    explication
 
-  # Départements
-  departements
+    """
+    Titre de section
+    """
+    header_section
 
-  # Communes
-  communes
+    """
+    Numéro Iban
+    """
+    iban
 
-  # Engagement
-  engagement
+    """
+    Nombre entier
+    """
+    integer_number
 
-  # Titre de section
-  header_section
+    """
+    Deux menus déroulants liés
+    """
+    linked_drop_down_list
 
-  # Explication
-  explication
+    """
+    Données du Ministère de l’Enseignement Supérieur, de la Recherche et de l’Innovation
+    """
+    mesri
 
-  # Lien vers un autre dossier
-  dossier_link
+    """
+    Choix multiple
+    """
+    multiple_drop_down_list
 
-  # Pièce justificative
-  piece_justificative
+    """
+    Nombre
+    """
+    number
 
-  # SIRET
-  siret
+    """
+    Pays
+    """
+    pays
 
-  # Carte
-  carte
+    """
+    Téléphone
+    """
+    phone
 
-  # Bloc répétable
-  repetition
+    """
+    Pièce justificative
+    """
+    piece_justificative
 
-  # Titre identité
-  titre_identite
+    """
+    Situation Pôle emploi
+    """
+    pole_emploi
 
-  # Iban
-  iban
+    """
+    Régions
+    """
+    regions
 
-  # Annuaire de l’éducation
-  annuaire_education
+    """
+    Bloc répétable
+    """
+    repetition
 
-  # Données de la Caisse nationale des allocations familiales
-  cnaf
+    """
+    RNA
+    """
+    rna
 
-  # Données de la Direction générale des Finances publiques
-  dgfip
+    """
+    Numéro Siret
+    """
+    siret
 
-  # Situation Pôle emploi
-  pole_emploi
+    """
+    Texte court
+    """
+    text
 
-  # Données du Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation
-  mesri
+    """
+    Texte long
+    """
+    textarea
+
+    """
+    Titre identité
+    """
+    titre_identite
+
+    """
+    Oui/Non
+    """
+    yes_no
 }
 
 enum TypeOrganisme {
-  # Administration centrale
-  administration_centrale
+    """
+    Administration centrale
+    """
+    administration_centrale
 
-  # Association
-  association
+    """
+    Association
+    """
+    association
 
-  # Collectivité territoriale
-  collectivite_territoriale
+    """
+    Autre
+    """
+    autre
 
-  # Établissement d’enseignement
-  etablissement_enseignement
+    """
+    Collectivité territoriale
+    """
+    collectivite_territoriale
 
-  # Opérateur d’État
-  operateur_d_etat
+    """
+    Établissement d’enseignement
+    """
+    etablissement_enseignement
 
-  # Service déconcentré de l’État
-  service_deconcentre_de_l_etat
+    """
+    Opérateur d’État
+    """
+    operateur_d_etat
 
-  # Autre
-  autre
+    """
+    Service déconcentré de l’État
+    """
+    service_deconcentre_de_l_etat
 }
 
-# A valid URL, transported as a string
+"""
+A valid URL, transported as a string
+"""
 scalar URL
 
-# Éreur de validation
+"""
+Éreur de validation
+"""
 type ValidationError {
-  # A description of the error
-  message: String!
+    """
+    A description of the error
+    """
+    message: String!
+}
+
+"""
+Message d’alerte
+"""
+type WarningMessage {
+    """
+    La description de l’alerte
+    """
+    message: String!
+}
+
+type YesNoChampDescriptor implements ChampDescriptor {
+    """
+    Description des champs d’un bloc répétable.
+    """
+    champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+    """
+    Description du champ.
+    """
+    description: String
+    id: ID!
+
+    """
+    Libellé du champ.
+    """
+    label: String!
+
+    """
+    Est-ce que le champ est obligatoire ?
+    """
+    required: Boolean!
+
+    """
+    Type de la valeur du champ.
+    """
+    type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
