@@ -49,7 +49,7 @@ export const getDemarcheDossierWithCustomChamp = async (
     demarcheNumber: idDemarche,
   };
   if (updatedSince) {
-    variables["updatedSince"] = "2023-07-31T07:31:09.000Z";
+    variables["updatedSince"] = updatedSince;
   }
   const result = await graphQlRequest<getDemarcheWithCustomChampType>(
     client,
