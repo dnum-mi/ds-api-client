@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/dnum-mi/ds-api-client/compare/v1.4.1...v2.0.0) (2023-07-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* custom champ and repetition champ ([#60](https://github.com/dnum-mi/ds-api-client/issues/60))
+
+### Features
+
+* custom champ and repetition champ ([#60](https://github.com/dnum-mi/ds-api-client/issues/60)) ([08ab934](https://github.com/dnum-mi/ds-api-client/commit/08ab9341e4b218b86a6af36ac60348927fc09026))
+
+
+### Bug Fixes
+
+* add readme to generate types from schema graphql ([3a31b30](https://github.com/dnum-mi/ds-api-client/commit/3a31b301366562a25ba7077a53191ec2c1d0eb79))
+
 ## [1.4.1](https://github.com/dnum-mi/ds-api-client/compare/v1.4.0...v1.4.1) (2023-06-14)
 
 
