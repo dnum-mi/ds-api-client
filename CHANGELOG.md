@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/dnum-mi/ds-api-client/compare/v1.5.0...v1.5.1) (2023-08-03)
+
+
+### Bug Fixes
+
+* Mixing query from getDemarche and getDemarcheDossier in getDemarcheDossierWithCustomChamp to have one big request with Biblionum. ([95c68c1](https://github.com/dnum-mi/ds-api-client/commit/95c68c1e8189520345cae6b758c9ed5a8ff136ba))
+
 ## [1.5.0](https://github.com/dnum-mi/ds-api-client/compare/v1.4.1...v1.5.0) (2023-07-31)
 
 
