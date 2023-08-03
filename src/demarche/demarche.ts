@@ -8,6 +8,7 @@ import {
 
 import queryDemarche from "../graphql/getDemarche";
 import queryDemarcheDossiers from "../graphql/getDemarcheDossiers";
+import queryDemarcheDossiersCustomChamps from "../graphql/getDemarcheDossierCustomChamps";
 import queryDemarcheDeletedDossiers from "../graphql/getDemarcheDeletedDossiers";
 import { graphQlRequest } from "../common";
 import { mergeChampAndChampDescriptor } from "../dossier/dossier-custom-champ";
@@ -53,7 +54,7 @@ export const getDemarcheDossierWithCustomChamp = async (
   }
   const result = await graphQlRequest<getDemarcheWithCustomChampType>(
     client,
-    queryDemarcheDossiers,
+    queryDemarcheDossiersCustomChamps,
     variables,
   );
   result.demarche.dossiers.nodes.forEach((dossier) => {
