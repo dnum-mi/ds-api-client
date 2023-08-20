@@ -7,6 +7,6 @@ export default gql`
     label
     description
     required
-    options
+    __typename
   }
 `;
