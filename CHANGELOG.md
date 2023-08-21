@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/dnum-mi/ds-api-client/compare/v1.5.1...v1.6.0) (2023-08-21)
+
+
+### Features
+
+* adding __typename in types and in ChampDescriptor fragment ([396ae24](https://github.com/dnum-mi/ds-api-client/commit/396ae247bdce0a10221b1977152057f76691cd1a))
+
 ## [1.5.1](https://github.com/dnum-mi/ds-api-client/compare/v1.5.0...v1.5.1) (2023-08-03)
 
 
