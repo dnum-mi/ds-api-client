@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "graphql": "16.6.0",
-    "graphql-request": "5.0.0"
+    "graphql-request": "5.0.0",
+    "https-proxy-agent": "7.0.1"
   },
   "devDependencies": {
     "@types/jest": "28.1.8",
