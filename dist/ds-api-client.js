@@ -2,16 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DsApiClient = void 0;
 const graphql_request_1 = require("graphql-request");
+const https_proxy_agent_1 = require("https-proxy-agent");
 const demarche_1 = require("./demarche/demarche");
 const dossier_1 = require("./dossier/dossier");
 const groupeInstructeur_1 = require("./groupeInstructeur/groupeInstructeur");
 const dossier_custom_champ_1 = require("./dossier/dossier-custom-champ");
 class DsApiClient {
-    constructor(url, token) {
+    constructor(url, token, proxyUrl = "") {
         this.client = new graphql_request_1.GraphQLClient(url, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
+            agent: proxyUrl !== "" && proxyUrl !== undefined && proxyUrl !== null
+                ? new https_proxy_agent_1.HttpsProxyAgent(proxyUrl)
+                : undefined,
             credentials: "include",
             mode: "cors",
         });

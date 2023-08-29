@@ -2,7 +2,7 @@ import { GraphQLClient } from "graphql-request";
 import { DossierModifierAnnotationTextInput } from "./@types/types";
 export declare class DsApiClient {
     private client;
-    constructor(url: string, token: string);
+    constructor(url: string, token: string, proxyUrl?: string);
     demarche(idDemarche: number): Promise<{
         demarche: Partial<import("./@types/generated-types").Demarche>;
     }>;
