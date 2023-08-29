@@ -36,7 +36,7 @@ const url = 'https://www.demarches-simplifiees.fr/api/v2/graphql'
 // ... Créer une instance DS API client  
 const client = new DsApiClient(url, token)
 
-// ... Créer une instance DS API client avec un proxy
+// ... Créer une instance DS API client avec un http proxy
 const client = new DsApiClient(url, token, proxyUrl)
 
 // ... Rechercher une demarche par id de demarche 
