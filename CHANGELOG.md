@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/dnum-mi/ds-api-client/compare/v1.6.0...v1.6.1) (2023-08-29)
+
+
+### Bug Fixes
+
+* add option http proxy ([27e0dbc](https://github.com/dnum-mi/ds-api-client/commit/27e0dbca06cf5758580757c07e8390ee27bf63e7))
+
 ## [1.6.0](https://github.com/dnum-mi/ds-api-client/compare/v1.5.1...v1.6.0) (2023-08-21)
 
 
