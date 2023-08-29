@@ -11,7 +11,7 @@ Un DS Client GraphQL prenant en charge Node et les navigateurs pour les scripts 
 
 ## Run Test
 
-```shell notranslate position-relative overflow-auto
+```shell
 cp test/env.example .env 
 # Changer les valeurs dans le .env
 npm test
@@ -19,15 +19,15 @@ npm test
 
 ## Installation
 
-NPM: <https://www.npmjs.com/package/@dnum-mi/ds-api-client>
+NPM: [https://www.npmjs.com/package/@dnum-mi/ds-api-client](https://www.npmjs.com/package/@dnum-mi/ds-api-client)
 
-```shell notranslate position-relative overflow-auto
+```shell
 npm add ds-api-client
 ```
 
 ## Utilisation
 
-```js notranslate position-relative overflow-auto
+```js
 import { DsApiClient } from 'ds-api-client'
 
 const token = 'xxxxx'
@@ -35,6 +35,9 @@ const url = 'https://www.demarches-simplifiees.fr/api/v2/graphql'
 
 // ... Créer une instance DS API client  
 const client = new DsApiClient(url, token)
+
+// ... Créer une instance DS API client avec un proxy
+const client = new DsApiClient(url, token, proxyUrl)
 
 // ... Rechercher une demarche par id de demarche 
 const demarche = await client.demarche(idDemarche)
@@ -56,10 +59,10 @@ const groupeInstructeur = await client.groupeInstructeur(idGroupeInstructeur).th
 
 Le schema de Demarches-Simplifiées peut-être récupérer de lien [ici](https://github.com/demarches-simplifiees/demarches-simplifiees.fr/blob/main/app/graphql/schema.graphql).
 
-Pour générer, utliser le site generation <https://the-guild.dev/graphql/codegen>.
+Pour générer, utliser le site generation [https://the-guild.dev/graphql/codegen](https://the-guild.dev/graphql/codegen).
 La configuration à mettre est au nivau de codegen.yml est
 
-``` yaml
+```yaml
 generates:
   generated-types.ts:
     plugins:

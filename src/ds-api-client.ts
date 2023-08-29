@@ -1,4 +1,5 @@
 import { GraphQLClient } from "graphql-request";
+import { HttpsProxyAgent } from "https-proxy-agent";
 import {
   getDemarche,
   getDemarcheDeletedDossiers,
@@ -13,11 +14,17 @@ import { getDossierWithCustomChamp } from "./dossier/dossier-custom-champ";
 export class DsApiClient {
   private client: GraphQLClient;
 
-  constructor(url: string, token: string) {
+  constructor(url: string, token: string, proxyUrl = "") {
     this.client = new GraphQLClient(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      agent:
+        proxyUrl !== "" && proxyUrl !== undefined && proxyUrl !== null
+          ? new HttpsProxyAgent(proxyUrl)
+          : undefined,
       credentials: "include",
       mode: "cors",
     });
