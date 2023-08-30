@@ -7,6 +7,17 @@ import { Dossier } from "../@types/generated-types";
 
 type getDossierWithCustomChampType = { dossier: DossierWithCustomChamp };
 
+const extractSmallId = (base64String: string): string => {
+  const decodedString = Buffer.from(base64String, "base64").toString("utf8");
+  const pipeIndex = decodedString.indexOf("|");
+  if (pipeIndex !== -1) {
+    return Buffer.from(decodedString.substring(0, pipeIndex)).toString(
+      "base64",
+    );
+  }
+  return base64String;
+};
+
 export const mergeChampAndChampDescriptor = (
   dossier: Partial<Dossier>,
 ): void => {
@@ -29,7 +40,7 @@ export const mergeChampAndChampDescriptor = (
         }
         return [[descriptor.id, descriptor]];
       })
-      .flat(),
+      .flat(1),
   );
   dossier.champs = dossier.champs.map((champ) => {
     (champ as CustomChamp).champDescriptor = _hashDescriptor[champ.id];
@@ -38,17 +49,12 @@ export const mergeChampAndChampDescriptor = (
     if (champ.__typename === "RepetitionChamp") {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      champ.rows.map((row) => ({
-        champs: row.champs.map((subChamp) => {
-          const smallId = Buffer.from(
-            Buffer.from(subChamp.id, "base64")
-              .toString("binary")
-              .substring(0, 10),
-            "binary",
-          ).toString("base64");
-          (subChamp as CustomChamp).champDescriptor = _hashDescriptor[smallId];
-        }),
-      }));
+      champ.rows.forEach((row) => {
+        row.champs.forEach((subChamp) => {
+          (subChamp as CustomChamp).champDescriptor =
+            _hashDescriptor[extractSmallId(subChamp.id)];
+        });
+      });
     }
     return champ;
   });
