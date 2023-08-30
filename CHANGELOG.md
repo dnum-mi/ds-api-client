@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/dnum-mi/ds-api-client/compare/v1.6.1...v1.6.2) (2023-08-30)
+
+
+### Bug Fixes
+
+* :bug: Extracting id for repeatble champs for different size ([2aa9340](https://github.com/dnum-mi/ds-api-client/commit/2aa9340320891020bfd580160e516d19f30c0f82))
+
 ## [1.6.1](https://github.com/dnum-mi/ds-api-client/compare/v1.6.0...v1.6.1) (2023-08-29)
 
 
