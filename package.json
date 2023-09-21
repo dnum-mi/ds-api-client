@@ -24,7 +24,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "graphql": "16.6.0",
+    "graphql": "16.8.1",
     "graphql-request": "5.0.0",
     "https-proxy-agent": "7.0.1"
   },
