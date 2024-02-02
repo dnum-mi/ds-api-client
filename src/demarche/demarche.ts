@@ -10,6 +10,7 @@ import queryDemarche from "../graphql/getDemarche";
 import queryDemarcheDossiers from "../graphql/getDemarcheDossiers";
 import queryDemarcheDossiersCustomChamps from "../graphql/getDemarcheDossierCustomChamps";
 import queryDemarcheDeletedDossiers from "../graphql/getDemarcheDeletedDossiers";
+import queryDemarcheDossierIds from "../graphql/getDemarcheDossierIds";
 import { graphQlRequest } from "../common";
 import { mergeChampAndChampDescriptor } from "../dossier/dossier-custom-champ";
 
@@ -69,5 +70,24 @@ export const getDemarcheDeletedDossiers = async (
 ): Promise<getDemarcheType> => {
   return graphQlRequest<getDemarcheType>(client, queryDemarcheDeletedDossiers, {
     demarcheNumber: idDemarche,
+  });
+};
+
+export const getDemarcheDossierIds = async (
+  client: GraphQLClient,
+  idDemarche: number,
+  updatedSince?: Date,
+): Promise<getDemarcheType> => {
+  const variables = {
+    demarcheNumber: idDemarche,
+  };
+
+  if (updatedSince) {
+    variables["updatedSince"] = updatedSince;
+  }
+
+  return graphQlRequest<getDemarcheType>(client, queryDemarcheDossierIds, {
+    demarcheNumber: idDemarche,
+    variables,
   });
 };
