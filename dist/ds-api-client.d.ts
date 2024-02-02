@@ -17,6 +17,9 @@ export declare class DsApiClient {
             };
         };
     }>;
+    demarcheDossierIds(idDemarche: number, updatedSince?: Date): Promise<{
+        demarche: Partial<import("./@types/generated-types").Demarche>;
+    }>;
     demarcheDeletedDossiers(idDemarche: number): Promise<{
         demarche: Partial<import("./@types/generated-types").Demarche>;
     }>;

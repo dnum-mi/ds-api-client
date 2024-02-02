@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request";
 import { DossierWithCustomChamp } from "./custom-champ.type";
 import { Dossier } from "../@types/generated-types";
-declare type getDossierWithCustomChampType = {
+type getDossierWithCustomChampType = {
     dossier: DossierWithCustomChamp;
 };
 export declare const mergeChampAndChampDescriptor: (dossier: Partial<Dossier>) => void;

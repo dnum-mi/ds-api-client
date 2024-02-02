@@ -32,6 +32,9 @@ class DsApiClient {
     async demarcheDossierWithCustomChamp(idDemarche, updatedSince) {
         return await (0, demarche_1.getDemarcheDossierWithCustomChamp)(this.client, idDemarche, updatedSince);
     }
+    async demarcheDossierIds(idDemarche, updatedSince) {
+        return await (0, demarche_1.getDemarcheDossierIds)(this.client, idDemarche, updatedSince);
+    }
     async demarcheDeletedDossiers(idDemarche) {
         return await (0, demarche_1.getDemarcheDeletedDossiers)(this.client, idDemarche);
     }

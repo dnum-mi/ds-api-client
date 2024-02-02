@@ -1,6 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 import { Dossier, DossierModifierAnnotationTextInput } from "../@types/types";
-export declare type getDossierType = {
+export type getDossierType = {
     dossier: Partial<Dossier>;
 };
 export declare const getDossier: (client: GraphQLClient, idDossier: number) => Promise<getDossierType>;

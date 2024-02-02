@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDemarcheDeletedDossiers = exports.getDemarcheDossierWithCustomChamp = exports.getDemarcheDossiers = exports.getDemarche = void 0;
+exports.getDemarcheDossierIds = exports.getDemarcheDeletedDossiers = exports.getDemarcheDossierWithCustomChamp = exports.getDemarcheDossiers = exports.getDemarche = void 0;
 const getDemarche_1 = require("../graphql/getDemarche");
 const getDemarcheDossiers_1 = require("../graphql/getDemarcheDossiers");
 const getDemarcheDossierCustomChamps_1 = require("../graphql/getDemarcheDossierCustomChamps");
 const getDemarcheDeletedDossiers_1 = require("../graphql/getDemarcheDeletedDossiers");
+const getDemarcheDossierIds_1 = require("../graphql/getDemarcheDossierIds");
 const common_1 = require("../common");
 const dossier_custom_champ_1 = require("../dossier/dossier-custom-champ");
 const getDemarche = async (client, idDemarche) => {
@@ -39,4 +40,17 @@ const getDemarcheDeletedDossiers = async (client, idDemarche) => {
     });
 };
 exports.getDemarcheDeletedDossiers = getDemarcheDeletedDossiers;
+const getDemarcheDossierIds = async (client, idDemarche, updatedSince) => {
+    const variables = {
+        demarcheNumber: idDemarche,
+    };
+    if (updatedSince) {
+        variables["updatedSince"] = updatedSince;
+    }
+    return (0, common_1.graphQlRequest)(client, getDemarcheDossierIds_1.default, {
+        demarcheNumber: idDemarche,
+        variables,
+    });
+};
+exports.getDemarcheDossierIds = getDemarcheDossierIds;
 //# sourceMappingURL=demarche.js.map
