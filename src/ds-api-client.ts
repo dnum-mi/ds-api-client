@@ -3,6 +3,7 @@ import { HttpsProxyAgent } from "https-proxy-agent";
 import {
   getDemarche,
   getDemarcheDeletedDossiers,
+  getDemarcheDossierIds,
   getDemarcheDossiers,
   getDemarcheDossierWithCustomChamp,
 } from "./demarche/demarche";
@@ -51,6 +52,10 @@ export class DsApiClient {
       idDemarche,
       updatedSince,
     );
+  }
+
+  async demarcheDossierIds(idDemarche: number, updatedSince?: Date) {
+    return await getDemarcheDossierIds(this.client, idDemarche, updatedSince);
   }
 
   async demarcheDeletedDossiers(idDemarche: number) {
