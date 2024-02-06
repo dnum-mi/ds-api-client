@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.0](https://github.com/dnum-mi/ds-api-client/compare/v1.6.2...v1.7.0) (2024-02-06)
+
+
+### Features
+
+* get demarche with dossier ids only* ([71bc0a0](https://github.com/dnum-mi/ds-api-client/commit/71bc0a09c164e460a6f35b64e2f02ef995103db6))
+* get file from dossier ([454b018](https://github.com/dnum-mi/ds-api-client/commit/454b018e6603067f33ba28b0604778626a18da17))
+
 ## [1.6.2](https://github.com/dnum-mi/ds-api-client/compare/v1.6.1...v1.6.2) (2023-08-30)
 
 
