@@ -7,7 +7,13 @@ import {
   getDemarcheDossiers,
   getDemarcheDossierWithCustomChamp,
 } from "./demarche/demarche";
-import { getDossier, writeInPrivateAnnotation } from "./dossier/dossier";
+import {
+  getAttestationFromDossier,
+  getFilesFromDossier,
+  getDossier,
+  getOneFileFromDossier,
+  writeInPrivateAnnotation,
+} from "./dossier/dossier";
 import { getGroupInstructeur } from "./groupeInstructeur/groupeInstructeur";
 import { DossierModifierAnnotationTextInput } from "./@types/types";
 import { getDossierWithCustomChamp } from "./dossier/dossier-custom-champ";
@@ -76,5 +82,16 @@ export class DsApiClient {
 
   async groupeInstructeur(idGroupeInstructeur: number) {
     return await getGroupInstructeur(this.client, idGroupeInstructeur);
+  }
+
+  async DossierFiles(idDossier) {
+    return await getFilesFromDossier(this.client, idDossier);
+  }
+  async dossierFile(idDossier: number, idChamp: string) {
+    return await getOneFileFromDossier(this.client, idDossier, idChamp);
+  }
+
+  async dossierAttestation(idDossier: number) {
+    return await getAttestationFromDossier(this.client, idDossier);
   }
 }
