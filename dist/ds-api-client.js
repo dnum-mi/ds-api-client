@@ -50,6 +50,15 @@ class DsApiClient {
     async groupeInstructeur(idGroupeInstructeur) {
         return await (0, groupeInstructeur_1.getGroupInstructeur)(this.client, idGroupeInstructeur);
     }
+    async DossierFiles(idDossier) {
+        return await (0, dossier_1.getFilesFromDossier)(this.client, idDossier);
+    }
+    async dossierFile(idDossier, idChamp) {
+        return await (0, dossier_1.getOneFileFromDossier)(this.client, idDossier, idChamp);
+    }
+    async dossierAttestation(idDossier) {
+        return await (0, dossier_1.getAttestationFromDossier)(this.client, idDossier);
+    }
 }
 exports.DsApiClient = DsApiClient;
 //# sourceMappingURL=ds-api-client.js.map

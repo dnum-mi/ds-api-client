@@ -31,4 +31,21 @@ export declare class DsApiClient {
     groupeInstructeur(idGroupeInstructeur: number): Promise<{
         groupeInstructeur: Partial<import("./@types/generated-types").GroupeInstructeur>;
     }>;
+    DossierFiles(idDossier: any): Promise<import("./dossier/dossier").getDossierType>;
+    dossierFile(idDossier: number, idChamp: string): Promise<{
+        champ: {
+            id?: string;
+            files: Partial<import("./@types/generated-types").File>[];
+            dossierId: string;
+            dossierNumber: number;
+        };
+    }>;
+    dossierAttestation(idDossier: number): Promise<{
+        champ: {
+            id?: string;
+            files: Partial<import("./@types/generated-types").File>[];
+            dossierId: string;
+            dossierNumber: number;
+        };
+    }>;
 }
