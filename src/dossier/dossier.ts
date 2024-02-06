@@ -1,6 +1,14 @@
 import { GraphQLClient } from "graphql-request";
-import { Dossier, DossierModifierAnnotationTextInput } from "../@types/types";
+import {
+  Dossier,
+  DossierModifierAnnotationTextInput,
+  File,
+  PieceJustificativeChamp,
+  RepetitionChamp,
+} from "../@types/types";
 import getDossierQuery from "../graphql/getDossier";
+import getFilesFromDossierQuery from "../graphql/getFilesFromDossier";
+import getOneFileFromDossierQuery from "../graphql/getOneFileFromDossier";
 import updateAnnotationPrivateQuery from "../graphql/dossierModifierAnnotationText";
 import { graphQlRequest } from "../common";
 
@@ -38,4 +46,99 @@ export const writeInPrivateAnnotation = async (
       input.value
     );
   });
+};
+
+const notEmptyChampsFilter = (ch) =>
+  ch.id ||
+  ((ch as RepetitionChamp).rows && (ch as RepetitionChamp).rows.length);
+
+export const getFilesFromDossier = async (
+  client: GraphQLClient,
+  idDossier: number,
+): Promise<getDossierType> => {
+  const dossier = await graphQlRequest<getDossierType>(
+    client,
+    getFilesFromDossierQuery,
+    {
+      dossierNumber: idDossier,
+    },
+  );
+  return {
+    dossier: {
+      id: dossier.dossier.id,
+      number: dossier.dossier.number,
+      annotations: dossier.dossier.annotations?.filter(notEmptyChampsFilter),
+      champs: dossier.dossier.champs?.filter(notEmptyChampsFilter),
+      messages: dossier.dossier.messages?.filter(
+        (mes) => mes.attachments && mes.attachments.length,
+      ),
+      attestation: dossier.dossier.attestation,
+    },
+  };
+};
+type champType = {
+  champ: {
+    id?: string;
+    files: Partial<File>[];
+    dossierId: string;
+    dossierNumber: number;
+  };
+};
+
+export const getOneFileFromDossier = async (
+  client: GraphQLClient,
+  idDossier: number,
+  idChamp: string,
+): Promise<champType> => {
+  const dossier = await graphQlRequest<getDossierType>(
+    client,
+    getOneFileFromDossierQuery,
+    {
+      dossierNumber: idDossier,
+      champId: idChamp,
+      includeAnnotations: true,
+      includeChamps: true,
+      includeMessages: true,
+    },
+  );
+
+  const champ: Partial<PieceJustificativeChamp> = [
+    ...(dossier.dossier.annotations || []),
+    ...(dossier.dossier.champs || []),
+    ...(dossier.dossier.messages.map((mes) => ({
+      id: mes.id,
+      files: mes.attachments,
+    })) || []),
+  ].flat()[0];
+
+  return {
+    champ: {
+      id: champ.id,
+      files: champ.files,
+      dossierId: dossier.dossier.id,
+      dossierNumber: dossier.dossier.number,
+    },
+  };
+};
+
+export const getAttestationFromDossier = async (
+  client: GraphQLClient,
+  idDossier: number,
+): Promise<champType> => {
+  const dossier = await graphQlRequest<getDossierType>(
+    client,
+    getOneFileFromDossierQuery,
+    {
+      dossierNumber: idDossier,
+      includeAttestation: true,
+    },
+  );
+
+  return {
+    champ: {
+      dossierId: dossier.dossier.id,
+      dossierNumber: dossier.dossier.number,
+      files: dossier.dossier.attestation ? [dossier.dossier.attestation] : [],
+    },
+  };
 };
