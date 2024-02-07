@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/dnum-mi/ds-api-client/compare/v1.7.0...v1.7.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* get revsion of demarches ([af55d95](https://github.com/dnum-mi/ds-api-client/commit/af55d95c1aedff21e44d72e61be040462107dc25))
+
 ## [1.7.0](https://github.com/dnum-mi/ds-api-client/compare/v1.6.2...v1.7.0) (2024-02-06)
 
 
