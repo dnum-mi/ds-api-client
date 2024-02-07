@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.2](https://github.com/dnum-mi/ds-api-client/compare/v1.7.1...v1.7.2) (2024-02-07)
+
+
+### Bug Fixes
+
+* add fragemnt in demarches with dossier ids only ([0a87bb9](https://github.com/dnum-mi/ds-api-client/commit/0a87bb9b18c7a08e24b9baee8a80b4ac1c11c5e0))
+
 ## [1.7.1](https://github.com/dnum-mi/ds-api-client/compare/v1.7.0...v1.7.1) (2024-02-07)
 
 
