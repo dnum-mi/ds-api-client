@@ -1,4 +1,6 @@
 import { gql } from "graphql-request";
+import ChampDescriptorFragment from "./fragment/ChampDescriptorFragment";
+import RevisionFragment from "./fragment/RevisionFragment";
 
 export default gql`
   query getDemarche(
@@ -68,4 +70,6 @@ export default gql`
       }
     }
   }
+  ${ChampDescriptorFragment}
+  ${RevisionFragment}
 `;
