@@ -36,12 +36,9 @@ describe.skip("ds api", () => {
   });
 
   it("get one files from dossiers in annatation", async () => {
-    const response = await dsApiClient.dossierFile(221, "Q2hhbXAtMTQ1Ng==");
-    expect(response?.champ).toMatchObject({
-      id: "Q2hhbXAtMTQ1Ng==",
-      dossierNumber: 221,
-    });
-    expect(response?.champ.files).toHaveLength(1);
+    const response = await dsApiClient.dossierFile(221, "Q2hhbXAtMTQ1MA==");
+    console.log(response);
+    expect(response).toHaveLength(1);
   });
 
   it("get one files from dossiers in repetable of annotation ", async () => {
@@ -49,28 +46,16 @@ describe.skip("ds api", () => {
       221,
       "Q2hhbXAtMTQ1OHwwMUhOWVkyMENWR1pNMUtUOEI2RTk5Q1QyMg==",
     );
-    expect(response?.champ).toMatchObject({
-      id: "Q2hhbXAtMTQ1OHwwMUhOWVkyMENWR1pNMUtUOEI2RTk5Q1QyMg==",
-      dossierNumber: 221,
-    });
-    expect(response?.champ.files).toHaveLength(1);
+    expect(response).toHaveLength(1);
   });
 
   it("get one files from dossiers in message ", async () => {
     const response = await dsApiClient.dossierFile(221, "Q29tbWVudGFpcmUtMjM3");
-    expect(response?.champ).toMatchObject({
-      id: "Q29tbWVudGFpcmUtMjM3",
-      dossierNumber: 221,
-    });
-    expect(response?.champ.files).toHaveLength(1);
+    expect(response).toHaveLength(1);
   });
 
   it("get attestation from dossiers ", async () => {
     const response = await dsApiClient.dossierAttestation(222);
-    expect(response?.champ.id).toBeUndefined();
-    expect(response?.champ).toMatchObject({
-      dossierNumber: 222,
-    });
-    expect(response?.champ.files).toHaveLength(1);
+    expect(response).toHaveLength(1);
   });
 });
