@@ -6,6 +6,7 @@ export default gql`
   query getFilesFromDossier($dossierNumber: Int!) {
     dossier(number: $dossierNumber) {
       id
+      number
       annotations {
         ...PieceJustificativeFragment
         ... on RepetitionChamp {

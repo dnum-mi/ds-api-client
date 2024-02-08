@@ -13,5 +13,8 @@ export default gql`
     dateDerniereModification
     dateDepublication
     dateFermeture
+    revision {
+      ...RevisionFragment
+    }
   }
 `;
