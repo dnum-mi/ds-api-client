@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.3](https://github.com/dnum-mi/ds-api-client/compare/v1.7.2...v1.7.3) (2024-02-08)
+
+
+### Bug Fixes
+
+* add annotation descriptor in annotation ([47e53f6](https://github.com/dnum-mi/ds-api-client/commit/47e53f6492a0c21af50d5d7108122000b4d10ae9))
+* fonction get files return files ([8d2fbd7](https://github.com/dnum-mi/ds-api-client/commit/8d2fbd7f3f49e7e4de62814bdb33abe26fbe0c46))
+
 ## [1.7.2](https://github.com/dnum-mi/ds-api-client/compare/v1.7.1...v1.7.2) (2024-02-07)
 
 
