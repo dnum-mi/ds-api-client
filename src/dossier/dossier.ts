@@ -76,20 +76,12 @@ export const getFilesFromDossier = async (
     },
   };
 };
-type champType = {
-  champ: {
-    id?: string;
-    files: Partial<File>[];
-    dossierId: string;
-    dossierNumber: number;
-  };
-};
 
 export const getOneFileFromDossier = async (
   client: GraphQLClient,
   idDossier: number,
   idChamp: string,
-): Promise<champType> => {
+): Promise<File[]> => {
   const dossier = await graphQlRequest<getDossierType>(
     client,
     getOneFileFromDossierQuery,
@@ -111,20 +103,13 @@ export const getOneFileFromDossier = async (
     })) || []),
   ].flat()[0];
 
-  return {
-    champ: {
-      id: champ.id,
-      files: champ.files,
-      dossierId: dossier.dossier.id,
-      dossierNumber: dossier.dossier.number,
-    },
-  };
+  return champ.files;
 };
 
 export const getAttestationFromDossier = async (
   client: GraphQLClient,
   idDossier: number,
-): Promise<champType> => {
+): Promise<File[]> => {
   const dossier = await graphQlRequest<getDossierType>(
     client,
     getOneFileFromDossierQuery,
@@ -134,11 +119,5 @@ export const getAttestationFromDossier = async (
     },
   );
 
-  return {
-    champ: {
-      dossierId: dossier.dossier.id,
-      dossierNumber: dossier.dossier.number,
-      files: dossier.dossier.attestation ? [dossier.dossier.attestation] : [],
-    },
-  };
+  return dossier.dossier.attestation ? [dossier.dossier.attestation] : [];
 };
