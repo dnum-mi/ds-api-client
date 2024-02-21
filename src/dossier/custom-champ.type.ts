@@ -1,4 +1,4 @@
-import { Champ, ChampDescriptor, Dossier } from "../@types/generated-types";
+import { Champ, ChampDescriptor, Dossier } from "../@types/types";
 
 export type CustomChamp = Champ & {
   champDescriptor: ChampDescriptor;
