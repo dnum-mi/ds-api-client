@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.4](https://github.com/dnum-mi/ds-api-client/compare/v1.7.3...v1.7.4) (2024-02-21)
+
+
+### Bug Fixes
+
+* __typename is now inside custom-champ ([#92](https://github.com/dnum-mi/ds-api-client/issues/92)) ([d737e5e](https://github.com/dnum-mi/ds-api-client/commit/d737e5e422da4884498378d5f50624699fc9891e))
+
 ## [1.7.3](https://github.com/dnum-mi/ds-api-client/compare/v1.7.2...v1.7.3) (2024-02-08)
 
 
