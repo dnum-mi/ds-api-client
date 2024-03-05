@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.5](https://github.com/dnum-mi/ds-api-client/compare/v1.7.4...v1.7.5) (2024-03-05)
+
+
+### Bug Fixes
+
+* replace file by files and add motivation attachment ([2055ad5](https://github.com/dnum-mi/ds-api-client/commit/2055ad54fd69a011456d6e44f4cf3ab0cdcb313a))
+
 ## [1.7.4](https://github.com/dnum-mi/ds-api-client/compare/v1.7.3...v1.7.4) (2024-02-21)
 
 
