@@ -30,6 +30,9 @@ export default gql`
       attestation {
         ...FileFragment
       }
+      motivationAttachment {
+        ...FileFragment
+      }
     }
   }
   ${FileFragment}

@@ -13,6 +13,7 @@ import {
   getDossier,
   getOneFileFromDossier,
   writeInPrivateAnnotation,
+  getMotivationAttachmentFromDossier,
 } from "./dossier/dossier";
 import { getGroupInstructeur } from "./groupeInstructeur/groupeInstructeur";
 import { DossierModifierAnnotationTextInput } from "./@types/types";
@@ -93,5 +94,9 @@ export class DsApiClient {
 
   async dossierAttestation(idDossier: number) {
     return await getAttestationFromDossier(this.client, idDossier);
+  }
+
+  async dossierMotivationAttachment(idDossier: number) {
+    return await getMotivationAttachmentFromDossier(this.client, idDossier);
   }
 }

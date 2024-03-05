@@ -32,7 +32,7 @@ export default gql`
       values
     }
     ... on PieceJustificativeChamp {
-      file {
+      files {
         ...FileFragment
       }
     }
