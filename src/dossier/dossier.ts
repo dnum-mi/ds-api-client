@@ -73,6 +73,7 @@ export const getFilesFromDossier = async (
         (mes) => mes.attachments && mes.attachments.length,
       ),
       attestation: dossier.dossier.attestation,
+      motivationAttachment: dossier.dossier.motivationAttachment,
     },
   };
 };
@@ -120,4 +121,22 @@ export const getAttestationFromDossier = async (
   );
 
   return dossier.dossier.attestation ? [dossier.dossier.attestation] : [];
+};
+
+export const getMotivationAttachmentFromDossier = async (
+  client: GraphQLClient,
+  idDossier: number,
+): Promise<File[]> => {
+  const dossier = await graphQlRequest<getDossierType>(
+    client,
+    getOneFileFromDossierQuery,
+    {
+      dossierNumber: idDossier,
+      includeAttestation: true,
+    },
+  );
+
+  return dossier.dossier.motivationAttachment
+    ? [dossier.dossier.motivationAttachment]
+    : [];
 };

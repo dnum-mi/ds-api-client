@@ -6,5 +6,7 @@ export default gql`
     files {
       ...FileFragment
     }
+    label
+    stringValue
   }
 `;

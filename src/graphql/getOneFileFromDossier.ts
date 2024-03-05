@@ -29,6 +29,9 @@ export default gql`
         }
         id
       }
+      motivationAttachment {
+        ...FileFragment
+      }
     }
   }
 
