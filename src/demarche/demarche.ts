@@ -86,8 +86,9 @@ export const getDemarcheDossierIds = async (
     variables["updatedSince"] = updatedSince;
   }
 
-  return graphQlRequest<getDemarcheType>(client, queryDemarcheDossierIds, {
-    demarcheNumber: idDemarche,
+  return graphQlRequest<getDemarcheType>(
+    client,
+    queryDemarcheDossierIds,
     variables,
-  });
+  );
 };
