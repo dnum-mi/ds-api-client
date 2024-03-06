@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.6](https://github.com/dnum-mi/ds-api-client/compare/v1.7.5...v1.7.6) (2024-03-06)
+
+
+### Bug Fixes
+
+* get dossiers by update since ([be5b2fb](https://github.com/dnum-mi/ds-api-client/commit/be5b2fb4a51140bbc59318047e57cd1dc4919a7b))
+
 ## [1.7.5](https://github.com/dnum-mi/ds-api-client/compare/v1.7.4...v1.7.5) (2024-03-05)
 
 
