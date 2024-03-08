@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.7](https://github.com/dnum-mi/ds-api-client/compare/v1.7.6...v1.7.7) (2024-03-08)
+
+
+### Bug Fixes
+
+* add file to get old dossiers ([1eba984](https://github.com/dnum-mi/ds-api-client/commit/1eba9844698199bb66d59c958fcf365ba1e23d1f))
+
 ## [1.7.6](https://github.com/dnum-mi/ds-api-client/compare/v1.7.5...v1.7.6) (2024-03-06)
 
 
