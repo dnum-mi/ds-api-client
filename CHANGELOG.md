@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.8](https://github.com/dnum-mi/ds-api-client/compare/v1.7.7...v1.7.8) (2024-03-08)
+
+
+### Bug Fixes
+
+* file into files and delete file ([e00616d](https://github.com/dnum-mi/ds-api-client/commit/e00616d20587556909af9242d6d716fbdfaedaf9))
+
 ## [1.7.7](https://github.com/dnum-mi/ds-api-client/compare/v1.7.6...v1.7.7) (2024-03-08)
 
 
