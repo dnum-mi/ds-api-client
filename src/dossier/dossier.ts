@@ -11,6 +11,7 @@ import getFilesFromDossierQuery from "../graphql/getFilesFromDossier";
 import getOneFileFromDossierQuery from "../graphql/getOneFileFromDossier";
 import updateAnnotationPrivateQuery from "../graphql/dossierModifierAnnotationText";
 import { graphQlRequest } from "../common";
+import { getDossierMergeFileInFiles } from "./dossier-utils";
 
 export type getDossierType = { dossier: Partial<Dossier> };
 
@@ -63,6 +64,9 @@ export const getFilesFromDossier = async (
       dossierNumber: idDossier,
     },
   );
+
+  getDossierMergeFileInFiles(dossier.dossier);
+
   return {
     dossier: {
       id: dossier.dossier.id,
@@ -95,10 +99,12 @@ export const getOneFileFromDossier = async (
     },
   );
 
+  const dossier1 = getDossierMergeFileInFiles(dossier.dossier);
+
   const champ: Partial<PieceJustificativeChamp> = [
-    ...(dossier.dossier.annotations || []),
-    ...(dossier.dossier.champs || []),
-    ...(dossier.dossier.messages.map((mes) => ({
+    ...(dossier1.annotations || []),
+    ...(dossier1.champs || []),
+    ...(dossier1.messages.map((mes) => ({
       id: mes.id,
       files: mes.attachments,
     })) || []),
