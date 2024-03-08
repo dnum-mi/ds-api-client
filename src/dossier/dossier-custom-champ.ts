@@ -9,6 +9,7 @@ import {
   Dossier,
   RepetitionChampDescriptor,
 } from "../@types/generated-types";
+import { getDossierMergeFileInFiles } from "./dossier-utils";
 
 type getDossierWithCustomChampType = { dossier: DossierWithCustomChamp };
 
@@ -91,6 +92,7 @@ export const getDossierWithCustomChamp = async (
   const result = await graphQlRequest<getDossierType>(client, getDossierQuery, {
     dossierNumber: idDossier,
   });
+  getDossierMergeFileInFiles(result.dossier);
   mergeChampAndChampDescriptor(result.dossier);
   return result as getDossierWithCustomChampType;
 };
