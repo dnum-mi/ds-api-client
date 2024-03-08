@@ -70,3 +70,8 @@ generates:
     config:
       enumsAsConst: true
 ```
+
+## Publier dans le registre npm
+
+* Sur un action de 'push' ou fusion sur la branche "main", un "pull resquet" de création de "release" sera crée
+* Fusionner cet "pull request" sur main
