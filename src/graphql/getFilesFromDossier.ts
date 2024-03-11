@@ -8,8 +8,11 @@ export default gql`
       id
       number
       annotations {
+        __typename
         ...PieceJustificativeFragment
         ... on RepetitionChamp {
+          __typename
+          id
           rows {
             champs {
               ...PieceJustificativeFragment
@@ -20,8 +23,11 @@ export default gql`
       champs {
         ...PieceJustificativeFragment
         ... on RepetitionChamp {
+          __typename
+          id
           rows {
             champs {
+              __typename
               ...PieceJustificativeFragment
             }
           }

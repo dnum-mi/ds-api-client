@@ -15,12 +15,36 @@ export default gql`
       id
       number
       annotations(id: $champId) @include(if: $includeAnnotations) {
-        ...PieceJustificativeFragment
+        ... on RepetitionChamp {
+          __typename
+          rows {
+            champs {
+              __typename
+              ... on PieceJustificativeChamp {
+                ...PieceJustificativeFragment
+              }
+            }
+          }
+        }
+        ... on PieceJustificativeChamp {
+          __typename
+          ...PieceJustificativeFragment
+        }
       }
       attestation @include(if: $includeAttestation) {
+        __typename
         ...FileFragment
       }
       champs(id: $champId) @include(if: $includeChamps) {
+        __typename
+        ... on RepetitionChamp {
+          rows {
+            champs {
+              __typename
+              ...PieceJustificativeFragment
+            }
+          }
+        }
         ...PieceJustificativeFragment
       }
       messages(id: $champId) @include(if: $includeMessages) {

@@ -2,7 +2,7 @@ import { DsApiClient } from "../src/index";
 
 const { API_URL, API_TOKEN } = process.env;
 
-describe.skip("ds api", () => {
+describe("ds api", () => {
   let dsApiClient;
 
   beforeAll(() => {
@@ -37,16 +37,17 @@ describe.skip("ds api", () => {
 
   it("get one files from dossiers in annatation", async () => {
     const response = await dsApiClient.dossierFile(221, "Q2hhbXAtMTQ1MA==");
-    console.log(response);
     expect(response).toHaveLength(1);
   });
 
   it("get one files from dossiers in repetable of annotation ", async () => {
     const response = await dsApiClient.dossierFile(
       221,
-      "Q2hhbXAtMTQ1OHwwMUhOWVkyMENWR1pNMUtUOEI2RTk5Q1QyMg==",
+      "Q2hhbXAtMTQ1MnwwMUhOWVk0OVFLRkpTMTFGMFdRRk1RSDVWRw==",
+      "Q2hhbXAtMTQ1MQ==",
     );
     expect(response).toHaveLength(1);
+    expect(response[0]).toHaveProperty("checksum", "LFOK4lV89YdX1f3iNHxWrg==");
   });
 
   it("get one files from dossiers in message ", async () => {
