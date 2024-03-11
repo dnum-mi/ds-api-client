@@ -88,8 +88,17 @@ export class DsApiClient {
   async DossierFiles(idDossier) {
     return await getFilesFromDossier(this.client, idDossier);
   }
-  async dossierFile(idDossier: number, idChamp: string) {
-    return await getOneFileFromDossier(this.client, idDossier, idChamp);
+  async dossierFile(
+    idDossier: number,
+    idChamp: string,
+    idChampParent?: string,
+  ) {
+    return await getOneFileFromDossier(
+      this.client,
+      idDossier,
+      idChamp,
+      idChampParent,
+    );
   }
 
   async dossierAttestation(idDossier: number) {

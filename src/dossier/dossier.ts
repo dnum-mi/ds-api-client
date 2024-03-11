@@ -1,5 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 import {
+  Champ,
   Dossier,
   DossierModifierAnnotationTextInput,
   File,
@@ -86,13 +87,15 @@ export const getOneFileFromDossier = async (
   client: GraphQLClient,
   idDossier: number,
   idChamp: string,
+  //TODO: Bug dans DS
+  idChampParent?: string,
 ): Promise<File[]> => {
   const dossier = await graphQlRequest<getDossierType>(
     client,
     getOneFileFromDossierQuery,
     {
       dossierNumber: idDossier,
-      champId: idChamp,
+      champId: idChampParent ?? idChamp,
       includeAnnotations: true,
       includeChamps: true,
       includeMessages: true,
@@ -100,8 +103,7 @@ export const getOneFileFromDossier = async (
   );
 
   const dossier1 = getDossierMergeFileInFiles(dossier.dossier);
-
-  const champ: Partial<PieceJustificativeChamp> = [
+  const champ: Partial<Champ | PieceJustificativeChamp> = [
     ...(dossier1.annotations || []),
     ...(dossier1.champs || []),
     ...(dossier1.messages.map((mes) => ({
@@ -110,7 +112,21 @@ export const getOneFileFromDossier = async (
     })) || []),
   ].flat()[0];
 
-  return champ.files;
+  if (champ.__typename === "RepetitionChamp") {
+    if (!idChampParent)
+      throw new Error("L'identifiant du champ parent est manquant");
+
+    return (champ as RepetitionChamp).rows.flatMap((row) =>
+      row.champs
+        .filter(
+          (ch: Champ) =>
+            ch.__typename === "PieceJustificativeChamp" && idChamp === ch.id,
+        )
+        .flatMap((ch: PieceJustificativeChamp) => ch.files),
+    );
+  }
+
+  return (champ as PieceJustificativeChamp).files;
 };
 
 export const getAttestationFromDossier = async (
