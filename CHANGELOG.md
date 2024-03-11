@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.9](https://github.com/dnum-mi/ds-api-client/compare/v1.7.8...v1.7.9) (2024-03-11)
+
+
+### Bug Fixes
+
+* add test:e2e ([195414f](https://github.com/dnum-mi/ds-api-client/commit/195414f543f74a059eec8b8e24f47a60bbe4597e))
+* bug in DS to get champ in repetitionChamp by id ([053d6f1](https://github.com/dnum-mi/ds-api-client/commit/053d6f1df12a1d96b1165d9ab348558027140fae))
+
 ## [1.7.8](https://github.com/dnum-mi/ds-api-client/compare/v1.7.7...v1.7.8) (2024-03-08)
 
 
