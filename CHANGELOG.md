@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.10](https://github.com/dnum-mi/ds-api-client/compare/v1.7.9...v1.7.10) (2024-04-05)
+
+
+### Bug Fixes
+
+* add demarche descriptor in dossiers of get demarche custom champ ([aab9f4c](https://github.com/dnum-mi/ds-api-client/commit/aab9f4c0891d200ce6aa18f2ea88f10c2a1a843a))
+
 ## [1.7.9](https://github.com/dnum-mi/ds-api-client/compare/v1.7.8...v1.7.9) (2024-03-11)
 
 
