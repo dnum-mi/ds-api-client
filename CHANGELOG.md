@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.11](https://github.com/dnum-mi/ds-api-client/compare/v1.7.10...v1.7.11) (2024-04-05)
+
+
+### Bug Fixes
+
+* query demache custom champs ([420d424](https://github.com/dnum-mi/ds-api-client/commit/420d4247ee18a6f93c5dfef8df079c308a59d028))
+
 ## [1.7.10](https://github.com/dnum-mi/ds-api-client/compare/v1.7.9...v1.7.10) (2024-04-05)
 
 
