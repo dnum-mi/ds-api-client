@@ -51,6 +51,9 @@ export default gql`
       ) {
         nodes {
           ...DossierFragment
+          demarche {
+            ...DemarcheDescriptorFragment
+          }
         }
       }
 
