@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 import DossierFragment from "./fragment/DossierFragment";
+import DemarcheDescriptorFragment from "./fragment/DemarcheDescriptorFragment";
 
 export default gql`
   query getDemarche(
@@ -51,6 +52,9 @@ export default gql`
       ) {
         nodes {
           ...DossierFragment
+          demarche {
+            ...DemarcheDescriptorFragment
+          }
         }
       }
 
@@ -64,4 +68,5 @@ export default gql`
     }
   }
   ${DossierFragment}
+  ${DemarcheDescriptorFragment}
 `;
