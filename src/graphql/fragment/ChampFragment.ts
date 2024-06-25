@@ -54,5 +54,11 @@ export default gql`
         code
       }
     }
+    ... on DepartementChamp {
+      departement {
+        name
+        code
+      }
+    }
   }
 `;
