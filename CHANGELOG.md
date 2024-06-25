@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.12](https://github.com/dnum-mi/ds-api-client/compare/v1.7.11...v1.7.12) (2024-06-25)
+
+
+### Bug Fixes
+
+* DeparteentChamps missing in ChampFragment ([b4fb28e](https://github.com/dnum-mi/ds-api-client/commit/b4fb28eb4be4d202cba54119e05b213afbbaaa06))
+
 ## [1.7.11](https://github.com/dnum-mi/ds-api-client/compare/v1.7.10...v1.7.11) (2024-04-05)
 
 
