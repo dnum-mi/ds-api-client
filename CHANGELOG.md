@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.13](https://github.com/dnum-mi/ds-api-client/compare/v1.7.12...v1.7.13) (2024-07-09)
+
+
+### Bug Fixes
+
+* type DossierWithCustomChamp for annotation ([c89b7f4](https://github.com/dnum-mi/ds-api-client/commit/c89b7f4f51ba2cb42e6a9d2424da268ffcc03acc))
+
 ## [1.7.12](https://github.com/dnum-mi/ds-api-client/compare/v1.7.11...v1.7.12) (2024-06-25)
 
 
