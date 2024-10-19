@@ -14,5 +14,9 @@ export default gql`
     departmentCode
     regionName
     regionCode
+    geometry {
+      coordinates
+      type
+    }
   }
 `;
