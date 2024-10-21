@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/dnum-mi/ds-api-client/compare/v1.7.13...v1.8.0) (2024-10-21)
+
+
+### Features
+
+* adding geometry inside AdressFragment ([c46a8f9](https://github.com/dnum-mi/ds-api-client/commit/c46a8f900a0b264d43041ec9bc271eebffc9ede0))
+
 ## [1.7.13](https://github.com/dnum-mi/ds-api-client/compare/v1.7.12...v1.7.13) (2024-07-09)
 
 
