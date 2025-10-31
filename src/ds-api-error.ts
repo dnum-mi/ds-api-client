@@ -16,11 +16,16 @@ export class DsApiError extends Error {
     ].join("\n");
   }
 
-  constructor(gqlResponse: any) {
+  constructor(e: any) {
     super(DsApiError.title);
-    this.graphQlRequest = gqlResponse.request;
-    this.graphQlResponse = gqlResponse.response;
-    this.errors = gqlResponse?.response?.errors || [];
+    if ("response" in e) {
+      const gqlResponse = e;
+      this.graphQlRequest = gqlResponse.request;
+      this.graphQlResponse = gqlResponse.response;
+      this.errors = gqlResponse?.response?.errors || [];
+    } else {
+      this.errors = [e];
+    }
     this._buildMessage();
   }
 }
