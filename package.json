@@ -22,7 +22,8 @@
     "test:unit:watch": "jest --watch",
     "test:unit:cov": "jest --coverage",
     "test:unit:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "generate-types":"graphql-codegen --config codegen/codegen.ts"
   },
   "dependencies": {
     "graphql": "^16.11.0",
@@ -30,6 +31,7 @@
     "https-proxy-agent": "7.0.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.0.1",
     "@types/jest": "29.5.12",
     "@types/node": "20.11.16",
     "@types/supertest": "6.0.2",
