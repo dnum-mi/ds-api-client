@@ -61,8 +61,19 @@ export class DsApiClient {
     );
   }
 
-  async demarcheDossierIds(idDemarche: number, updatedSince?: Date) {
-    return await getDemarcheDossierIds(this.client, idDemarche, updatedSince);
+  async demarcheDossierIds(
+    idDemarche: number,
+    updatedSince?: Date,
+    first?: number,
+    after?: string,
+  ) {
+    return await getDemarcheDossierIds(
+      this.client,
+      idDemarche,
+      updatedSince,
+      first,
+      after,
+    );
   }
 
   async demarcheDeletedDossiers(idDemarche: number) {

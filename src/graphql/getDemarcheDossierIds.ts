@@ -7,6 +7,7 @@ export default gql`
     $demarcheNumber: Int!
     $state: DossierState
     $order: Order
+    $first: Int
     $after: String
     $updatedSince: ISO8601DateTime
   ) {
@@ -51,9 +52,17 @@ export default gql`
       dossiers(
         state: $state
         order: $order
+        first: $first
         after: $after
         updatedSince: $updatedSince
       ) {
+        pageInfo {
+          hasPreviousPage
+          hasNextPage
+          startCursor
+          endCursor
+        }
+
         nodes {
           id
           number

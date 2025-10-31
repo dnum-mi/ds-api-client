@@ -77,6 +77,8 @@ export const getDemarcheDossierIds = async (
   client: GraphQLClient,
   idDemarche: number,
   updatedSince?: Date,
+  first?: number,
+  after?: string,
 ): Promise<getDemarcheType> => {
   const variables = {
     demarcheNumber: idDemarche,
@@ -84,6 +86,14 @@ export const getDemarcheDossierIds = async (
 
   if (updatedSince) {
     variables["updatedSince"] = updatedSince;
+  }
+
+  if (after) {
+    variables["after"] = after;
+  }
+
+  if (first) {
+    variables["first"] = first;
   }
 
   return graphQlRequest<getDemarcheType>(
