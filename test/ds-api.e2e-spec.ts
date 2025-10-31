@@ -27,12 +27,15 @@ describe("ds api", () => {
   it("get demarche with dossier ids number 1", async () => {
     const response = await dsApiClient.demarcheDossierIds(1);
     expect(response?.demarche?.number).toBe(1);
-    expect(response?.demarche?.dossiers.nodes).toHaveLength(1);
-    expect(response?.demarche?.dossiers.nodes).toMatchObject([
-      {
-        number: 220,
-      },
-    ]);
+    expect(response?.demarche?.dossiers.nodes).toHaveLength(8);
+    expect(response?.demarche?.dossiers.nodes).toMatchObject(
+      expect.arrayContaining([
+        expect.objectContaining({
+          number: 220,
+        }),
+      ]),
+    );
+    expect(response?.demarche?.dossiers.pageInfo.hasNextPage).toBeFalsy();
   });
 
   it("get one files from dossiers in annatation", async () => {
