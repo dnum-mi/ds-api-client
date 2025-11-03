@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/dnum-mi/ds-api-client/compare/v1.9.0...v1.9.1) (2025-11-03)
+
+
+### Bug Fixes
+
+* remove info demarche to getDemarcheDossierIds ([ab86a36](https://github.com/dnum-mi/ds-api-client/commit/ab86a36b46f26b07e2eb471b07abfab2e84fad00))
+
 ## [1.9.0](https://github.com/dnum-mi/ds-api-client/compare/v1.8.0...v1.9.0) (2025-11-03)
 
 
