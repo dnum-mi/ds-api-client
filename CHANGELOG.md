@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.9.0](https://github.com/dnum-mi/ds-api-client/compare/v1.8.0...v1.9.0) (2025-11-03)
+
+
+### Features
+
+* add cursor page for list dossiers ([c4f52bd](https://github.com/dnum-mi/ds-api-client/commit/c4f52bd38486c42ef0586d9d5d3b2761efc8827b))
+
+
+### Bug Fixes
+
+* show all messages from request graphql ([2d0e095](https://github.com/dnum-mi/ds-api-client/commit/2d0e095bb4e7f9b8f30dbd58d5c8f6b1dffb1646))
+
 ## [1.8.0](https://github.com/dnum-mi/ds-api-client/compare/v1.7.13...v1.8.0) (2024-10-21)
 
 
