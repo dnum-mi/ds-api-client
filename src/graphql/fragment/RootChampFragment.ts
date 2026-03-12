@@ -22,14 +22,5 @@ export default gql`
         ...GeoAreaFragment
       }
     }
-    ... on DossierLinkChamp {
-      dossier {
-        id
-        state
-        usager {
-          email
-        }
-      }
-    }
   }
 `;
