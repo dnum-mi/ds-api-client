@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.3](https://github.com/dnum-mi/ds-api-client/compare/v1.9.2...v1.9.3) (2026-03-16)
+
+
+### Bug Fixes
+
+* add workflow to re-publish in npm ([cb5406d](https://github.com/dnum-mi/ds-api-client/commit/cb5406d8af30a716bb258207ddf6ec426159c9cf))
+
 ## [1.9.2](https://github.com/dnum-mi/ds-api-client/compare/v1.9.1...v1.9.2) (2026-03-16)
 
 
