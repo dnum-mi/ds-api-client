@@ -1,0 +1,15 @@
+name: publish if error- DS Api client
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-
+    steps:
+    - name: publish
+      run: npm publish
+      env: 
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
