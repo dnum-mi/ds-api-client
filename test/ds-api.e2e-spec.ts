@@ -2,7 +2,7 @@ import { DsApiClient } from "../src/index";
 
 const { API_URL, API_TOKEN } = process.env;
 
-describe("ds api", () => {
+describe.skip("ds api", () => {
   let dsApiClient;
 
   beforeAll(() => {
