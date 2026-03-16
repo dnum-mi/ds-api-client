@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/dnum-mi/ds-api-client/compare/v1.9.1...v1.9.2) (2026-03-16)
+
+
+### Bug Fixes
+
+* remove DossierLinkChamp fragment from RootChampFragment ([283474c](https://github.com/dnum-mi/ds-api-client/commit/283474cb229c0b27ecd79f20265cb330c43bffbc))
+
 ## [1.9.1](https://github.com/dnum-mi/ds-api-client/compare/v1.9.0...v1.9.1) (2025-11-03)
 
 
