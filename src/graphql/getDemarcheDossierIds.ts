@@ -33,6 +33,7 @@ export default gql`
           id
           number
           state
+          dateDerniereModification
         }
       }
     }
