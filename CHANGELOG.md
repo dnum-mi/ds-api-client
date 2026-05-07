@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.3](https://github.com/dnum-mi/ds-api-client/compare/v1.9.2...v1.9.3) (2026-05-07)
+
+
+### Bug Fixes
+
+* add dateDerniereModification field to getDemarcheDossierIds query ([61bf46a](https://github.com/dnum-mi/ds-api-client/commit/61bf46ab2d199385adc4407237f06877aa97b8f9))
+
 ## [1.9.2](https://github.com/dnum-mi/ds-api-client/compare/v1.9.1...v1.9.2) (2026-03-16)
 
 
