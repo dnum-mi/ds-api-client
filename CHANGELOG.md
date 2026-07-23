@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.4](https://github.com/dnum-mi/ds-api-client/compare/v1.9.3...v1.9.4) (2026-07-23)
+
+
+### Bug Fixes
+
+* show error ([f3e1354](https://github.com/dnum-mi/ds-api-client/commit/f3e1354e90a40d88d291493334fbd2e7e9d96e97))
+
 ## [1.9.3](https://github.com/dnum-mi/ds-api-client/compare/v1.9.2...v1.9.3) (2026-05-07)
 
 
