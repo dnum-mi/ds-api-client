@@ -22,7 +22,16 @@ export class DsApiError extends Error {
       const gqlResponse = e;
       this.graphQlRequest = gqlResponse.request;
       this.graphQlResponse = gqlResponse.response;
-      this.errors = gqlResponse?.response?.errors || [];
+      console.log(
+        JSON.stringify({
+          title: DsApiError.title,
+          error: gqlResponse.response,
+        }),
+      );
+      this.errors =
+        gqlResponse?.response?.errors || gqlResponse?.response?.error
+          ? [{ message: gqlResponse.response.error }]
+          : [];
     } else {
       this.errors = [e];
     }
