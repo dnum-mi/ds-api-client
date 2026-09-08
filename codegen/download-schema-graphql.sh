@@ -1,3 +1,3 @@
 #!/bin/bash
 
-wget -O ./src/graphql/schema.graphql https://raw.githubusercontent.com/demarches-simplifiees/demarches-simplifiees.fr/refs/heads/main/app/graphql/schema.graphql
+wget -O ./src/graphql/schema.graphql https://raw.githubusercontent.com/demarche-numerique/demarche.numerique.gouv.fr/refs/heads/main/app/graphql/schema.graphql
