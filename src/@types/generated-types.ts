@@ -27,6 +27,69 @@ export type Scalars = {
   URL: { input: any; output: any; }
 };
 
+export type AahChampDescriptor = ChampDescriptor & {
+  __typename?: 'AAHChampDescriptor';
+  /**
+   * Description des champs d’un bloc répétable.
+   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
+   */
+  champDescriptors?: Maybe<Array<ChampDescriptor>>;
+  /** Description du champ. */
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  /** Libellé du champ. */
+  label: Scalars['String']['output'];
+  /** Est-ce que le champ est obligatoire ? */
+  required: Scalars['Boolean']['output'];
+  /**
+   * Type de la valeur du champ.
+   * @deprecated Utilisez le champ `__typename` à la place.
+   */
+  type: TypeDeChamp;
+};
+
+export type AeehChampDescriptor = ChampDescriptor & {
+  __typename?: 'AEEHChampDescriptor';
+  /**
+   * Description des champs d’un bloc répétable.
+   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
+   */
+  champDescriptors?: Maybe<Array<ChampDescriptor>>;
+  /** Description du champ. */
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  /** Libellé du champ. */
+  label: Scalars['String']['output'];
+  /** Est-ce que le champ est obligatoire ? */
+  required: Scalars['Boolean']['output'];
+  /**
+   * Type de la valeur du champ.
+   * @deprecated Utilisez le champ `__typename` à la place.
+   */
+  type: TypeDeChamp;
+};
+
+export type ArsChampDescriptor = ChampDescriptor & {
+  __typename?: 'ARSChampDescriptor';
+  /**
+   * Description des champs d’un bloc répétable.
+   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
+   */
+  champDescriptors?: Maybe<Array<ChampDescriptor>>;
+  /** Description du champ. */
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  /** Libellé du champ. */
+  label: Scalars['String']['output'];
+  /** Est-ce que le champ est obligatoire ? */
+  required: Scalars['Boolean']['output'];
+  /**
+   * Type de la valeur du champ.
+   * @deprecated Utilisez le champ `__typename` à la place.
+   */
+  type: TypeDeChamp;
+};
+
 export type Address = {
   __typename?: 'Address';
   /** code INSEE de la commune */
@@ -78,6 +141,7 @@ export type AddressChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -126,29 +190,50 @@ export type AnnotationInput = {
 
 export type AnnotationValueInput =
   /** Modifier la valeur d’un champ case à cocher */
-  { checkbox: Scalars['Boolean']['input']; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox: Scalars['Boolean']['input']; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ civilité */
+  { checkbox?: never; civilite: Civilite; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ date */
-  { checkbox?: never; date: Scalars['ISO8601Date']['input']; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date: Scalars['ISO8601Date']['input']; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ date et heure */
-  { checkbox?: never; date?: never; datetime: Scalars['ISO8601DateTime']['input']; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime: Scalars['ISO8601DateTime']['input']; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ nombre décimal */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber: Scalars['Float']['input']; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber: Scalars['Float']['input']; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ département (code INSEE ou nom) */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements: Scalars['String']['input']; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d'un champ lien vers un dossier */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink: Scalars['String']['input']; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la sélection d’un champ choix simple */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList: Scalars['String']['input']; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList: Scalars['String']['input']; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ adresse électronique */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email: Scalars['String']['input']; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email: Scalars['String']['input']; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ à format prédéfini */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted: Scalars['String']['input']; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ IBAN */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban: Scalars['String']['input']; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ nombre entier */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber: Scalars['Int']['input']; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber: Scalars['Int']['input']; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la sélection d’un champ choix multiple */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList: Array<Scalars['String']['input']>; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList: Array<Scalars['String']['input']>; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ pays (code ISO 3166-1 alpha-2 ou nom) */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays: Scalars['String']['input']; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ téléphone */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone: Scalars['String']['input']; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /**
+   * Ajouter des pièces justificatives à un champ pièce justificative (identifiants
+   * signés de blobs, créés via la mutation createDirectUpload)
+   */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative: Array<Scalars['ID']['input']>; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
+  |  /** Modifier la valeur d’un champ région (code INSEE ou nom) */
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions: Scalars['String']['input']; repetition?: never; text?: never; textarea?: never; yesNo?: never; }
   |  /** Ajouter des repetitions à un champ répétable */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition: Scalars['Int']['input']; text?: never; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition: Scalars['Int']['input']; text?: never; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ texte */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text: Scalars['String']['input']; textarea?: never; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text: Scalars['String']['input']; textarea?: never; yesNo?: never; }
   |  /** Modifier la valeur d’un champ texte long */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea: Scalars['String']['input']; yesNo?: never; }
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea: Scalars['String']['input']; yesNo?: never; }
   |  /** Modifier la valeur d’un champ Oui/Non */
-  { checkbox?: never; date?: never; datetime?: never; decimalNumber?: never; dropDownList?: never; email?: never; integerNumber?: never; multipleDropDownList?: never; repetition?: never; text?: never; textarea?: never; yesNo: Scalars['Boolean']['input']; };
+  { checkbox?: never; civilite?: never; date?: never; datetime?: never; decimalNumber?: never; departements?: never; dossierLink?: never; dropDownList?: never; email?: never; formatted?: never; iban?: never; integerNumber?: never; multipleDropDownList?: never; pays?: never; phone?: never; pieceJustificative?: never; regions?: never; repetition?: never; text?: never; textarea?: never; yesNo: Scalars['Boolean']['input']; };
 
 export type AnnuaireEducationChampDescriptor = ChampDescriptor & {
   __typename?: 'AnnuaireEducationChampDescriptor';
@@ -255,6 +340,7 @@ export type CarteChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -295,6 +381,7 @@ export type Champ = {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -335,6 +422,7 @@ export type CheckboxChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -395,6 +483,7 @@ export type CiviliteChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -404,27 +493,6 @@ export type CiviliteChamp = Champ & {
 
 export type CiviliteChampDescriptor = ChampDescriptor & {
   __typename?: 'CiviliteChampDescriptor';
-  /**
-   * Description des champs d’un bloc répétable.
-   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
-   */
-  champDescriptors?: Maybe<Array<ChampDescriptor>>;
-  /** Description du champ. */
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  /** Libellé du champ. */
-  label: Scalars['String']['output'];
-  /** Est-ce que le champ est obligatoire ? */
-  required: Scalars['Boolean']['output'];
-  /**
-   * Type de la valeur du champ.
-   * @deprecated Utilisez le champ `__typename` à la place.
-   */
-  type: TypeDeChamp;
-};
-
-export type CnafChampDescriptor = ChampDescriptor & {
-  __typename?: 'CnafChampDescriptor';
   /**
    * Description des champs d’un bloc répétable.
    * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
@@ -478,6 +546,7 @@ export type CommuneChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -571,6 +640,7 @@ export type DateChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -584,6 +654,8 @@ export type DateChamp = Champ & {
 
 export type DateChampDescriptor = ChampDescriptor & {
   __typename?: 'DateChampDescriptor';
+  /** Ce champ est une date de naissance. */
+  birthdate?: Maybe<Scalars['Boolean']['output']>;
   /**
    * Description des champs d’un bloc répétable.
    * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
@@ -639,6 +711,7 @@ export type DatetimeChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -690,6 +763,7 @@ export type DecimalNumberChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -718,6 +792,16 @@ export type DecimalNumberChampDescriptor = ChampDescriptor & {
   type: TypeDeChamp;
 };
 
+export const DeclarativeWithState = {
+  /** Accepté */
+  Accepte: 'accepte',
+  /** En instruction */
+  EnInstruction: 'en_instruction',
+  /** La démarche n'est pas déclarative */
+  NonDeclarative: 'non_declarative'
+} as const;
+
+export type DeclarativeWithState = typeof DeclarativeWithState[keyof typeof DeclarativeWithState];
 /** Un dossier supprimé */
 export type DeletedDossier = {
   __typename?: 'DeletedDossier';
@@ -860,10 +944,32 @@ export type DemarchePendingDeletedDossiersArgs = {
   order?: InputMaybe<Order>;
 };
 
+/** Autogenerated input type of DemarcheAjouterAdministrateur */
+export type DemarcheAjouterAdministrateurInput = {
+  /** Administrateur à ajouter. */
+  administrateurs: Array<ProfileInput>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** La démarche */
+  demarche: FindDemarcheInput;
+};
+
+/** Autogenerated return type of DemarcheAjouterAdministrateur. */
+export type DemarcheAjouterAdministrateurPayload = {
+  __typename?: 'DemarcheAjouterAdministrateurPayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  demarche?: Maybe<DemarcheDescriptor>;
+  errors?: Maybe<Array<ValidationError>>;
+  warnings?: Maybe<Array<WarningMessage>>;
+};
+
 /** Autogenerated input type of DemarcheCloner */
 export type DemarcheClonerInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Cloner le service de la démarche. */
+  cloneService?: InputMaybe<Scalars['Boolean']['input']>;
   /** La démarche */
   demarche: FindDemarcheInput;
   /** Le titre de la nouvelle démarche. */
@@ -898,6 +1004,8 @@ export type DemarcheDescriptor = {
   dateDerniereModification: Scalars['ISO8601DateTime']['output'];
   /** Date de la fermeture. */
   dateFermeture?: Maybe<Scalars['ISO8601DateTime']['output']>;
+  /** Date limite de dépôt des dossiers */
+  dateLimite?: Maybe<Scalars['ISO8601Date']['output']>;
   /** Date de la publication. */
   datePublication?: Maybe<Scalars['ISO8601DateTime']['output']>;
   /** Pour une démarche déclarative, état cible des dossiers à valider automatiquement */
@@ -910,12 +1018,15 @@ export type DemarcheDescriptor = {
   demarcheUrl?: Maybe<Scalars['URL']['output']>;
   /** Description de la démarche. */
   description: Scalars['String']['output'];
+  /** Nombre de dossiers déposés. */
+  dossiersCount: Scalars['Int']['output'];
   /** URL ou adresse électronique pour contacter le Délégué à la Protection des Données (DPO) */
   dpoURL?: Maybe<Scalars['String']['output']>;
   /** @deprecated Utilisez le champ `dpoURL` à la place. */
   dpoUrl?: Maybe<Scalars['String']['output']>;
   /** Durée de conservation des dossiers en mois. */
   dureeConservationDossiers: Scalars['Int']['output'];
+  forIndividual: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
   logo?: Maybe<File>;
   /** notice explicative de la démarche */
@@ -942,6 +1053,83 @@ export type DemarcheDescriptor = {
   zones: Array<Scalars['String']['output']>;
 };
 
+/** The connection type for DemarcheDescriptor. */
+export type DemarcheDescriptorConnection = {
+  __typename?: 'DemarcheDescriptorConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<DemarcheDescriptorEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<DemarcheDescriptor>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type DemarcheDescriptorEdge = {
+  __typename?: 'DemarcheDescriptorEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node?: Maybe<DemarcheDescriptor>;
+};
+
+/** Autogenerated input type of DemarcheModifierParametres */
+export type DemarcheModifierParametresInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** La date limite de dépôt des dossiers */
+  dateLimite?: InputMaybe<Scalars['ISO8601Date']['input']>;
+  /** Est-ce que la démarche est déclarative */
+  declarative?: InputMaybe<DeclarativeWithState>;
+  /** La démarche */
+  demarche: FindDemarcheInput;
+  /** La description de la démarche. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** La description des pièces jointes demandées dans la démarche. */
+  descriptionPj?: InputMaybe<Scalars['String']['input']>;
+  /** La description de à qui s'adresse la démarche. */
+  descriptionTargetAudience?: InputMaybe<Scalars['String']['input']>;
+  /** Lien ou adresse électronique pour contacter le DPO */
+  lienDpo?: InputMaybe<Scalars['String']['input']>;
+  /** La description de où se trouve le lien de la démarche. */
+  lienSiteWeb?: InputMaybe<Scalars['String']['input']>;
+  /** Le titre de la démarche. */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Autogenerated return type of DemarcheModifierParametres. */
+export type DemarcheModifierParametresPayload = {
+  __typename?: 'DemarcheModifierParametresPayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  demarche?: Maybe<DemarcheDescriptor>;
+  errors?: Maybe<Array<ValidationError>>;
+};
+
+/** Autogenerated input type of DemarchePublier */
+export type DemarchePublierInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** La démarche */
+  demarche: FindDemarcheInput;
+  /** Où les usagers trouveront-ils le lien vers la démarche */
+  lienSiteWeb?: InputMaybe<Scalars['String']['input']>;
+  /** Chemin de la démarche. S'il est déjà utilisé par une autre de vos démarches, celle-ci sera dépubliée et remplacée. */
+  path: Scalars['String']['input'];
+  /** Cette démarche est référençable par les moteurs de recherche (Google, …) pour aider les usagers à la découvrir */
+  robotsIndexable?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Autogenerated return type of DemarchePublier. */
+export type DemarchePublierPayload = {
+  __typename?: 'DemarchePublierPayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  demarche?: Maybe<DemarcheDescriptor>;
+  errors?: Maybe<Array<ValidationError>>;
+  warnings?: Maybe<Array<WarningMessage>>;
+};
+
 export const DemarcheState = {
   /** Brouillon */
   Brouillon: 'brouillon',
@@ -954,6 +1142,26 @@ export const DemarcheState = {
 } as const;
 
 export type DemarcheState = typeof DemarcheState[keyof typeof DemarcheState];
+/** Autogenerated input type of DemarcheSupprimerAdministrateur */
+export type DemarcheSupprimerAdministrateurInput = {
+  /** Administrateur à retirer. */
+  administrateurs: Array<ProfileInput>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** La démarche */
+  demarche: FindDemarcheInput;
+};
+
+/** Autogenerated return type of DemarcheSupprimerAdministrateur. */
+export type DemarcheSupprimerAdministrateurPayload = {
+  __typename?: 'DemarcheSupprimerAdministrateurPayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  demarche?: Maybe<DemarcheDescriptor>;
+  errors?: Maybe<Array<ValidationError>>;
+  warnings?: Maybe<Array<WarningMessage>>;
+};
+
 export type Departement = {
   __typename?: 'Departement';
   code: Scalars['String']['output'];
@@ -975,6 +1183,7 @@ export type DepartementChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -1004,27 +1213,6 @@ export type DepartementChampDescriptor = ChampDescriptor & {
   type: TypeDeChamp;
 };
 
-export type DgfipChampDescriptor = ChampDescriptor & {
-  __typename?: 'DgfipChampDescriptor';
-  /**
-   * Description des champs d’un bloc répétable.
-   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
-   */
-  champDescriptors?: Maybe<Array<ChampDescriptor>>;
-  /** Description du champ. */
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  /** Libellé du champ. */
-  label: Scalars['String']['output'];
-  /** Est-ce que le champ est obligatoire ? */
-  required: Scalars['Boolean']['output'];
-  /**
-   * Type de la valeur du champ.
-   * @deprecated Utilisez le champ `__typename` à la place.
-   */
-  type: TypeDeChamp;
-};
-
 /** Represents direct upload credentials */
 export type DirectUpload = {
   __typename?: 'DirectUpload';
@@ -1043,11 +1231,19 @@ export type Dossier = {
   __typename?: 'Dossier';
   annotations: Array<Champ>;
   archived: Scalars['Boolean']['output'];
+  /** Historique des affectations du dossier à un groupe instructeur. */
+  assignments: Array<DossierAssignment>;
   /** L’URL de l’attestation au format PDF. */
   attestation?: Maybe<File>;
   avis: Array<Avis>;
   champs: Array<Champ>;
   connectionUsager: ConnectionUsager;
+  /**
+   * Date à laquelle l’usager a pris connaissance de la décision. Null si l’accusé
+   * de lecture n’est pas activé sur la démarche ou si l’usager n’a pas encore pris
+   * connaissance de la décision.
+   */
+  dateAccuseLectureAgreement?: Maybe<Scalars['ISO8601DateTime']['output']>;
   /** Date de dépôt. */
   dateDepot: Scalars['ISO8601DateTime']['output'];
   /** Date de la dernière demande de correction qui n’a pas encore été traitée par l’usager. */
@@ -1056,8 +1252,10 @@ export type Dossier = {
   dateDerniereModification: Scalars['ISO8601DateTime']['output'];
   /** Date de la dernière modification des annotations. */
   dateDerniereModificationAnnotations: Scalars['ISO8601DateTime']['output'];
-  /** Date de la dernière modification des champs. */
+  /** Date de la dernière modification des champs par un usager. */
   dateDerniereModificationChamps: Scalars['ISO8601DateTime']['output'];
+  /** Date de la dernière modification des champs par un instructeur. */
+  dateDerniereModificationChampsParInstructeur?: Maybe<Scalars['ISO8601DateTime']['output']>;
   /** Date d’expiration. */
   dateExpiration?: Maybe<Scalars['ISO8601DateTime']['output']>;
   /** Date du dernier passage en construction. */
@@ -1107,6 +1305,12 @@ export type Dossier = {
 /** Un dossier */
 export type DossierAnnotationsArgs = {
   id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+/** Un dossier */
+export type DossierAssignmentsArgs = {
+  mode?: InputMaybe<DossierAssignmentMode>;
 };
 
 
@@ -1205,6 +1409,37 @@ export type DossierArchiverPayload = {
   errors?: Maybe<Array<ValidationError>>;
 };
 
+/** Une affectation d’un dossier à un groupe instructeur */
+export type DossierAssignment = {
+  __typename?: 'DossierAssignment';
+  /** Date de l’affectation. */
+  assignedAt: Scalars['ISO8601DateTime']['output'];
+  /** Email de l’agent à l’origine de l’affectation. */
+  assignedBy?: Maybe<Scalars['String']['output']>;
+  /** Libellé du groupe instructeur affecté, au moment de l’affectation. */
+  groupeInstructeurLabel: Scalars['String']['output'];
+  /** Numéro du groupe instructeur affecté. Null si le groupe a depuis été supprimé. */
+  groupeInstructeurNumber?: Maybe<Scalars['Int']['output']>;
+  /** Origine de l’affectation. */
+  mode: DossierAssignmentMode;
+  /** Libellé du groupe instructeur précédent, au moment de l’affectation. */
+  previousGroupeInstructeurLabel?: Maybe<Scalars['String']['output']>;
+  /** Numéro du groupe instructeur précédent. Null s’il s’agit de la première affectation ou si le groupe a depuis été supprimé. */
+  previousGroupeInstructeurNumber?: Maybe<Scalars['Int']['output']>;
+};
+
+export const DossierAssignmentMode = {
+  /** Affectation par le routage automatique de la démarche */
+  Auto: 'auto',
+  /** Réaffectation en masse suite à une modification du routage */
+  BulkRouting: 'bulk_routing',
+  /** Réaffectation manuelle par un instructeur ou un administrateur */
+  Manual: 'manual',
+  /** Affectation technique effectuée par la plateforme */
+  Tech: 'tech'
+} as const;
+
+export type DossierAssignmentMode = typeof DossierAssignmentMode[keyof typeof DossierAssignmentMode];
 /** Autogenerated input type of DossierBasculeSuivi */
 export type DossierBasculeSuiviInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1352,6 +1587,7 @@ export type DossierLinkChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -1729,6 +1965,7 @@ export type DropDownListChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -1810,6 +2047,7 @@ export type EngagementJuridiqueChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -1913,6 +2151,7 @@ export type EpciChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -1921,6 +2160,27 @@ export type EpciChamp = Champ & {
 
 export type EpciChampDescriptor = ChampDescriptor & {
   __typename?: 'EpciChampDescriptor';
+  /**
+   * Description des champs d’un bloc répétable.
+   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
+   */
+  champDescriptors?: Maybe<Array<ChampDescriptor>>;
+  /** Description du champ. */
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  /** Libellé du champ. */
+  label: Scalars['String']['output'];
+  /** Est-ce que le champ est obligatoire ? */
+  required: Scalars['Boolean']['output'];
+  /**
+   * Type de la valeur du champ.
+   * @deprecated Utilisez le champ `__typename` à la place.
+   */
+  type: TypeDeChamp;
+};
+
+export type EtudiantBoursierChampDescriptor = ChampDescriptor & {
+  __typename?: 'EtudiantBoursierChampDescriptor';
   /**
    * Description des champs d’un bloc répétable.
    * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
@@ -1954,6 +2214,7 @@ export type ExplicationChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -2043,6 +2304,33 @@ export const GeoAreaSource = {
 export type GeoAreaSource = typeof GeoAreaSource[keyof typeof GeoAreaSource];
 export type GeoJson = {
   __typename?: 'GeoJSON';
+  coordinates: Scalars['Coordinates']['output'];
+  type: Scalars['String']['output'];
+};
+
+export type GeoJsonColumn = Column & {
+  __typename?: 'GeoJSONColumn';
+  id: Scalars['ID']['output'];
+  /** Libellé de la colonne. */
+  label: Scalars['String']['output'];
+  /** La valeur de la colonne sous forme texte. */
+  stringValue?: Maybe<Scalars['String']['output']>;
+  value: Array<GeoJsonFeature>;
+};
+
+export type GeoJsonFeature = {
+  __typename?: 'GeoJSONFeature';
+  geometry: GeoJsonGeometry;
+  properties: GeoJsonFeatureProperties;
+};
+
+export type GeoJsonFeatureProperties = {
+  __typename?: 'GeoJSONFeatureProperties';
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type GeoJsonGeometry = {
+  __typename?: 'GeoJSONGeometry';
   coordinates: Scalars['Coordinates']['output'];
   type: Scalars['String']['output'];
 };
@@ -2223,6 +2511,7 @@ export type HeaderSectionChamp = Champ & {
   label: Scalars['String']['output'];
   level: Scalars['Int']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -2296,6 +2585,7 @@ export type IntegerNumberChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -2361,6 +2651,7 @@ export type LinkedDropDownListChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   primaryValue?: Maybe<Scalars['String']['output']>;
   secondaryValue?: Maybe<Scalars['String']['output']>;
   /** La valeur du champ sous forme texte. */
@@ -2383,27 +2674,6 @@ export type LinkedDropDownListChampDescriptor = ChampDescriptor & {
   label: Scalars['String']['output'];
   /** List des options d’un champ avec selection. */
   options?: Maybe<Array<Scalars['String']['output']>>;
-  /** Est-ce que le champ est obligatoire ? */
-  required: Scalars['Boolean']['output'];
-  /**
-   * Type de la valeur du champ.
-   * @deprecated Utilisez le champ `__typename` à la place.
-   */
-  type: TypeDeChamp;
-};
-
-export type MesriChampDescriptor = ChampDescriptor & {
-  __typename?: 'MesriChampDescriptor';
-  /**
-   * Description des champs d’un bloc répétable.
-   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
-   */
-  champDescriptors?: Maybe<Array<ChampDescriptor>>;
-  /** Description du champ. */
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  /** Libellé du champ. */
-  label: Scalars['String']['output'];
   /** Est-ce que le champ est obligatoire ? */
   required: Scalars['Boolean']['output'];
   /**
@@ -2440,6 +2710,7 @@ export type MultipleDropDownListChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -2474,8 +2745,20 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** File information required to prepare a direct upload */
   createDirectUpload?: Maybe<CreateDirectUploadPayload>;
+  /**
+   * Ajouter un administrateur existant a une démarche. A moins que utilisiez cette
+   * mutation sur une instance autre que demarche.numerique.gouv.fr avec la
+   * fonctionnalité activée, l'administrateur doit avoir été crée a priori.
+   */
+  demarcheAjouterAdministrateur?: Maybe<DemarcheAjouterAdministrateurPayload>;
   /** Cloner une démarche. */
   demarcheCloner?: Maybe<DemarcheClonerPayload>;
+  /** Modifier les paramètres d’une démarche. */
+  demarcheModifierParametres?: Maybe<DemarcheModifierParametresPayload>;
+  /** Publier une démarche */
+  demarchePublier?: Maybe<DemarchePublierPayload>;
+  /** Supprimer un administrateur d'une démarche */
+  demarcheSupprimerAdministrateur?: Maybe<DemarcheSupprimerAdministrateurPayload>;
   /** Accepter le dossier. */
   dossierAccepter?: Maybe<DossierAccepterPayload>;
   /** Ajouter un label à un dossier */
@@ -2560,8 +2843,28 @@ export type MutationCreateDirectUploadArgs = {
 };
 
 
+export type MutationDemarcheAjouterAdministrateurArgs = {
+  input: DemarcheAjouterAdministrateurInput;
+};
+
+
 export type MutationDemarcheClonerArgs = {
   input: DemarcheClonerInput;
+};
+
+
+export type MutationDemarcheModifierParametresArgs = {
+  input: DemarcheModifierParametresInput;
+};
+
+
+export type MutationDemarchePublierArgs = {
+  input: DemarchePublierInput;
+};
+
+
+export type MutationDemarcheSupprimerAdministrateurArgs = {
+  input: DemarcheSupprimerAdministrateurInput;
 };
 
 
@@ -2794,6 +3097,7 @@ export type PaysChamp = Champ & {
   label: Scalars['String']['output'];
   pays?: Maybe<Pays>;
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -2838,9 +3142,11 @@ export type PersonneMorale = Demandeur & {
   entreprise?: Maybe<Entreprise>;
   id: Scalars['ID']['output'];
   libelleNaf: Scalars['String']['output'];
+  libelleNaf2025?: Maybe<Scalars['String']['output']>;
   /** @deprecated Utilisez le champ `address.city_name` à la place. */
   localite: Scalars['String']['output'];
   naf?: Maybe<Scalars['String']['output']>;
+  naf2025?: Maybe<Scalars['String']['output']>;
   /** @deprecated Utilisez le champ `address.street_name` à la place. */
   nomVoie?: Maybe<Scalars['String']['output']>;
   /** @deprecated Utilisez le champ `address.street_number` à la place. */
@@ -2910,7 +3216,10 @@ export type PieceJustificativeChamp = Champ & {
   id: Scalars['ID']['output'];
   /** Libellé du champ. */
   label: Scalars['String']['output'];
+  /** La nature de la pièce justificative. ex: 'NON_SPECIFIE', 'TITRE_IDENTITE', 'RIB', 'JUSTIFICATIF_DOMICILE' */
+  nature: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -2940,8 +3249,8 @@ export type PieceJustificativeChampDescriptor = ChampDescriptor & {
   type: TypeDeChamp;
 };
 
-export type PoleEmploiChampDescriptor = ChampDescriptor & {
-  __typename?: 'PoleEmploiChampDescriptor';
+export type PreRempliChampDescriptor = ChampDescriptor & {
+  __typename?: 'PreRempliChampDescriptor';
   /**
    * Description des champs d’un bloc répétable.
    * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
@@ -2980,6 +3289,8 @@ export type Query = {
   /** Informations concernant une démarche. */
   demarche: Demarche;
   demarcheDescriptor?: Maybe<DemarcheDescriptor>;
+  /** Liste des démarches publiques (publiées ou closes, en opendata). */
+  demarcheDescriptors: DemarcheDescriptorConnection;
   /** Informations sur un dossier d’une démarche. */
   dossier: Dossier;
   /** Informations sur un groupe instructeur. */
@@ -2997,6 +3308,14 @@ export type QueryDemarcheDescriptorArgs = {
 };
 
 
+export type QueryDemarcheDescriptorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type QueryDossierArgs = {
   number: Scalars['Int']['input'];
 };
@@ -3004,6 +3323,27 @@ export type QueryDossierArgs = {
 
 export type QueryGroupeInstructeurArgs = {
   number: Scalars['Int']['input'];
+};
+
+export type QuotientFamilialChampDescriptor = ChampDescriptor & {
+  __typename?: 'QuotientFamilialChampDescriptor';
+  /**
+   * Description des champs d’un bloc répétable.
+   * @deprecated Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.
+   */
+  champDescriptors?: Maybe<Array<ChampDescriptor>>;
+  /** Description du champ. */
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  /** Libellé du champ. */
+  label: Scalars['String']['output'];
+  /** Est-ce que le champ est obligatoire ? */
+  required: Scalars['Boolean']['output'];
+  /**
+   * Type de la valeur du champ.
+   * @deprecated Utilisez le champ `__typename` à la place.
+   */
+  type: TypeDeChamp;
 };
 
 export type Rna = {
@@ -3029,6 +3369,7 @@ export type RnaChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   rna?: Maybe<Rna>;
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
@@ -3080,6 +3421,7 @@ export type RnfChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   rnf?: Maybe<Rnf>;
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
@@ -3149,6 +3491,7 @@ export type RegionChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   region?: Maybe<Region>;
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
@@ -3195,6 +3538,7 @@ export type RepetitionChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   rows: Array<Row>;
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
@@ -3237,6 +3581,17 @@ export type Row = {
   id: Scalars['ID']['output'];
 };
 
+export type Rpg = GeoArea & {
+  __typename?: 'Rpg';
+  commune?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  geometry: GeoJson;
+  id: Scalars['ID']['output'];
+  numero?: Maybe<Scalars['String']['output']>;
+  source: GeoAreaSource;
+  surface?: Maybe<Scalars['Float']['output']>;
+};
+
 export type SelectionUtilisateur = GeoArea & {
   __typename?: 'SelectionUtilisateur';
   description?: Maybe<Scalars['String']['output']>;
@@ -3247,6 +3602,8 @@ export type SelectionUtilisateur = GeoArea & {
 
 export type Service = {
   __typename?: 'Service';
+  /** département où se situe le service qui met en oeuvre la démarche */
+  departement?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   /** nom du service qui met en oeuvre la démarche */
   nom: Scalars['String']['output'];
@@ -3273,6 +3630,7 @@ export type SiretChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -3314,6 +3672,7 @@ export type TextChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -3389,6 +3748,7 @@ export type TitreIdentiteChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */
@@ -3426,6 +3786,8 @@ export const TitreIdentiteGrantType = {
 export type TitreIdentiteGrantType = typeof TitreIdentiteGrantType[keyof typeof TitreIdentiteGrantType];
 export type Traitement = {
   __typename?: 'Traitement';
+  /** Liste des changements par colonne */
+  changedColumns: Array<Column>;
   dateTraitement: Scalars['ISO8601DateTime']['output'];
   emailAgentTraitant?: Maybe<Scalars['String']['output']>;
   event: TraitementEvent;
@@ -3465,21 +3827,25 @@ export const TraitementEvent = {
 
 export type TraitementEvent = typeof TraitementEvent[keyof typeof TraitementEvent];
 export const TypeDeChamp = {
+  /** Statut allocation adulte handicapé */
+  Aah: 'aah',
   /** Adresse */
   Address: 'address',
+  /** Statut allocation d’éducation de l’enfant handicapé */
+  Aeeh: 'aeeh',
   /** Annuaire de l’éducation */
   AnnuaireEducation: 'annuaire_education',
+  /** Statut allocation de rentrée scolaire */
+  Ars: 'ars',
   /** Carte */
   Carte: 'carte',
   /** Case à cocher seule */
   Checkbox: 'checkbox',
   /** Civilité */
   Civilite: 'civilite',
-  /** Données de la Caisse nationale des allocations familiales */
-  Cnaf: 'cnaf',
   /** Accréditation Paris 2024 */
   Cojo: 'cojo',
-  /** Communes */
+  /** Commune française actuelle */
   Communes: 'communes',
   /** Date */
   Date: 'date',
@@ -3487,10 +3853,8 @@ export const TypeDeChamp = {
   Datetime: 'datetime',
   /** Nombre décimal */
   DecimalNumber: 'decimal_number',
-  /** Départements */
+  /** Département */
   Departements: 'departements',
-  /** Données de la Direction générale des Finances publiques */
-  Dgfip: 'dgfip',
   /** Lien vers un autre dossier */
   DossierLink: 'dossier_link',
   /** Choix simple */
@@ -3501,6 +3865,8 @@ export const TypeDeChamp = {
   EngagementJuridique: 'engagement_juridique',
   /** EPCI */
   Epci: 'epci',
+  /** Statut étudiant boursier */
+  EtudiantBoursier: 'etudiant_boursier',
   /** Explication */
   Explication: 'explication',
   /** Champ formaté */
@@ -3513,8 +3879,6 @@ export const TypeDeChamp = {
   IntegerNumber: 'integer_number',
   /** Deux menus déroulants liés */
   LinkedDropDownList: 'linked_drop_down_list',
-  /** Données du Ministère de l’Enseignement Supérieur, de la Recherche et de l’Innovation */
-  Mesri: 'mesri',
   /** Choix multiple */
   MultipleDropDownList: 'multiple_drop_down_list',
   /** Nombre */
@@ -3525,11 +3889,13 @@ export const TypeDeChamp = {
   Phone: 'phone',
   /** Pièce à joindre */
   PieceJustificative: 'piece_justificative',
-  /** Situation Pôle emploi */
-  PoleEmploi: 'pole_emploi',
+  /** Champ pré-rempli */
+  PreRempli: 'pre_rempli',
+  /** Quotient familial */
+  QuotientFamilial: 'quotient_familial',
   /** Référentiel configurable (avancé) */
   Referentiel: 'referentiel',
-  /** Régions */
+  /** Région */
   Regions: 'regions',
   /** Bloc répétable */
   Repetition: 'repetition',
@@ -3543,8 +3909,6 @@ export const TypeDeChamp = {
   Text: 'text',
   /** Texte long */
   Textarea: 'textarea',
-  /** Titre identité */
-  TitreIdentite: 'titre_identite',
   /** Oui/Non */
   YesNo: 'yes_no'
 } as const;
@@ -3596,6 +3960,7 @@ export type YesNoChamp = Champ & {
   /** Libellé du champ. */
   label: Scalars['String']['output'];
   prefilled: Scalars['Boolean']['output'];
+  prefilledValueModified: Scalars['Boolean']['output'];
   /** La valeur du champ sous forme texte. */
   stringValue?: Maybe<Scalars['String']['output']>;
   /** Date de dernière modification du champ. */

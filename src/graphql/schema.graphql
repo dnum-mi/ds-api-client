@@ -3,6 +3,90 @@ Requires that exactly one field must be supplied and that field must not be `nul
 """
 directive @oneOf on INPUT_OBJECT
 
+type AAHChampDescriptor implements ChampDescriptor {
+  """
+  Description des champs d’un bloc répétable.
+  """
+  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+  """
+  Description du champ.
+  """
+  description: String
+  id: ID!
+
+  """
+  Libellé du champ.
+  """
+  label: String!
+
+  """
+  Est-ce que le champ est obligatoire ?
+  """
+  required: Boolean!
+
+  """
+  Type de la valeur du champ.
+  """
+  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type AEEHChampDescriptor implements ChampDescriptor {
+  """
+  Description des champs d’un bloc répétable.
+  """
+  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+  """
+  Description du champ.
+  """
+  description: String
+  id: ID!
+
+  """
+  Libellé du champ.
+  """
+  label: String!
+
+  """
+  Est-ce que le champ est obligatoire ?
+  """
+  required: Boolean!
+
+  """
+  Type de la valeur du champ.
+  """
+  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type ARSChampDescriptor implements ChampDescriptor {
+  """
+  Description des champs d’un bloc répétable.
+  """
+  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+  """
+  Description du champ.
+  """
+  description: String
+  id: ID!
+
+  """
+  Libellé du champ.
+  """
+  label: String!
+
+  """
+  Est-ce que le champ est obligatoire ?
+  """
+  required: Boolean!
+
+  """
+  Type de la valeur du champ.
+  """
+  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
 type Address {
   """
   code INSEE de la commune
@@ -103,6 +187,7 @@ type AddressChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -184,6 +269,11 @@ input AnnotationValueInput @oneOf {
   checkbox: Boolean
 
   """
+  Modifier la valeur d’un champ civilité
+  """
+  civilite: Civilite
+
+  """
   Modifier la valeur d’un champ date
   """
   date: ISO8601Date
@@ -199,6 +289,16 @@ input AnnotationValueInput @oneOf {
   decimalNumber: Float
 
   """
+  Modifier la valeur d’un champ département (code INSEE ou nom)
+  """
+  departements: String
+
+  """
+  Modifier la valeur d'un champ lien vers un dossier
+  """
+  dossierLink: String
+
+  """
   Modifier la sélection d’un champ choix simple
   """
   dropDownList: String
@@ -209,6 +309,16 @@ input AnnotationValueInput @oneOf {
   email: String
 
   """
+  Modifier la valeur d’un champ à format prédéfini
+  """
+  formatted: String
+
+  """
+  Modifier la valeur d’un champ IBAN
+  """
+  iban: String
+
+  """
   Modifier la valeur d’un champ nombre entier
   """
   integerNumber: Int
@@ -217,6 +327,27 @@ input AnnotationValueInput @oneOf {
   Modifier la sélection d’un champ choix multiple
   """
   multipleDropDownList: [String!]
+
+  """
+  Modifier la valeur d’un champ pays (code ISO 3166-1 alpha-2 ou nom)
+  """
+  pays: String
+
+  """
+  Modifier la valeur d’un champ téléphone
+  """
+  phone: String
+
+  """
+  Ajouter des pièces justificatives à un champ pièce justificative (identifiants
+  signés de blobs, créés via la mutation createDirectUpload)
+  """
+  pieceJustificative: [ID!]
+
+  """
+  Modifier la valeur d’un champ région (code INSEE ou nom)
+  """
+  regions: String
 
   """
   Ajouter des repetitions à un champ répétable
@@ -375,6 +506,7 @@ type CarteChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -434,6 +566,7 @@ interface Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -493,6 +626,7 @@ type CheckboxChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -582,6 +716,7 @@ type CiviliteChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -596,34 +731,6 @@ type CiviliteChamp implements Champ {
 }
 
 type CiviliteChampDescriptor implements ChampDescriptor {
-  """
-  Description des champs d’un bloc répétable.
-  """
-  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
-
-  """
-  Description du champ.
-  """
-  description: String
-  id: ID!
-
-  """
-  Libellé du champ.
-  """
-  label: String!
-
-  """
-  Est-ce que le champ est obligatoire ?
-  """
-  required: Boolean!
-
-  """
-  Type de la valeur du champ.
-  """
-  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
-}
-
-type CnafChampDescriptor implements ChampDescriptor {
   """
   Description des champs d’un bloc répétable.
   """
@@ -703,6 +810,7 @@ type CommuneChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -857,6 +965,7 @@ type DateChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -875,6 +984,11 @@ type DateChamp implements Champ {
 }
 
 type DateChampDescriptor implements ChampDescriptor {
+  """
+  Ce champ est une date de naissance.
+  """
+  birthdate: Boolean
+
   """
   Description des champs d’un bloc répétable.
   """
@@ -956,6 +1070,7 @@ type DatetimeChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -1030,6 +1145,7 @@ type DecimalNumberChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -1069,6 +1185,23 @@ type DecimalNumberChampDescriptor implements ChampDescriptor {
   Type de la valeur du champ.
   """
   type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+enum DeclarativeWithState {
+  """
+  Accepté
+  """
+  accepte
+
+  """
+  En instruction
+  """
+  en_instruction
+
+  """
+  La démarche n'est pas déclarative
+  """
+  non_declarative
 }
 
 """
@@ -1362,6 +1495,39 @@ type Demarche {
 }
 
 """
+Autogenerated input type of DemarcheAjouterAdministrateur
+"""
+input DemarcheAjouterAdministrateurInput {
+  """
+  Administrateur à ajouter.
+  """
+  administrateurs: [ProfileInput!]!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+
+  """
+  La démarche
+  """
+  demarche: FindDemarcheInput!
+}
+
+"""
+Autogenerated return type of DemarcheAjouterAdministrateur.
+"""
+type DemarcheAjouterAdministrateurPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  demarche: DemarcheDescriptor
+  errors: [ValidationError!]
+  warnings: [WarningMessage!]
+}
+
+"""
 Autogenerated input type of DemarcheCloner
 """
 input DemarcheClonerInput {
@@ -1369,6 +1535,11 @@ input DemarcheClonerInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
+
+  """
+  Cloner le service de la démarche.
+  """
+  cloneService: Boolean
 
   """
   La démarche
@@ -1426,6 +1597,11 @@ type DemarcheDescriptor {
   dateFermeture: ISO8601DateTime
 
   """
+  Date limite de dépôt des dossiers
+  """
+  dateLimite: ISO8601Date
+
+  """
   Date de la publication.
   """
   datePublication: ISO8601DateTime
@@ -1452,6 +1628,11 @@ type DemarcheDescriptor {
   description: String!
 
   """
+  Nombre de dossiers déposés.
+  """
+  dossiersCount: Int!
+
+  """
   URL ou adresse électronique pour contacter le Délégué à la Protection des Données (DPO)
   """
   dpoURL: String
@@ -1461,6 +1642,7 @@ type DemarcheDescriptor {
   Durée de conservation des dossiers en mois.
   """
   dureeConservationDossiers: Int!
+  forIndividual: Boolean!
   id: ID!
   logo: File
 
@@ -1506,6 +1688,151 @@ type DemarcheDescriptor {
   zones: [String!]!
 }
 
+"""
+The connection type for DemarcheDescriptor.
+"""
+type DemarcheDescriptorConnection {
+  """
+  A list of edges.
+  """
+  edges: [DemarcheDescriptorEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [DemarcheDescriptor]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type DemarcheDescriptorEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: DemarcheDescriptor
+}
+
+"""
+Autogenerated input type of DemarcheModifierParametres
+"""
+input DemarcheModifierParametresInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+
+  """
+  La date limite de dépôt des dossiers
+  """
+  dateLimite: ISO8601Date
+
+  """
+  Est-ce que la démarche est déclarative
+  """
+  declarative: DeclarativeWithState
+
+  """
+  La démarche
+  """
+  demarche: FindDemarcheInput!
+
+  """
+  La description de la démarche.
+  """
+  description: String
+
+  """
+  La description des pièces jointes demandées dans la démarche.
+  """
+  descriptionPj: String
+
+  """
+  La description de à qui s'adresse la démarche.
+  """
+  descriptionTargetAudience: String
+
+  """
+  Lien ou adresse électronique pour contacter le DPO
+  """
+  lienDpo: String
+
+  """
+  La description de où se trouve le lien de la démarche.
+  """
+  lienSiteWeb: String
+
+  """
+  Le titre de la démarche.
+  """
+  title: String
+}
+
+"""
+Autogenerated return type of DemarcheModifierParametres.
+"""
+type DemarcheModifierParametresPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  demarche: DemarcheDescriptor
+  errors: [ValidationError!]
+}
+
+"""
+Autogenerated input type of DemarchePublier
+"""
+input DemarchePublierInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+
+  """
+  La démarche
+  """
+  demarche: FindDemarcheInput!
+
+  """
+  Où les usagers trouveront-ils le lien vers la démarche
+  """
+  lienSiteWeb: String
+
+  """
+  Chemin de la démarche. S'il est déjà utilisé par une autre de vos démarches, celle-ci sera dépubliée et remplacée.
+  """
+  path: String!
+
+  """
+  Cette démarche est référençable par les moteurs de recherche (Google, …) pour aider les usagers à la découvrir
+  """
+  robotsIndexable: Boolean = true
+}
+
+"""
+Autogenerated return type of DemarchePublier.
+"""
+type DemarchePublierPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  demarche: DemarcheDescriptor
+  errors: [ValidationError!]
+  warnings: [WarningMessage!]
+}
+
 enum DemarcheState {
   """
   Brouillon
@@ -1526,6 +1853,39 @@ enum DemarcheState {
   Publiée
   """
   publiee
+}
+
+"""
+Autogenerated input type of DemarcheSupprimerAdministrateur
+"""
+input DemarcheSupprimerAdministrateurInput {
+  """
+  Administrateur à retirer.
+  """
+  administrateurs: [ProfileInput!]!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+
+  """
+  La démarche
+  """
+  demarche: FindDemarcheInput!
+}
+
+"""
+Autogenerated return type of DemarcheSupprimerAdministrateur.
+"""
+type DemarcheSupprimerAdministrateurPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  demarche: DemarcheDescriptor
+  errors: [ValidationError!]
+  warnings: [WarningMessage!]
 }
 
 type Departement {
@@ -1553,6 +1913,7 @@ type DepartementChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -1598,34 +1959,6 @@ type DepartementChampDescriptor implements ChampDescriptor {
   type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
-type DgfipChampDescriptor implements ChampDescriptor {
-  """
-  Description des champs d’un bloc répétable.
-  """
-  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
-
-  """
-  Description du champ.
-  """
-  description: String
-  id: ID!
-
-  """
-  Libellé du champ.
-  """
-  label: String!
-
-  """
-  Est-ce que le champ est obligatoire ?
-  """
-  required: Boolean!
-
-  """
-  Type de la valeur du champ.
-  """
-  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
-}
-
 """
 Represents direct upload credentials
 """
@@ -1659,12 +1992,29 @@ type Dossier {
   archived: Boolean!
 
   """
+  Historique des affectations du dossier à un groupe instructeur.
+  """
+  assignments(
+    """
+    Ne retourne que les affectations de ce type.
+    """
+    mode: DossierAssignmentMode
+  ): [DossierAssignment!]!
+
+  """
   L’URL de l’attestation au format PDF.
   """
   attestation: File
   avis(id: ID): [Avis!]!
   champs(id: ID): [Champ!]!
   connectionUsager: ConnectionUsager!
+
+  """
+  Date à laquelle l’usager a pris connaissance de la décision. Null si l’accusé
+  de lecture n’est pas activé sur la démarche ou si l’usager n’a pas encore pris
+  connaissance de la décision.
+  """
+  dateAccuseLectureAgreement: ISO8601DateTime
 
   """
   Date de dépôt.
@@ -1687,9 +2037,14 @@ type Dossier {
   dateDerniereModificationAnnotations: ISO8601DateTime!
 
   """
-  Date de la dernière modification des champs.
+  Date de la dernière modification des champs par un usager.
   """
   dateDerniereModificationChamps: ISO8601DateTime!
+
+  """
+  Date de la dernière modification des champs par un instructeur.
+  """
+  dateDerniereModificationChampsParInstructeur: ISO8601DateTime
 
   """
   Date d’expiration.
@@ -1898,6 +2253,68 @@ type DossierArchiverPayload {
   clientMutationId: String
   dossier: Dossier
   errors: [ValidationError!]
+}
+
+"""
+Une affectation d’un dossier à un groupe instructeur
+"""
+type DossierAssignment {
+  """
+  Date de l’affectation.
+  """
+  assignedAt: ISO8601DateTime!
+
+  """
+  Email de l’agent à l’origine de l’affectation.
+  """
+  assignedBy: String
+
+  """
+  Libellé du groupe instructeur affecté, au moment de l’affectation.
+  """
+  groupeInstructeurLabel: String!
+
+  """
+  Numéro du groupe instructeur affecté. Null si le groupe a depuis été supprimé.
+  """
+  groupeInstructeurNumber: Int
+
+  """
+  Origine de l’affectation.
+  """
+  mode: DossierAssignmentMode!
+
+  """
+  Libellé du groupe instructeur précédent, au moment de l’affectation.
+  """
+  previousGroupeInstructeurLabel: String
+
+  """
+  Numéro du groupe instructeur précédent. Null s’il s’agit de la première affectation ou si le groupe a depuis été supprimé.
+  """
+  previousGroupeInstructeurNumber: Int
+}
+
+enum DossierAssignmentMode {
+  """
+  Affectation par le routage automatique de la démarche
+  """
+  auto
+
+  """
+  Réaffectation en masse suite à une modification du routage
+  """
+  bulk_routing
+
+  """
+  Réaffectation manuelle par un instructeur ou un administrateur
+  """
+  manual
+
+  """
+  Affectation technique effectuée par la plateforme
+  """
+  tech
 }
 
 """
@@ -2140,6 +2557,7 @@ type DossierLinkChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -2779,6 +3197,7 @@ type DropDownListChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -2892,6 +3311,7 @@ type EngagementJuridiqueChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -3034,6 +3454,7 @@ type EpciChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -3047,6 +3468,34 @@ type EpciChamp implements Champ {
 }
 
 type EpciChampDescriptor implements ChampDescriptor {
+  """
+  Description des champs d’un bloc répétable.
+  """
+  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+  """
+  Description du champ.
+  """
+  description: String
+  id: ID!
+
+  """
+  Libellé du champ.
+  """
+  label: String!
+
+  """
+  Est-ce que le champ est obligatoire ?
+  """
+  required: Boolean!
+
+  """
+  Type de la valeur du champ.
+  """
+  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
+}
+
+type EtudiantBoursierChampDescriptor implements ChampDescriptor {
   """
   Description des champs d’un bloc répétable.
   """
@@ -3093,6 +3542,7 @@ type ExplicationChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -3215,6 +3665,35 @@ enum GeoAreaSource {
 }
 
 type GeoJSON {
+  coordinates: Coordinates!
+  type: String!
+}
+
+type GeoJSONColumn implements Column {
+  id: ID!
+
+  """
+  Libellé de la colonne.
+  """
+  label: String!
+
+  """
+  La valeur de la colonne sous forme texte.
+  """
+  stringValue: String
+  value: [GeoJSONFeature!]!
+}
+
+type GeoJSONFeature {
+  geometry: GeoJSONGeometry!
+  properties: GeoJSONFeatureProperties!
+}
+
+type GeoJSONFeatureProperties {
+  description: String
+}
+
+type GeoJSONGeometry {
   coordinates: Coordinates!
   type: String!
 }
@@ -3573,6 +4052,7 @@ type HeaderSectionChamp implements Champ {
   label: String!
   level: Int!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -3686,6 +4166,7 @@ type IntegerNumberChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -3771,6 +4252,7 @@ type LinkedDropDownListChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
   primaryValue: String
   secondaryValue: String
 
@@ -3818,34 +4300,6 @@ type LinkedDropDownListChampDescriptor implements ChampDescriptor {
   type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
-type MesriChampDescriptor implements ChampDescriptor {
-  """
-  Description des champs d’un bloc répétable.
-  """
-  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
-
-  """
-  Description du champ.
-  """
-  description: String
-  id: ID!
-
-  """
-  Libellé du champ.
-  """
-  label: String!
-
-  """
-  Est-ce que le champ est obligatoire ?
-  """
-  required: Boolean!
-
-  """
-  Type de la valeur du champ.
-  """
-  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
-}
-
 type Message {
   attachment: File @deprecated(reason: "Utilisez le champ `attachments` à la place.")
   attachments: [File!]!
@@ -3876,6 +4330,7 @@ type MultipleDropDownListChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -3934,6 +4389,18 @@ type Mutation {
   ): CreateDirectUploadPayload
 
   """
+  Ajouter un administrateur existant a une démarche. A moins que utilisiez cette
+  mutation sur une instance autre que demarche.numerique.gouv.fr avec la
+  fonctionnalité activée, l'administrateur doit avoir été crée a priori.
+  """
+  demarcheAjouterAdministrateur(
+    """
+    Parameters for DemarcheAjouterAdministrateur
+    """
+    input: DemarcheAjouterAdministrateurInput!
+  ): DemarcheAjouterAdministrateurPayload
+
+  """
   Cloner une démarche.
   """
   demarcheCloner(
@@ -3942,6 +4409,36 @@ type Mutation {
     """
     input: DemarcheClonerInput!
   ): DemarcheClonerPayload
+
+  """
+  Modifier les paramètres d’une démarche.
+  """
+  demarcheModifierParametres(
+    """
+    Parameters for DemarcheModifierParametres
+    """
+    input: DemarcheModifierParametresInput!
+  ): DemarcheModifierParametresPayload
+
+  """
+  Publier une démarche
+  """
+  demarchePublier(
+    """
+    Parameters for DemarchePublier
+    """
+    input: DemarchePublierInput!
+  ): DemarchePublierPayload
+
+  """
+  Supprimer un administrateur d'une démarche
+  """
+  demarcheSupprimerAdministrateur(
+    """
+    Parameters for DemarcheSupprimerAdministrateur
+    """
+    input: DemarcheSupprimerAdministrateurInput!
+  ): DemarcheSupprimerAdministrateurPayload
 
   """
   Accepter le dossier.
@@ -4325,6 +4822,7 @@ type PaysChamp implements Champ {
   label: String!
   pays: Pays
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -4380,8 +4878,10 @@ type PersonneMorale implements Demandeur {
   entreprise: Entreprise
   id: ID!
   libelleNaf: String!
+  libelleNaf2025: String
   localite: String! @deprecated(reason: "Utilisez le champ `address.city_name` à la place.")
   naf: String
+  naf2025: String
   nomVoie: String @deprecated(reason: "Utilisez le champ `address.street_name` à la place.")
   numeroVoie: String @deprecated(reason: "Utilisez le champ `address.street_number` à la place.")
   siegeSocial: Boolean!
@@ -4458,7 +4958,13 @@ type PieceJustificativeChamp implements Champ {
   Libellé du champ.
   """
   label: String!
+
+  """
+  La nature de la pièce justificative. ex: 'NON_SPECIFIE', 'TITRE_IDENTITE', 'RIB', 'JUSTIFICATIF_DOMICILE'
+  """
+  nature: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -4504,7 +5010,7 @@ type PieceJustificativeChampDescriptor implements ChampDescriptor {
   type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
-type PoleEmploiChampDescriptor implements ChampDescriptor {
+type PreRempliChampDescriptor implements ChampDescriptor {
   """
   Description des champs d’un bloc répétable.
   """
@@ -4573,6 +5079,31 @@ type Query {
   ): DemarcheDescriptor
 
   """
+  Liste des démarches publiques (publiées ou closes, en opendata).
+  """
+  demarcheDescriptors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): DemarcheDescriptorConnection!
+
+  """
   Informations sur un dossier d’une démarche.
   """
   dossier(
@@ -4591,6 +5122,34 @@ type Query {
     """
     number: Int!
   ): GroupeInstructeurWithDossiers!
+}
+
+type QuotientFamilialChampDescriptor implements ChampDescriptor {
+  """
+  Description des champs d’un bloc répétable.
+  """
+  champDescriptors: [ChampDescriptor!] @deprecated(reason: "Utilisez le champ `RepetitionChampDescriptor.champ_descriptors` à la place.")
+
+  """
+  Description du champ.
+  """
+  description: String
+  id: ID!
+
+  """
+  Libellé du champ.
+  """
+  label: String!
+
+  """
+  Est-ce que le champ est obligatoire ?
+  """
+  required: Boolean!
+
+  """
+  Type de la valeur du champ.
+  """
+  type: TypeDeChamp! @deprecated(reason: "Utilisez le champ `__typename` à la place.")
 }
 
 type RNA {
@@ -4620,6 +5179,7 @@ type RNAChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
   rna: RNA
 
   """
@@ -4688,6 +5248,7 @@ type RNFChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
   rnf: RNF
 
   """
@@ -4781,6 +5342,7 @@ type RegionChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
   region: Region
 
   """
@@ -4847,6 +5409,7 @@ type RepetitionChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
   rows: [Row!]!
 
   """
@@ -4909,6 +5472,16 @@ type Row {
   id: ID!
 }
 
+type Rpg implements GeoArea {
+  commune: String
+  description: String
+  geometry: GeoJSON!
+  id: ID!
+  numero: String
+  source: GeoAreaSource!
+  surface: Float
+}
+
 type SelectionUtilisateur implements GeoArea {
   description: String
   geometry: GeoJSON!
@@ -4917,6 +5490,10 @@ type SelectionUtilisateur implements GeoArea {
 }
 
 type Service {
+  """
+  département où se situe le service qui met en oeuvre la démarche
+  """
+  departement: String
   id: ID!
 
   """
@@ -4960,6 +5537,7 @@ type SiretChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -5019,6 +5597,7 @@ type TextChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -5124,6 +5703,7 @@ type TitreIdentiteChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
@@ -5177,6 +5757,10 @@ enum TitreIdentiteGrantType {
 }
 
 type Traitement {
+  """
+  Liste des changements par colonne
+  """
+  changedColumns: [Column!]!
   dateTraitement: ISO8601DateTime!
   emailAgentTraitant: String
   event: TraitementEvent!
@@ -5250,14 +5834,29 @@ enum TraitementEvent {
 
 enum TypeDeChamp {
   """
+  Statut allocation adulte handicapé
+  """
+  aah
+
+  """
   Adresse
   """
   address
 
   """
+  Statut allocation d’éducation de l’enfant handicapé
+  """
+  aeeh
+
+  """
   Annuaire de l’éducation
   """
   annuaire_education
+
+  """
+  Statut allocation de rentrée scolaire
+  """
+  ars
 
   """
   Carte
@@ -5275,17 +5874,12 @@ enum TypeDeChamp {
   civilite
 
   """
-  Données de la Caisse nationale des allocations familiales
-  """
-  cnaf
-
-  """
   Accréditation Paris 2024
   """
   cojo
 
   """
-  Communes
+  Commune française actuelle
   """
   communes
 
@@ -5305,14 +5899,9 @@ enum TypeDeChamp {
   decimal_number
 
   """
-  Départements
+  Département
   """
   departements
-
-  """
-  Données de la Direction générale des Finances publiques
-  """
-  dgfip
 
   """
   Lien vers un autre dossier
@@ -5338,6 +5927,11 @@ enum TypeDeChamp {
   EPCI
   """
   epci
+
+  """
+  Statut étudiant boursier
+  """
+  etudiant_boursier
 
   """
   Explication
@@ -5370,11 +5964,6 @@ enum TypeDeChamp {
   linked_drop_down_list
 
   """
-  Données du Ministère de l’Enseignement Supérieur, de la Recherche et de l’Innovation
-  """
-  mesri
-
-  """
   Choix multiple
   """
   multiple_drop_down_list
@@ -5400,9 +5989,14 @@ enum TypeDeChamp {
   piece_justificative
 
   """
-  Situation Pôle emploi
+  Champ pré-rempli
   """
-  pole_emploi
+  pre_rempli
+
+  """
+  Quotient familial
+  """
+  quotient_familial
 
   """
   Référentiel configurable (avancé)
@@ -5410,7 +6004,7 @@ enum TypeDeChamp {
   referentiel
 
   """
-  Régions
+  Région
   """
   regions
 
@@ -5443,11 +6037,6 @@ enum TypeDeChamp {
   Texte long
   """
   textarea
-
-  """
-  Titre identité
-  """
-  titre_identite
 
   """
   Oui/Non
@@ -5536,6 +6125,7 @@ type YesNoChamp implements Champ {
   """
   label: String!
   prefilled: Boolean!
+  prefilledValueModified: Boolean!
 
   """
   La valeur du champ sous forme texte.
