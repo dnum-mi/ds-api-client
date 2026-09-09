@@ -8,5 +8,27 @@ export default gql`
     description
     required
     __typename
+    ... on DropDownListChampDescriptor {
+      options
+      otherOption
+    }
+    ... on MultipleDropDownListChampDescriptor {
+      options
+    }
+    ... on LinkedDropDownListChampDescriptor {
+      options
+    }
+    ... on PieceJustificativeChampDescriptor {
+      fileTemplate {
+        ...FileFragment
+      }
+    }
+    ... on ExplicationChampDescriptor {
+      collapsibleExplanationEnabled
+      collapsibleExplanationText
+    }
+    ... on HeaderSectionChampDescriptor {
+      level
+    }
   }
 `;

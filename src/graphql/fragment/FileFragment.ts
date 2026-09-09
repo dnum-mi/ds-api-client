@@ -7,5 +7,7 @@ export default gql`
     checksum
     byteSizeBigInt
     url
+    createdAt
+    virusScanResult
   }
 `;
