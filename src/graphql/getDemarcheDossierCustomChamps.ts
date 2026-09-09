@@ -2,6 +2,9 @@ import { gql } from "graphql-request";
 import DossierFragment from "./fragment/DossierFragment";
 import DemarcheDescriptorFragment from "./fragment/DemarcheDescriptorFragment";
 
+/**
+ * @deprecated N'est plus utlisé par BN et manque la pagination
+ */
 export default gql`
   query getDemarche(
     $demarcheNumber: Int!

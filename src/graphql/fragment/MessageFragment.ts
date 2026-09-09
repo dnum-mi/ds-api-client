@@ -12,5 +12,9 @@ export default gql`
     attachments {
       ...FileFragment
     }
+    correction: {
+      dateResolution
+      reason
+    }
   }
 `;
