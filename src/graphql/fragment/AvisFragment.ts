@@ -9,12 +9,16 @@ export default gql`
     dateReponse
     claimant {
       email
+      id
     }
     expert {
       email
+      id
     }
-    attachment {
+    attachments {
       ...FileFragment
     }
+    questionAnswer: Boolean
+    questionLabel: String
   }
 `;

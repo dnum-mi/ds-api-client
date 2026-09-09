@@ -6,6 +6,8 @@ export default gql`
     siegeSocial
     naf
     libelleNaf
+    naf2025
+    libelleNaf2025
     address {
       ...AddressFragment
     }
