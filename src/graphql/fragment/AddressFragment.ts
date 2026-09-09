@@ -18,5 +18,7 @@ export default gql`
       coordinates
       type
     }
+    countryCode
+    countryName
   }
 `;

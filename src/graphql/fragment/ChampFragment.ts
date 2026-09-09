@@ -3,9 +3,15 @@ import { gql } from "graphql-request";
 export default gql`
   fragment ChampFragment on Champ {
     id
+    champDescriptorId
     __typename
     label
     stringValue
+    updatedAt
+    prefilled
+    columns {
+      ...ColumnFragment
+    }
     ... on DateChamp {
       date
     }
@@ -14,6 +20,9 @@ export default gql`
     }
     ... on CheckboxChamp {
       checked: value
+    }
+    ... on YesNoChamp {
+      selected: value
     }
     ... on DecimalNumberChamp {
       decimalNumber: value
@@ -27,6 +36,9 @@ export default gql`
     ... on LinkedDropDownListChamp {
       primaryValue
       secondaryValue
+    }
+    ... on DropDownListChamp {
+      value
     }
     ... on MultipleDropDownListChamp {
       values
@@ -43,22 +55,70 @@ export default gql`
       address {
         ...AddressFragment
       }
+      commune {
+        ...CommuneFragment
+      }
+      departement {
+        ...DepartementFragment
+      }
+    }
+    ... on EpciChamp {
+      epci {
+        ...EpciFragment
+      }
+      departement {
+        ...DepartementFragment
+      }
     }
     ... on CommuneChamp {
       commune {
-        name
-        code
+        ...CommuneFragment
       }
       departement {
-        name
-        code
+        ...DepartementFragment
       }
     }
     ... on DepartementChamp {
       departement {
-        name
-        code
+        ...DepartementFragment
       }
+    }
+    ... on RegionChamp {
+      region {
+        ...RegionFragment
+      }
+    }
+    ... on PaysChamp {
+      pays {
+        ...PaysFragment
+      }
+    }
+    ... on SiretChamp {
+      etablissement {
+        ...PersonneMoraleFragment
+      }
+    }
+    ... on RNFChamp {
+      rnf {
+        ...RNFFragment
+      }
+      commune {
+        ...CommuneFragment
+      }
+      departement {
+        ...DepartementFragment
+      }
+    }
+    ... on EngagementJuridiqueChamp {
+      engagementJuridique {
+        ...EngagementJuridiqueFragment
+      }
+    }
+    ... on HeaderSectionChamp {
+      level
+    }
+    ... on ExplicationChamp {
+      __typename
     }
   }
 `;

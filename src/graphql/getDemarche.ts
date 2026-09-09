@@ -2,6 +2,9 @@ import { gql } from "graphql-request";
 
 import RevisionFragment from "./fragment/RevisionFragment";
 import ChampDescriptorFragment from "./fragment/ChampDescriptorFragment";
+import LabelFragment from "./fragment/LabelFragment";
+import ServiceFragment from "./fragment/ServiceFragment";
+import FileFragment from "./fragment/FileFragment";
 
 export default gql`
   query getDemarche($demarcheNumber: Int!) {
@@ -40,14 +43,23 @@ export default gql`
       }
 
       service {
-        id
-        nom
-        organisme
-        siret
-        typeOrganisme
+        ...ServiceFragment
+      }
+
+      labels {
+        ...LabelFragment
+      }
+
+      chorusConfiguration {
+        centreDeCout
+        domaineFonctionnel
+        referentielDeProgrammation
       }
     }
   }
   ${RevisionFragment}
   ${ChampDescriptorFragment}
+  ${LabelFragment}
+  ${ServiceFragment}
+  ${FileFragment}
 `;

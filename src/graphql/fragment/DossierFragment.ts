@@ -10,6 +10,7 @@ import RootChampFragment from "./RootChampFragment";
 import AvisFragment from "./AvisFragment";
 import MessageFragment from "./MessageFragment";
 import PersonneMoraleFragment from "./PersonneMoraleFragment";
+import LabelFragment from "./LabelFragment";
 
 export default gql`
   fragment DossierFragment on Dossier {
@@ -38,6 +39,7 @@ export default gql`
     }
     usager {
       email
+      id
     }
     groupeInstructeur {
       id
@@ -77,6 +79,35 @@ export default gql`
       }
       ...PersonneMoraleFragment
     }
+
+    dateDerniereCorrectionEnAttente
+    dateDerniereModificationAnnotations
+    dateDerniereModificationChamps
+    dateDerniereModificationChampsParInstructeur
+    dateExpiration
+    datePrevisionnelleDecisionSVASVR
+    dateTraitementSVASVR
+    dateSuppressionParAdministration
+    dateSuppressionParUsager
+    deposeParUnTiers
+    labels {
+      ...LabelFragment
+    }
+    geojson {
+      ...FileFragment
+    }
+    nomMandataire
+    prenomMandataire
+    prefilled
+    assignments {
+      mode
+      assignedAt
+      assignedBy
+      groupeInstructeurNumber
+      groupeInstructeurLabel
+      previousGroupeInstructeurNumber
+      previousGroupeInstructeurLabel
+    }
   }
   ${AddressFragment}
   ${ChampDescriptorFragment}
@@ -88,4 +119,5 @@ export default gql`
   ${AvisFragment}
   ${MessageFragment}
   ${PersonneMoraleFragment}
+  ${LabelFragment}
 `;

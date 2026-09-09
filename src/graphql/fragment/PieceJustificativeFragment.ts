@@ -8,5 +8,10 @@ export default gql`
     }
     label
     stringValue
+    nature
+    prefilled
+    prefilledValueModified
+    updatedAt
+    champDescriptorId
   }
 `;

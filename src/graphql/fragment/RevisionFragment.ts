@@ -15,5 +15,7 @@ export default gql`
         ...ChampDescriptorFragment
       }
     }
+    datePublication
+    dateCreation
   }
 `;
