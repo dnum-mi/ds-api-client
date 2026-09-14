@@ -22,8 +22,7 @@ jobs:
         run: | 
             npm ci
             npm run lint
-            API_URL=${{secrets.API_URL}}; API_TOKEN=${{secrets.API_TOKEN}}; npm run test
-             
+            npm run test:unit
       - name: run build
         run: npm run build
       # - name: prepare deploy
