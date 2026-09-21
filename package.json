@@ -11,6 +11,9 @@
     "node": ">=16.0.0",
     "npm": ">=7.10.0"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc --project tsconfig.build.json",
