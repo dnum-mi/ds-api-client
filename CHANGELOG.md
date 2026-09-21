@@ -1,5 +1,66 @@
 # Changelog
 
+## [1.11.0](https://github.com/dnum-mi/ds-api-client/compare/v1.10.0...v1.11.0) (2026-09-21)
+
+
+### Features
+
+* add cursor page for list dossiers ([c4f52bd](https://github.com/dnum-mi/ds-api-client/commit/c4f52bd38486c42ef0586d9d5d3b2761efc8827b))
+* Add engines recommandation ([343f1c8](https://github.com/dnum-mi/ds-api-client/commit/343f1c87a7650ab1a78b0829e8ebfdae5d7a1d63))
+* Add module to download and update GraphQL schema locally ([1ab76bf](https://github.com/dnum-mi/ds-api-client/commit/1ab76bfb408bbeb9fbe2bfeece62ff25a9bf50f7))
+* adding __typename in types and in ChampDescriptor fragment ([396ae24](https://github.com/dnum-mi/ds-api-client/commit/396ae247bdce0a10221b1977152057f76691cd1a))
+* adding geometry inside AdressFragment ([c46a8f9](https://github.com/dnum-mi/ds-api-client/commit/c46a8f900a0b264d43041ec9bc271eebffc9ede0))
+* adding one new mutation ([#50](https://github.com/dnum-mi/ds-api-client/issues/50)) ([4be7be2](https://github.com/dnum-mi/ds-api-client/commit/4be7be27543338131243d07efccee3c862353b9e))
+* ci for create release ([b1ef01b](https://github.com/dnum-mi/ds-api-client/commit/b1ef01bc74fafeeb2cba3051e3c671d763ab576e))
+* create branch release from pull request of branch dev ([3d81c9f](https://github.com/dnum-mi/ds-api-client/commit/3d81c9ff69ca4a2729aa9b9f565b4af5a9e73652))
+* custom champ and repetition champ ([#60](https://github.com/dnum-mi/ds-api-client/issues/60)) ([1740de0](https://github.com/dnum-mi/ds-api-client/commit/1740de002a77cc2010bebf1a71b2a5729ab940e6))
+* get demarche with dossier ids only* ([71bc0a0](https://github.com/dnum-mi/ds-api-client/commit/71bc0a09c164e460a6f35b64e2f02ef995103db6))
+* get file from dossier ([454b018](https://github.com/dnum-mi/ds-api-client/commit/454b018e6603067f33ba28b0604778626a18da17))
+* **schema 2026-01-26:** new schema and types generated of 2026-01-26 ([b96375b](https://github.com/dnum-mi/ds-api-client/commit/b96375bced9204b100bb279e656595d042b366dd))
+* **schema 2026-01-26:** update the queries graphql for the version schema 2026-09-08 ([3826e81](https://github.com/dnum-mi/ds-api-client/commit/3826e81aa567c6442c08ec48acf59b9120ea67af))
+* **schema 2026-09-08:** upgrade new schema and types of 2026-09-08 ([6a517ac](https://github.com/dnum-mi/ds-api-client/commit/6a517acbb1bcdc93eee42ed1190afb6bffdbfff7))
+
+
+### Bug Fixes
+
+* __typename is now inside custom-champ ([#92](https://github.com/dnum-mi/ds-api-client/issues/92)) ([d737e5e](https://github.com/dnum-mi/ds-api-client/commit/d737e5e422da4884498378d5f50624699fc9891e))
+* :bug: Extracting id for repeatble champs for different size ([2aa9340](https://github.com/dnum-mi/ds-api-client/commit/2aa9340320891020bfd580160e516d19f30c0f82))
+* :construction_worker: launch in dev ([b818c52](https://github.com/dnum-mi/ds-api-client/commit/b818c529f6e5dc8d53d72804a05387a10d16428e))
+* add annotation descriptor in annotation ([47e53f6](https://github.com/dnum-mi/ds-api-client/commit/47e53f6492a0c21af50d5d7108122000b4d10ae9))
+* add dateDerniereModification field to getDemarcheDossierIds query ([61bf46a](https://github.com/dnum-mi/ds-api-client/commit/61bf46ab2d199385adc4407237f06877aa97b8f9))
+* add demarche descriptor in dossiers of get demarche custom champ ([aab9f4c](https://github.com/dnum-mi/ds-api-client/commit/aab9f4c0891d200ce6aa18f2ea88f10c2a1a843a))
+* add file to get old dossiers ([1eba984](https://github.com/dnum-mi/ds-api-client/commit/1eba9844698199bb66d59c958fcf365ba1e23d1f))
+* add fragemnt in demarches with dossier ids only ([0a87bb9](https://github.com/dnum-mi/ds-api-client/commit/0a87bb9b18c7a08e24b9baee8a80b4ac1c11c5e0))
+* add option http proxy ([27e0dbc](https://github.com/dnum-mi/ds-api-client/commit/27e0dbca06cf5758580757c07e8390ee27bf63e7))
+* add readme to generate types from schema graphql ([3a31b30](https://github.com/dnum-mi/ds-api-client/commit/3a31b301366562a25ba7077a53191ec2c1d0eb79))
+* add test:e2e ([195414f](https://github.com/dnum-mi/ds-api-client/commit/195414f543f74a059eec8b8e24f47a60bbe4597e))
+* add typename in champs ([9a0da1a](https://github.com/dnum-mi/ds-api-client/commit/9a0da1a944ccc570330bd350cd98b90d3df33714))
+* add typename in demandeur of dossier ([8671a5b](https://github.com/dnum-mi/ds-api-client/commit/8671a5ba44c7fde1f648975342c3c0afbbbb00c2))
+* add variable env NODE_TLS_REJECT_UNAUTHORIZED ([1559e9b](https://github.com/dnum-mi/ds-api-client/commit/1559e9bba6aea8690ae7ceeec2af2dcb1198c845))
+* add variable env NODE_TLS_REJECT_UNAUTHORIZED for workflow create release ([589bfec](https://github.com/dnum-mi/ds-api-client/commit/589bfec9a99c51ab6f920ff8138f7caeddeda5e5))
+* bug in DS to get champ in repetitionChamp by id ([053d6f1](https://github.com/dnum-mi/ds-api-client/commit/053d6f1df12a1d96b1165d9ab348558027140fae))
+* ci publish ([206dcac](https://github.com/dnum-mi/ds-api-client/commit/206dcac8950803ae17540338a391966270aa08ae))
+* ci to create release ([3051c99](https://github.com/dnum-mi/ds-api-client/commit/3051c99d37849fbe0ca83edf9cf0b8fbadc7c672))
+* DeparteentChamps missing in ChampFragment ([b4fb28e](https://github.com/dnum-mi/ds-api-client/commit/b4fb28eb4be4d202cba54119e05b213afbbaaa06))
+* deployment packages ([167a2e5](https://github.com/dnum-mi/ds-api-client/commit/167a2e50217e6920dc3b0fa7906ab69fdffb2b22))
+* file into files and delete file ([e00616d](https://github.com/dnum-mi/ds-api-client/commit/e00616d20587556909af9242d6d716fbdfaedaf9))
+* fix wording in package.json ([e1ce414](https://github.com/dnum-mi/ds-api-client/commit/e1ce414a3957069154e16c4304d829f4645195e5))
+* fonction get files return files ([8d2fbd7](https://github.com/dnum-mi/ds-api-client/commit/8d2fbd7f3f49e7e4de62814bdb33abe26fbe0c46))
+* get dossiers by update since ([be5b2fb](https://github.com/dnum-mi/ds-api-client/commit/be5b2fb4a51140bbc59318047e57cd1dc4919a7b))
+* get revsion of demarches ([af55d95](https://github.com/dnum-mi/ds-api-client/commit/af55d95c1aedff21e44d72e61be040462107dc25))
+* message log ([59edffe](https://github.com/dnum-mi/ds-api-client/commit/59edffe247bf835f59b6dfe52d9056092f0c7418))
+* Mixing query from getDemarche and getDemarcheDossier in getDemarcheDossierWithCustomChamp to have one big request with Biblionum. ([95c68c1](https://github.com/dnum-mi/ds-api-client/commit/95c68c1e8189520345cae6b758c9ed5a8ff136ba))
+* query demache custom champs ([420d424](https://github.com/dnum-mi/ds-api-client/commit/420d4247ee18a6f93c5dfef8df079c308a59d028))
+* remove  enum and transform to type ([92e7a55](https://github.com/dnum-mi/ds-api-client/commit/92e7a55679c82656dfbf7ef69ab374c975d189de))
+* remove DossierLinkChamp fragment from RootChampFragment ([283474c](https://github.com/dnum-mi/ds-api-client/commit/283474cb229c0b27ecd79f20265cb330c43bffbc))
+* remove info demarche to getDemarcheDossierIds ([ab86a36](https://github.com/dnum-mi/ds-api-client/commit/ab86a36b46f26b07e2eb471b07abfab2e84fad00))
+* replace file by files and add motivation attachment ([2055ad5](https://github.com/dnum-mi/ds-api-client/commit/2055ad54fd69a011456d6e44f4cf3ab0cdcb313a))
+* show all messages from request graphql ([2d0e095](https://github.com/dnum-mi/ds-api-client/commit/2d0e095bb4e7f9b8f30dbd58d5c8f6b1dffb1646))
+* show error ([f3e1354](https://github.com/dnum-mi/ds-api-client/commit/f3e1354e90a40d88d291493334fbd2e7e9d96e97))
+* type DossierWithCustomChamp for annotation ([c89b7f4](https://github.com/dnum-mi/ds-api-client/commit/c89b7f4f51ba2cb42e6a9d2424da268ffcc03acc))
+* update dependencies ([1b78393](https://github.com/dnum-mi/ds-api-client/commit/1b783939d17be40bf4d408499c37806274b51316))
+* update link schema graphql ([44e7d6d](https://github.com/dnum-mi/ds-api-client/commit/44e7d6d3f6dd7225584b900c2a78ab88f970d036))
+
 ## [1.10.0](https://github.com/dnum-mi/ds-api-client/compare/v1.9.4...v1.10.0) (2026-09-21)
 
 
