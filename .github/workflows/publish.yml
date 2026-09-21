@@ -1,15 +1,13 @@
 name: Publish to npm
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ${{ vars.RUNNER  || 'ubuntu-latest' }}
-
     permissions:
+      id-token: write
       contents: read
 
     steps:
@@ -21,9 +19,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org/
-
+      - run: npm --version
       - name: Install dependencies
         run: npm ci
 
@@ -43,6 +41,4 @@ jobs:
           fi
 
       - name: Publish
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm stage publish
