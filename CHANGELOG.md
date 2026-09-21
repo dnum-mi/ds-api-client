@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.6](https://github.com/dnum-mi/ds-api-client/compare/v1.9.5...v1.9.6) (2026-09-21)
+
+
+### Bug Fixes
+
+* deployment packages ([84bfbcb](https://github.com/dnum-mi/ds-api-client/commit/84bfbcb83b6492442404a46bf2b3fbf4cb2d6883))
+
 ## [1.9.5](https://github.com/dnum-mi/ds-api-client/compare/v1.9.4...v1.9.5) (2026-09-21)
 
 
