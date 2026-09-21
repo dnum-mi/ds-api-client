@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.9.5](https://github.com/dnum-mi/ds-api-client/compare/v1.9.4...v1.9.5) (2026-09-21)
+
+
+### Bug Fixes
+
+* fix wording in package.json ([dceb59c](https://github.com/dnum-mi/ds-api-client/commit/dceb59cbc6c54bc4023306020ff581233d62ffe1))
+* new schema and nes types generated of 2026-01-26 ([ceca00f](https://github.com/dnum-mi/ds-api-client/commit/ceca00f3a32eeaf9f3fca22edc52fc24bb7691cc))
+* update link schema graphql ([35b9c63](https://github.com/dnum-mi/ds-api-client/commit/35b9c63c7e05dc4740d738626d38ee386975684f))
+* update the queries graphql for the version schema 2026-09-08 ([4e78d4e](https://github.com/dnum-mi/ds-api-client/commit/4e78d4eff619168f2e6dcae5300d75261100c029))
+* upgrade new schema and types of 2026-09-08 ([ad5d32f](https://github.com/dnum-mi/ds-api-client/commit/ad5d32fe1af4783ab734a85b01db39ce48459665))
+
 ## [1.9.4](https://github.com/dnum-mi/ds-api-client/compare/v1.9.3...v1.9.4) (2026-07-23)
 
 
