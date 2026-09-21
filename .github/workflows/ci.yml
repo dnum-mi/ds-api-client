@@ -5,7 +5,7 @@ jobs:
   tests:
     name: Run unit tests 
     if: ${{ !github.event.pull_request.draft }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.RUNNER  || 'ubuntu-latest' }}
 
     steps:
       - name: Checks-out repository
