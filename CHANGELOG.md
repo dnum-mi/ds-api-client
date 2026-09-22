@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.10.0](https://github.com/dnum-mi/ds-api-client/compare/v1.9.4...v1.10.0) (2026-09-22)
+
+
+### Features
+
+* Add module to download and update GraphQL schema locally ([1ab76bf](https://github.com/dnum-mi/ds-api-client/commit/1ab76bfb408bbeb9fbe2bfeece62ff25a9bf50f7))
+* **schema 2026-01-26:** new schema and types generated of 2026-01-26 ([b96375b](https://github.com/dnum-mi/ds-api-client/commit/b96375bced9204b100bb279e656595d042b366dd))
+* **schema 2026-01-26:** update the queries graphql for the version schema 2026-09-08 ([3826e81](https://github.com/dnum-mi/ds-api-client/commit/3826e81aa567c6442c08ec48acf59b9120ea67af))
+* **schema 2026-09-08:** upgrade new schema and types of 2026-09-08 ([6a517ac](https://github.com/dnum-mi/ds-api-client/commit/6a517acbb1bcdc93eee42ed1190afb6bffdbfff7))
+
+
+### Bug Fixes
+
+* deployment packages ([167a2e5](https://github.com/dnum-mi/ds-api-client/commit/167a2e50217e6920dc3b0fa7906ab69fdffb2b22))
+* fix wording in package.json ([e1ce414](https://github.com/dnum-mi/ds-api-client/commit/e1ce414a3957069154e16c4304d829f4645195e5))
+* update link schema graphql ([44e7d6d](https://github.com/dnum-mi/ds-api-client/commit/44e7d6d3f6dd7225584b900c2a78ab88f970d036))
+
 ## [1.9.4](https://github.com/dnum-mi/ds-api-client/compare/v1.9.3...v1.9.4) (2026-07-23)
 
 
