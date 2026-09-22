@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/dnum-mi/ds-api-client/compare/v1.10.0...v1.10.1) (2026-09-22)
+
+
+### Bug Fixes
+
+* corrige les erreurs dans les fragments ([25d0a65](https://github.com/dnum-mi/ds-api-client/commit/25d0a659167d4ced6797e84523813b8745c15311))
+
 ## [1.10.0](https://github.com/dnum-mi/ds-api-client/compare/v1.9.4...v1.10.0) (2026-09-22)
 
 
