@@ -12,7 +12,7 @@ export default gql`
     attachments {
       ...FileFragment
     }
-    correction: {
+    correction {
       dateResolution
       reason
     }

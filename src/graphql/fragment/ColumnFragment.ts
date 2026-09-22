@@ -37,7 +37,7 @@ export default gql`
     }
     ... on GeoJSONColumn {
       value {
-        geometry @include(if: $includeGeometry) {
+        geometry {
           type
           coordinates
         }

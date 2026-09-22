@@ -11,6 +11,14 @@ import AvisFragment from "./AvisFragment";
 import MessageFragment from "./MessageFragment";
 import PersonneMoraleFragment from "./PersonneMoraleFragment";
 import LabelFragment from "./LabelFragment";
+import ColumnFragment from "./ColumnFragment";
+import DepartementFragment from "./DepartementFragment";
+import CommuneFragment from "./CommuneFragment";
+import RegionFragment from "./RegionFragment";
+import EngagementJuridiqueFragment from "./EngagementJuridiqueFragment";
+import EpciFragment from "./EpciFragment";
+import PaysFragment from "./PaysFragment";
+import RNFFragment from "./RNFFragment";
 
 export default gql`
   fragment DossierFragment on Dossier {
@@ -116,8 +124,16 @@ export default gql`
   ${RevisionFragment}
   ${ChampFragment}
   ${RootChampFragment}
+  ${ColumnFragment}
   ${AvisFragment}
   ${MessageFragment}
   ${PersonneMoraleFragment}
   ${LabelFragment}
+  ${DepartementFragment}
+  ${CommuneFragment}
+  ${RegionFragment}
+  ${EpciFragment}
+  ${EngagementJuridiqueFragment}
+  ${PaysFragment}
+  ${RNFFragment}
 `;

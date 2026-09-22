@@ -117,8 +117,5 @@ export default gql`
     ... on HeaderSectionChamp {
       level
     }
-    ... on ExplicationChamp {
-      __typename
-    }
   }
 `;

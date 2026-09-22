@@ -18,7 +18,7 @@ export default gql`
     attachments {
       ...FileFragment
     }
-    questionAnswer: Boolean
-    questionLabel: String
+    questionAnswer
+    questionLabel
   }
 `;
