@@ -4,7 +4,7 @@ import DeletedDossierFragment from "./fragment/DeletedDossierFragment";
 import PageInfoFragment from "./fragment/PageInfoFragment";
 
 export default gql`
-  query getDeletedDossiersFromDemarche(
+  query getPendingDeletedDossiersFromDemarche(
     $demarcheNumber: Int!
     $order: Order
     $first: Int
@@ -16,10 +16,10 @@ export default gql`
       number
       title
 
-      deletedDossiers(
-        first: $deletedFirst
-        after: $deletedAfter
-        deletedSince: $deletedSince
+      pendingDeletedDossiers(
+        first: $pendingDeletedFirst
+        after: $pendingDeletedAfter
+        deletedSince: $pendingDeletedSince
       ) {
         pageInfo {
           ...PageInfoFragment

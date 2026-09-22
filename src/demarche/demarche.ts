@@ -10,6 +10,7 @@ import queryDemarche from "../graphql/getDemarche";
 import queryDemarcheDossiers from "../graphql/getDemarcheDossiers";
 import queryDemarcheDossiersCustomChamps from "../graphql/getDemarcheDossierCustomChamps";
 import queryDemarcheDeletedDossiers from "../graphql/getDemarcheDeletedDossiers";
+import queryDemarchePendingDeletedDossiers from "../graphql/getDemarchePendingDeletedDossiers";
 import queryDemarcheDossierIds from "../graphql/getDemarcheDossierIds";
 import { graphQlRequest } from "../common";
 import { mergeChampAndChampDescriptor } from "../dossier/dossier-custom-champ";
@@ -67,10 +68,61 @@ export const getDemarcheDossierWithCustomChamp = async (
 export const getDemarcheDeletedDossiers = async (
   client: GraphQLClient,
   idDemarche: number,
+  deletedSince?: Date,
+  first?: number,
+  after?: string,
 ): Promise<getDemarcheType> => {
-  return graphQlRequest<getDemarcheType>(client, queryDemarcheDeletedDossiers, {
+  const variables = {
     demarcheNumber: idDemarche,
-  });
+  };
+
+  if (deletedSince) {
+    variables["deletedSince"] = deletedSince;
+  }
+
+  if (after) {
+    variables["after"] = after;
+  }
+
+  if (first) {
+    variables["first"] = first;
+  }
+
+  return graphQlRequest<getDemarcheType>(
+    client,
+    queryDemarcheDeletedDossiers,
+    variables,
+  );
+};
+
+export const getDemarchePendingDeletedDossiers = async (
+  client: GraphQLClient,
+  idDemarche: number,
+  deletedSince?: Date,
+  first?: number,
+  after?: string,
+): Promise<getDemarcheType> => {
+  const variables = {
+    demarcheNumber: idDemarche,
+  };
+
+  if (deletedSince) {
+    variables["deletedSince"] = deletedSince;
+  }
+
+  if (after) {
+    variables["after"] = after;
+  }
+
+  if (first) {
+    variables["first"] = first;
+  }
+
+  return graphQlRequest<getDemarcheType>(
+    client,
+    queryDemarchePendingDeletedDossiers,
+    variables,
+  );
 };
 
 export const getDemarcheDossierIds = async (

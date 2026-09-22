@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import PageInfoFragment from "./fragment/PageInfoFragment";
 
 export default gql`
   query getDemarche(
@@ -23,10 +24,7 @@ export default gql`
         updatedSince: $updatedSince
       ) {
         pageInfo {
-          hasPreviousPage
-          hasNextPage
-          startCursor
-          endCursor
+          ...PageInfoFragment
         }
 
         nodes {
@@ -38,4 +36,5 @@ export default gql`
       }
     }
   }
+  ${PageInfoFragment}
 `;
