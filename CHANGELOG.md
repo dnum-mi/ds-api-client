@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/dnum-mi/ds-api-client/compare/v1.10.1...v1.10.2) (2026-09-24)
+
+
+### Bug Fixes
+
+* remove console.log ([60b9e3d](https://github.com/dnum-mi/ds-api-client/commit/60b9e3d3cecd37c4ee294b8b9e386685466c6daf))
+
 ## [1.10.1](https://github.com/dnum-mi/ds-api-client/compare/v1.10.0...v1.10.1) (2026-09-22)
 
 
