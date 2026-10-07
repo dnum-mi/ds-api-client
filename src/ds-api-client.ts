@@ -6,6 +6,7 @@ import {
   getDemarcheDossierIds,
   getDemarcheDossiers,
   getDemarcheDossierWithCustomChamp,
+  getDemarchePendingDeletedDossiers,
 } from "./demarche/demarche";
 import {
   getAttestationFromDossier,
@@ -76,8 +77,34 @@ export class DsApiClient {
     );
   }
 
-  async demarcheDeletedDossiers(idDemarche: number) {
-    return await getDemarcheDeletedDossiers(this.client, idDemarche);
+  async demarcheDeletedDossiers(
+    idDemarche: number,
+    deletedSince?: Date,
+    first?: number,
+    after?: string,
+  ) {
+    return await getDemarcheDeletedDossiers(
+      this.client,
+      idDemarche,
+      deletedSince,
+      first,
+      after,
+    );
+  }
+
+  async demarchePendingDeletedDossiers(
+    idDemarche: number,
+    deletedSince?: Date,
+    first?: number,
+    after?: string,
+  ) {
+    return await getDemarchePendingDeletedDossiers(
+      this.client,
+      idDemarche,
+      deletedSince,
+      first,
+      after,
+    );
   }
 
   async dossier(idDossier: number) {
