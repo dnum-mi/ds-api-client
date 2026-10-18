@@ -34,7 +34,7 @@
     "https-proxy-agent": "7.0.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.0.1",
+    "@graphql-codegen/cli": "^7.4.6",
     "@types/jest": "29.5.12",
     "@types/node": "20.11.16",
     "@types/supertest": "6.0.2",
